@@ -2,7 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ProjectsController;
+
+
+
+
 /*
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -23,9 +29,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Here We are getting Project Controller and its Show method
+//Route::get('/projects', 'ProjectController@show ');
+Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
+Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');
+
+
+
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Post method for user logout
 Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
