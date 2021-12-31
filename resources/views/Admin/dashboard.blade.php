@@ -2,6 +2,20 @@
 
 @section('content')
 <div class="container">
+    <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Project</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -19,6 +33,6 @@
             </div>
         </div>
     </div>
-    
+   
 </div>
 @endsection

@@ -37,7 +37,7 @@
                                        <div class="table-responsive-md">
                                             <table class="table table-dark table-hover ">
                                                 <thead class="thead">
-                                                    <tr >
+                                                    <tr>
                                                     <th>ID</th>
                                                     <th>Client Name</th>
                                                     <th>Client Email</th>

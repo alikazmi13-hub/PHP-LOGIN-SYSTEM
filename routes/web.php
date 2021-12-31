@@ -33,6 +33,7 @@ Route::get('/', function () {
 //Route::get('/projects', 'ProjectController@show ');
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');
+Route::post('/projects/add', [App\Http\Controllers\ProjectsController::class, 'saveProject'])->name('projects.saveProject');
 
 
 
