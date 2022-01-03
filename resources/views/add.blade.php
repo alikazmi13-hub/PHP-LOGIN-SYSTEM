@@ -33,69 +33,69 @@
          <div class="row ">
                  <div class="col-md-12 " >
                         <div class="card ">
-                              <div class="card-Header  bg-dark text-white text-center"><h3>New Project Details</h3></div>
-                            <div class="card-Body mt-5 text-center text-dark">
-                                    <form action="{{url('projects/add')}}" method="post" name="addproject" id="addproject">
+                              <div class="card-header  bg-dark text-white text-center"><h3>New Project Details</h3></div>
+                            <div class="card-body mt-5 text-dark">
+                                    <form class="row" action="{{url('projects/add')}}" method="post" name="addproject" id="addproject">
                                         @csrf
-                                        <div class="form-group">
-                                            <label for=""><h4>Client Name</h4></label>
-                                             <input type="text" name="ClientName" id="Name" value="{{old('Client Name')}}"  class=" form-control  text-dark {{($errors->any()  &&  $errors->first(' Client Name') )? 'is-invalid': ''}}">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Client Name</label>
+                                             <input type="text" name="Client_Name" id="Name" value="{{old('Client_Name')}}"  class=" form-control  text-dark {{($errors->any()  &&  $errors->first('Client_Name') )? 'is-invalid': ''}}">
                                             
                                              @if($errors->any())
-                                                <p class="invalid-feedback">{{$errors->first('Client Name')}}</p>
+                                                <p class="invalid-feedback">{{$errors->first('Client_Name')}}</p>
                                                 
                                                 @endif
                                                 </div>
-                                        <div class="form-group">
-                                            <label for=""><h4>Client Email</h4></label>
-                                             <input type="text" name="ClientEmail" id="Email" value="{{old('Client Email')}}" class="form-control  text-dark {{($errors->any()  &&  $errors->first(' Email') )? 'is-invalid': ''}}">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Client Email</label>
+                                             <input type="text" name="Client_Email" id="Email" value="{{old('Client_Email')}}" class="form-control  text-dark {{($errors->any()  &&  $errors->first('Client_Email') )? 'is-invalid': ''}}">
                                                 @if($errors->any())
-                                                <p class="invalid-feedback">{{$errors->first('Email')}}</p>
+                                                <p class="invalid-feedback">{{$errors->first('Client_Email')}}</p>
                                                 
                                                 @endif
                                             </div>
-                                        <div class="form-group ">
-                                            <label for=""><h4>Project Title</h4></label>
-                                             <input type="text" name="ProjectTitle" id="Title" value="{{old('Project Title')}}" class="form-control text-dark {{($errors->any()  &&  $errors->first(' Title') )? 'is-invalid': ''}}">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Project Title</label>
+                                             <input type="text" name="Project_Title" id="Title" value="{{old('Project_Title')}}" class="form-control text-dark {{($errors->any()  &&  $errors->first('Project_Title') )? 'is-invalid': ''}}">
                                             @if($errors->any())
-                                                <p class="invalid-feedback">{{$errors->first('Title')}}</p>
+                                                <p class="invalid-feedback">{{$errors->first('Project_Title')}}</p>
                                                 
                                                 @endif
 
                                             </div>
-                                        <div class="form-group ">
-                                            <label for=""><h4>Project Technology</h4></label>
-                                             <input type="text" name="ProjectTechnology" id="Technology" value="{{old('Project Technology')}}" class="form-control   {{($errors->any()  &&  $errors->first(' Technology') )? 'is-invalid': ''}}">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Project Technology</label>
+                                             <input type="text" name="Project_Technology" id="Technology" value="{{old('Project_Technology')}}" class="form-control   {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
                                             @if($errors->any())
-                                                <p class="invalid-feedback">{{$errors->first('Technology')}}</p>
+                                                <p class="invalid-feedback">{{$errors->first('Project_Technology')}}</p>
                                                 
                                                 @endif
                                         
                                             </div>
-                                        <div class="form-group   ">
-                                            <label for=""><h4>Project Type</h4></label>
-                                             <input type="text" name="ProjectType" id="Type" value="{{old('ProjectType')}}" class="form-control   {{($errors->any() && $errors->first('Project Type') )? 'is-invalid': ''}}">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Project Type</label>
+                                             <input type="text" name="Project_Type" id="Type" value="{{old('Project_Type')}}" class="form-control   {{($errors->any() && $errors->first('Project_Type') )? 'is-invalid': ''}}">
                                                 @if($errors->any())
-                                                <p class="invalid-feedback">{{$errors->first('ProjectType')}}</p>
+                                                <p class="invalid-feedback">{{$errors->first('Project_Type')}}</p>
                                                 
                                                 @endif
                                        
                                        
                                             </div>
-                                        <div class="form-group ">
-                                            <label  for=""><h4>Project Status</h4></label>
-                                             <input type="text" name="ProjectStatus" id="Status" value="{{old('Project Status')}}" class="form-control  text-dark {{($errors->any()  &&  $errors->first(' Status') )? 'is-invalid': ''}}">
+                                        <div class="form-group col-md-6 ">
+                                            <label  for="">Project Status</label>
+                                             <input type="text" name="Project_Status" id="Status" value="{{old('Project_Status')}}" class="form-control  text-dark {{($errors->any()  &&  $errors->first('Project_Status') )? 'is-invalid': ''}}">
                                                 @if($errors->any())
-                                                <p class="invalid-feedback">{{$errors->first('Status')}}</p>
+                                                <p class="invalid-feedback">{{$errors->first('Project_Status')}}</p>
                                                 
                                                 @endif
                                       
                                             </div>
                                         <div class="fo ">
-                                            <label for=""><h4>Project Description</h4></label>
-                                             <textarea type="text" name="ProjectDescription"  cols="30" rows="7" id="Description" value="{{old('Project Description')}}"  class="form-control  text-dark {{($errors->any()  &&  $errors->first(' Description') )? 'is-invalid': ''}}"></textarea>
+                                            <label for="">Project Description</label>
+                                             <textarea type="text" name="Project_Description"  cols="30" rows="7" id="Description" value="{{old('Project_Description')}}"  class="form-control  text-dark {{($errors->any()  &&  $errors->first('Project_Description') )? 'is-invalid': ''}}"></textarea>
                                                 @if($errors->any())
-                                                <p class="invalid-feedback">{{$errors->first('Description')}}</p>
+                                                <p class="invalid-feedback">{{$errors->first('Project_Description')}}</p>
                                                 
                                                 @endif
                                         

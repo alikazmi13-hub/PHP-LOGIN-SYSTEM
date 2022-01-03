@@ -23,8 +23,13 @@
                      <div class="col-md-12 mb-3">
                          <!-- Add Project Button link  -->
                             <a href="{{route('projects.add')}}" class="btn btn-primary btn-md"">ADD PROJECT</a>
-                            
-                       </div>
+                            </div>
+                        <!-- If new project form details will successfully submit  -->
+                        @if (Session::has('msg')) 
+                       <div class="col-md-12">
+                        <div class="alert alert success">{{Session::get('msg')}}</div>
+                        </div>
+                        @endif
                   </div>
                   <!-- Center Container End Here -->
                   <!-------- Card Row For PRojects Record ------>
