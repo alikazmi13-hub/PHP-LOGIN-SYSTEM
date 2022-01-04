@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Validator;
+use DB;
 // here we call Validator
 // use illumintae\Support\Facades\Validator;
 class ProjectsController extends Controller
@@ -11,13 +12,16 @@ class ProjectsController extends Controller
 
     //Project Controller
          function show(){
-        return view('Projectlist');    
+        //it will get record from projects table and order by latest 
+        $projects = DB::table('projects')->orderBy('id','DESC')->get();
+        return view('Projectlist')->with(compact('projects'));   
         }
 
 
         //  Add Project Function 
        function addProject(){
         return view ('add');
+
         }
 
 
