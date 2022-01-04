@@ -32,7 +32,19 @@ Route::get('/', function () {
 // Here We are getting Project Controller and its Show method
 //Route::get('/projects', 'ProjectController@show ');
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
+// get Method For add new record Form 
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');
+//Edit Route
+Route::get('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::class, 'editProject'])->name('projects.edit');
+// Delete
+// Route::get('/projects-data', [App\Http\Controllers\ProjectsController::class, 'getData']);
+
+
+
+
+Route::get('/projects-data', [App\Http\Controllers\ProjectsController::class, 'getData']);
+
+// post Method For Form submission
 Route::post('/projects/add', [App\Http\Controllers\ProjectsController::class, 'saveProject'])->name('projects.saveProject');
 
 
