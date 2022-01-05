@@ -32,17 +32,30 @@ Route::get('/', function () {
 // Here We are getting Project Controller and its Show method
 //Route::get('/projects', 'ProjectController@show ');
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
-// get Method For add new record Form 
+
+// get Method For add new record for PROJECT FORM 
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');
-//Edit Route
+//Edit Route for PROJECT FORM
 Route::get('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::class, 'editProject'])->name('projects.edit');
-// Delete
+// UPDATE IN DATABASE for PROJECT FORM 
+Route::post('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::class, 'updateProject'])->name('projects.update');
+// Delete Record for PROJECT FORM
+Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::class, 'deleteProject'])->name('projects.delete');
+
+
+
+
+
+
+// YAJRA DATATABLES route for PROJECT FORM
+Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
+//YAJRA DATATABLES function calling for PROJECT FORM
+Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
+
+
+
+
 // Route::get('/projects-data', [App\Http\Controllers\ProjectsController::class, 'getData']);
-
-
-
-
-Route::get('/projects-data', [App\Http\Controllers\ProjectsController::class, 'getData']);
 
 // post Method For Form submission
 Route::post('/projects/add', [App\Http\Controllers\ProjectsController::class, 'saveProject'])->name('projects.saveProject');
