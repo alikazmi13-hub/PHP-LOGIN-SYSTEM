@@ -10,7 +10,7 @@ class Project extends Model
     use HasFactory;
 
     protected $table = "projects";
-
+// Add More Details
     protected $fillable =[
         'Client_Name',
         'Client_Email',

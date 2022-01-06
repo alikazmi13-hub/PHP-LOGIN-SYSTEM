@@ -72,26 +72,17 @@
                         <div class="table-responsive-md">
                             <table id="datatable" class="table table-bordered yajra-datatable"
                                 data-url="{{route('projects.list')}}">
-                                <thead class="thead">
+                                <thead class="thead bg-dark text-white">
                                     <tr>
                                         <th>id</th>
-                                        <th data-sotable="true">Client_Name</th>
-                                        <th data-sotable="false">Client_Email</th>
                                         <th data-sotable="true">Project_Title</th>
                                         <th data-sotable="false">Project_Technology</th>
                                         <th data-sotable="false">Project_Type</th>
                                         <th data-sotable="false">Project_Status</th>
-                                        <!-- <th data-sotable="false">Project_Description</th> -->
-                                        <!-- <th data-sotable="false">Project_Description</th> -->
-                                        <!-- <a href="{{url('/projects/edit/{id}')}}"> -->
-                                        <a href="{{url('/projects/edit/{id}')}}">
-                                            <th width="100">EDIT
-                                            </th>
-                                        </a>
-                                        <a href="{{url('/projects/delete/{id}')}}">
-                                            <th width="100">Delete
-                                            </th>
-                                        </a>
+                                        <th width="100">EDIT </th>
+                                        <th width="100">Delete</th>
+                                        <th width="100">Export</th>
+                                   
                                     </tr>
 
                                 </thead>
@@ -108,13 +99,11 @@ $(function() {
     var table = $('#datatable').DataTable({
         processing: true,
         serverSide: true,
+       
+        
         ajax: " {{route('projects.list')}}",
         columns: [{
                 data: 'id'
-            }, {
-                data: 'Client_Name'
-            }, {
-                data: 'Client_Email'
             }, {
                 data: 'Project_Title'
             }, {
@@ -124,9 +113,8 @@ $(function() {
             }, {
                 data: 'Project_Status'
             },
-            // {
-            //     data: 'Project_Desription'
-            // },
+            
+          
             {
                 data: 'action_edit',
                 name: 'Edit',
@@ -138,6 +126,14 @@ $(function() {
                 orderable: false,
                 searchable: false,
             },
+            {
+                data: 'action_export',
+                name: 'Export',
+                
+                orderable: false,
+                searchable: false,
+            },
+            
         ]
     });
 });

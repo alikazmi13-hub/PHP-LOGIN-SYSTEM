@@ -5,6 +5,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Validator;
 use DB;
+use PDF;
 use Yajra\DataTables\DataTables;
 class ProjectsController extends Controller
 {
@@ -71,9 +72,17 @@ class ProjectsController extends Controller
                         $actionBtn = '<a href="'. route('projects.delete', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
                         return $actionBtn;
                     })
+
+                     ->addColumn('action_export', function($row){
+                        $actionBtn = '<a href="/projects/project_pdf/'.$row->id .'" class="export btn btn-primary btn-sm">PDF</a>';
+                        return $actionBtn;
+                    })
               
-                
-                    ->rawColumns(['action_edit','action_delete'])
+
+
+
+                    // ->orderColumn('id', '-id $1')
+                    ->rawColumns(['action_edit','action_delete','action_export'])
                     ->make(true);
                      
 
@@ -135,4 +144,22 @@ class ProjectsController extends Controller
                 return redirect('/projects/edit/'. $id)->withErrors($validator)->withinput();
             }
         }                          
+    
+             public function pdf_project($id, Request $request){
+
+                // Here we will give path for download project form
+                 $pdf = PDF::loadView('add');
+                //  it will download with name as here 
+                 return $pdf->download('project.pdf');
+
+         }
+        
+        
+                    
+
+    
+    
+    
     }
+
+

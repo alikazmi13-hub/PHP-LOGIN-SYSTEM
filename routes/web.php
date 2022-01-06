@@ -9,9 +9,9 @@ use App\Http\Controllers\ProjectsController;
 
 /*
 
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------
 | Web Routes
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
@@ -21,9 +21,9 @@ use App\Http\Controllers\ProjectsController;
 
 
 /*
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------
 |                               USER Routes
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------
 |
 */
 Route::get('/', function () {
@@ -31,7 +31,31 @@ Route::get('/', function () {
 });
 // Here We are getting Project Controller and its Show method
 //Route::get('/projects', 'ProjectController@show ');
+
+
+
+/*
+|---------------------------------------------------------------------------------------------------------------------------
+|                               PROJECT Routes
+|---------------------------------------------------------------------------------------------------------------------------
+|
+*/
+
+/*
+|---------------------------------------------------------------------------------------------------------------------------
+|                               YAJRA DATA TABLES
+|---------------------------------------------------------------------------------------------------------------------------
+|
+*/
+
+// YAJRA DATATABLES route for PROJECT FORM
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
+//YAJRA DATATABLES function calling for PROJECT FORM
+Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
+Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
+
+
+// Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
 
 // get Method For add new record for PROJECT FORM 
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');
@@ -41,17 +65,9 @@ Route::get('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::clas
 Route::post('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::class, 'updateProject'])->name('projects.update');
 // Delete Record for PROJECT FORM
 Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::class, 'deleteProject'])->name('projects.delete');
-
-
-
-
-
-
-// YAJRA DATATABLES route for PROJECT FORM
-Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
-//YAJRA DATATABLES function calling for PROJECT FORM
-Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
-
+// PDF GENERATE
+Route::get('/projects/project_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_project'])->name('projects.pdf_project');
+// Route::post('/projects/addpdfproject/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf'])->name('projects.pdf');
 
 
 
@@ -69,9 +85,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
 
 /*
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------
 |                               Admin Routes
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------------------------------------------------------
 |
 */
 Route::group(['prefix'=> 'admin'],function(){
