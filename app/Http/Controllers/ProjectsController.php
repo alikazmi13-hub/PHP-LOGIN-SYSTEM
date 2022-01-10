@@ -10,7 +10,10 @@ use Yajra\DataTables\DataTables;
 class ProjectsController extends Controller
 {
         //Project Controller
-         function show(){
+         
+        
+        
+    function show(){
          return view('Projectlist');  
     }
         //  Add Project Function 
@@ -19,7 +22,7 @@ class ProjectsController extends Controller
 
         }
         // Save Project Function
-        function saveProject(Request $request){
+    function saveProject(Request $request){
             // dd($request->all());
             $validator = Validator::make ($request->all(),[
                 'Client_Name'=>'required| max :100',
@@ -56,13 +59,19 @@ class ProjectsController extends Controller
         }
 
             ////////////////////// get Data using $draw,start,rowperpage /////////////////////
-           public function getData(Request $request){
+    public function getData(Request $request){
 
                 // YAJRA DATATABLES 
                     if ($request->ajax()) {
                     $data = Project::latest()->get();
                     return Datatables::of($data)
+                    
                     ->addIndexColumn()
+                    ->addColumn('id', function($row){
+                        $actionBtn = '<input type="checkbox" id="'.$row->id.'" name="ch" class="project_check" data-id="'.$row->id.'"/>';
+                        return $actionBtn;
+                        
+                    })
                     ->addColumn('action_edit', function($row){
                         $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm">Edit</a>';
                         return $actionBtn;
@@ -82,7 +91,7 @@ class ProjectsController extends Controller
 
 
                     // ->orderColumn('id', '-id $1')
-                    ->rawColumns(['action_edit','action_delete','action_export'])
+                    ->rawColumns(['action_edit','action_delete','action_export','id'])
                     ->make(true);
                      
 
@@ -91,7 +100,7 @@ class ProjectsController extends Controller
                 
 
             // MAIN FUNCTIONALITIES LIKE EDIT 
-        function editProject($id, Request $request){
+    function editProject($id, Request $request){
                 $project = Project::where('id', $id)->first();
                 if(!$project){
                 $request->session()->flash('errormsg','NO Record Found');
@@ -100,8 +109,7 @@ class ProjectsController extends Controller
                 return view('edit')->with (compact('project'));
 
          }
-             
-          public function deleteProject($id){
+    public function deleteProject($id){
             // dd($id);
             $project = Project::find($id);
             if($project){
@@ -110,7 +118,7 @@ class ProjectsController extends Controller
             }
           }
 
-           function updateProject($id, Request $request){
+    function updateProject($id, Request $request){
              $validator = Validator::make ($request->all(),[
                 'Client_Name'=>'required| max :100',
                 'Client_Email'=> 'required| max:100| email',
@@ -145,15 +153,24 @@ class ProjectsController extends Controller
             }
         }                          
     
-             public function pdf_project($id, Request $request){
+        public function getChecked(Request $request){
+            dd($request->input('checked'));
+            if($reques->checked){
+             $pdf = PDF::loadView(checked) || $pdf->download('projects.checked');
+            }else{
+                return redirect ('projects');
+            }
 
-                // Here we will give path for download project form
-                 $pdf = PDF::loadView('add');
-                //  it will download with name as here 
-                 return $pdf->download('project.pdf');
+            
+                
 
          }
-        
+
+
+
+         //  it will download with name as here 
+         
+       
         
                     
 
@@ -161,5 +178,3 @@ class ProjectsController extends Controller
     
     
     }
-
-

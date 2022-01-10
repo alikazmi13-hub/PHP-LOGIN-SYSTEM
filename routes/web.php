@@ -66,8 +66,9 @@ Route::post('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::cla
 // Delete Record for PROJECT FORM
 Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::class, 'deleteProject'])->name('projects.delete');
 // PDF GENERATE
-Route::get('/projects/project_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_project'])->name('projects.pdf_project');
+// Route::get('/projects/project_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_project'])->name('projects.pdf_project');
 // Route::post('/projects/addpdfproject/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf'])->name('projects.pdf');
+Route::get('/projects/getChecked', [App\Http\Controllers\ProjectsController::class, 'getChecked'])->name('projects.getChecked');
 
 
 
