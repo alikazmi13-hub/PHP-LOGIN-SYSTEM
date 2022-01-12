@@ -23,7 +23,7 @@ class ProjectsController extends Controller
         }
         // Save Project Function
     function saveProject(Request $request){
-            // dd($request->all());
+            //  dd($request->all());
             $validator = Validator::make ($request->all(),[
                 'Client_Name'=>'required| max :100',
                 'Client_Email'=> 'required| max:100| email',
@@ -87,7 +87,7 @@ class ProjectsController extends Controller
                         return $actionBtn;
                     })
               
-
+                    
 
 
                     // ->orderColumn('id', '-id $1')
@@ -118,7 +118,7 @@ class ProjectsController extends Controller
             }
           }
 
-    function updateProject($id, Request $request){
+            function updateProject($id, Request $request){
              $validator = Validator::make ($request->all(),[
                 'Client_Name'=>'required| max :100',
                 'Client_Email'=> 'required| max:100| email',
@@ -146,29 +146,30 @@ class ProjectsController extends Controller
                 $request->session()->flash('msg','PROJECT DETAILS UPDATED SUCCESSFULLY');
                 // it will redirect after submission succesfully
                 return redirect('projects');
-            }else{
+                }else{
                 // Return Error
                 echo "hello";
                 return redirect('/projects/edit/'. $id)->withErrors($validator)->withinput();
             }
-        }                          
+         }                          
     
-        public function getChecked(Request $request){
-            dd($request->input('checked'));
-            if($reques->checked){
-             $pdf = PDF::loadView(checked) || $pdf->download('projects.checked');
-            }else{
-                return redirect ('projects');
-            }
-
-            
-                
-
-         }
+            public function pdfView(Request $request , Exception $e){
+                // dd($request->all());
+                $data = checked::all();
 
 
+                // share data to view
+                view()->share('checked',$data);
+                $pdf = PDF::loadView('pdfView', $data);
 
-         //  it will download with name as here 
+                // download PDF file with download method
+                // return $pdf->download('pdf_file.pdf');
+
+        }
+
+
+    }
+       
          
        
         
@@ -177,4 +178,4 @@ class ProjectsController extends Controller
     
     
     
-    }
+    

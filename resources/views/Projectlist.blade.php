@@ -9,6 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <!-- pdf -->
+    
+    <!-- End here -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="{{asset('/bootstrap-tagsinput.css')}}" rel="stylesheet">
@@ -17,7 +23,12 @@
         //fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&family=Roboto:ital,wght@0,700;1,700&family=Work+Sans:ital,wght@0,400;1,600&display=swap"
         rel="stylesheet">
         
+        <!-- Tags -->
 
+
+
+
+<!-- datatables -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
@@ -41,15 +52,23 @@
     <!-- Conatiner For Add Project Heading -->
     <div class="container">
         <div class="row">
+             <input type = "hidden" name = "_token" value = '<?php echo csrf_token(); ?>'>
             <div class="col-md-6 mb-0 text-left">
                 <!-- Add Project Button link  -->
                 <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">ADD PROJECT</a>
             </div>
             <!-- If new project form details will successfully submit  -->
-            <div class="col-md-6 text-right mb-1">
-                <a href="#" class="btn btn-dark  btn-sm view_selected">VIEW SELECTED</a>
+            <div class="col-md-6 text-left mb-1">
+              <!--  -->
+            <a href="" class="btn btn-dark  mt-2 btn-sm view_selected" id="pdf" >View Selected</a> 
+               
             </div>
-
+                <div class="print-value">
+                    <label>selected rows</label>
+                    <input type="text"  name="tags" id="val-rows" class="form-control" value="">
+                    <label>Server Side</label>
+                    <input type="text"  name="tags" id="val-server" class="form-control" value="">
+                </div>
             <div class="col-md-6 text-right mb-2">
             <button type="button"  class="btn btn-dark  btn-sm align-left" onclick="window.location.reload()">Reload page</button>
             </div>           
@@ -79,9 +98,10 @@
                     <div class="table-responsive-md">
                         <table id="datatable" class="table table-bordered yajra-datatable"
                             data-url="{{route('projects.list')}}">
+                            
                             <thead class="thead bg-dark text-white">
-                                <tr >
-                                    <th >select</th>
+                                <tr>
+                                    <th><input type="checkbox"  name="chk" class="project_check" data-id="'.$row->id.'"/></th>
                                     <th data-sotable=" true">Project_Title</th>
                                     <th data-sotable="false">Project_Technology</th>
                                     <th data-sotable="false">Project_Type</th>
@@ -98,86 +118,88 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div id="responsive">
 
+        </div>
+        </div>
+        <!-- <meta name="csrf-token" content="{{ csrf_token() }}" /> -->
 </body>
+
 <script>
  $(document).ready(function()  {
-    var table = $('#datatable').DataTable({
-   
-        processing: true,
-        serverSide: true,
-       
-        ajax: " {{route('projects.list')}}",
-        columns: [
-                  {
-               data: 'id'
-            },
-            {
-                data: 'Project_Title'
-            },
-            {
-                data: 'Project_Technology'
-            },
-            {
-                data: 'Project_Type'
-            },
-            {
-                data: 'Project_Status'
-            },
-            {
-                data: 'action_edit',
-                name: 'Edit',
-                orderable: false,
-                searchable: false,
-            },
-            {
-                data: 'action_delete',
-                name: 'Delete',
-                orderable: false,
-                searchable: false,
-            },
-            {
-                data: 'action_export',
-                name: 'Export',
-                orderable: false,
-                searchable: false,
-            },
+            var table = $('#datatable').DataTable({
+            
+                processing: true,
+                serverSide: true,
+            
+                ajax: " {{route('projects.list')}}",
+                columns: [{
+                    data: 'id'
+                    },
+                    {
+                        data: 'Project_Title'
+                    },
+                    {
+                        data: 'Project_Technology'
+                    },
+                    {
+                        data: 'Project_Type'
+                    },
+                    {
+                        data: 'Project_Status'
+                    },
+                    {
+                        data: 'action_edit',
+                        name: 'Edit',
+                        orderable: false,
+                        searchable: false,
+                    },
+                    {
+                        data: 'action_delete',
+                        name: 'Delete',
+                        orderable: false,
+                        searchable: false,
+                    },
+                    {
+                        data: 'action_export',
+                        name: 'Export',
+                        orderable: false,
+                        searchable: false,
+                    },
 
-        ]
-    });
+                ],
+                
+            });
 
-    // get Checkbox 
-    $( ".view_selected" ).click(function(e) {
-        e.preventDefault();
-    var checked = [];
-    
-    $("input:checkbox[name=ch]:checked").map(function() {
-        console.log('id',$(this).attr("data-id"))
+            $(".view_selected").click(function(e) {
+                e.preventDefault();
+                var checked = [];
 
-        checked.push($(this).attr("data-id"));
-    }) ;
-    console.log('checked',checked)
-
-        alert(checked);
-    //var data = checked.serialize();
-
-        $.ajax({
-        type: "GET",
-        url: "{{route('projects.getChecked')}}",
-        data: {checked:checked},
-        success: function(msg){
-            $('.answer').html(msg);
-        }
-    });
-
-    });
-        
-    
+                $("input:checkbox[name=ch]:checked").map(function() {
+                checked.push($(this).attr("data-id"));
+     
+             });
+            $.ajax({
+                        
+                        headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        url:"/projects/pdfView",
+                        method:"POST",
+                        data:{checked:checked},
+                        // success : function(checked){
+                        //     $('#datatable').trigger('reset');
+                        //     alert(data);
+                     
+                    })
+            
+                console.log(checked)
+            }) ;
 });
 
 
 
+
+
+      
       
 </script>
 

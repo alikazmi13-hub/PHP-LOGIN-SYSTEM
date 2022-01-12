@@ -54,7 +54,7 @@ Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show']
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
 
-
+Route::post('/projects/pdfView', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdfView');
 // Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
 
 // get Method For add new record for PROJECT FORM 
@@ -68,7 +68,7 @@ Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::cl
 // PDF GENERATE
 // Route::get('/projects/project_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_project'])->name('projects.pdf_project');
 // Route::post('/projects/addpdfproject/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf'])->name('projects.pdf');
-Route::get('/projects/getChecked', [App\Http\Controllers\ProjectsController::class, 'getChecked'])->name('projects.getChecked');
+// Route::post('project.Pdfview/', [App\Http\Controllers\ProjectsController::class, 'viewPDF'])->name('projects.viewPDF');
 
 
 
