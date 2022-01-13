@@ -153,24 +153,70 @@ class ProjectsController extends Controller
             }
          }                          
     
-            public function pdfView(Request $request , Exception $e){
-                // dd($request->all());
-                $data = checked::all();
+         public function pdfView(Request $request){
+
+             $project = Project:: whereIn('id', $request->input("checked"))->get();
+                $pdf = PDF::loadView('add');
+    
+                return $pdf->download('edit.pdf');
+                print_r($pdf);
+                 print_r($project);
+
+                 
 
 
-                // share data to view
-                view()->share('checked',$data);
-                $pdf = PDF::loadView('pdfView', $data);
 
-                // download PDF file with download method
-                // return $pdf->download('pdf_file.pdf');
+
+           
+                 exit;
 
         }
 
+         public function pdf_project($id, Request $request){
+                
+                 
+       
+                $pdf = PDF::loadView('add');
+    
+                return $pdf->download('PDF.pdf');
+                // return view('add');
+            }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THIS IS END OF MAIN BRACKET
     }
        
-         
+           
        
         
                     

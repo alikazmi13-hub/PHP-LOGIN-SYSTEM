@@ -52,10 +52,10 @@ Route::get('/', function () {
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
 //YAJRA DATATABLES function calling for PROJECT FORM
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
-Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
+// Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
 
-Route::post('/projects/pdfView', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdfView');
-// Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
+Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
+// Route::get('/projects/PDF', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.PDF');
 
 // get Method For add new record for PROJECT FORM 
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');
@@ -66,7 +66,7 @@ Route::post('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::cla
 // Delete Record for PROJECT FORM
 Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::class, 'deleteProject'])->name('projects.delete');
 // PDF GENERATE
-// Route::get('/projects/project_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_project'])->name('projects.pdf_project');
+Route::get('/projects/project_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_project'])->name('projects.project_pdf');
 // Route::post('/projects/addpdfproject/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf'])->name('projects.pdf');
 // Route::post('project.Pdfview/', [App\Http\Controllers\ProjectsController::class, 'viewPDF'])->name('projects.viewPDF');
 
