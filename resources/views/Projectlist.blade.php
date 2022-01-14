@@ -206,15 +206,8 @@
                         data:{checked:checked},
                        
                         success : function(data){
-                        // var blob = new Blob([response]);
-                        // var link = document.createElement('a');
-                        // link.href = window.URL.createObjectURL(blob);
-                        // link.download = "Sample.pdf";
-                        // link.click();
-                        // },
-                        // error: function(blob){
-                        //     console.log(blob);
-                        // }
+                        window.open(window.location.origin+data, '_blank');
+
                                             
                         console.log(data);
                         }

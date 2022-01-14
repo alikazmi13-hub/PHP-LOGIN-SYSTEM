@@ -55,7 +55,8 @@ Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'g
 // Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
 
 Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
-// Route::get('/projects/PDF', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.PDF');
+// Route::post('projects/allpdf/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.allpdf.pdf');
+// Route::post('public/storage/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('public.storage.pdf');
 
 // get Method For add new record for PROJECT FORM 
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');

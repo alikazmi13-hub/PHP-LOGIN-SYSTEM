@@ -5,6 +5,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Validator;
 use DB;
+use Storage;
 use PDF;
 use Yajra\DataTables\DataTables;
 class ProjectsController extends Controller
@@ -153,34 +154,91 @@ class ProjectsController extends Controller
             }
          }                          
     
-         public function pdfView(Request $request){
+    public function pdfView(Request $request){
+        
+        // $project = Project:: whereIn('id',$request->input("checked"))->get();
+        
+            
+        // $project = Project:: whereIn('id',$request->input("checked"))->get();
+              
+            // // PDF FORMAT
+            //     $pdf = new FPDF('P','mm','A4');
+            //     $pdf->AddPage();
+            //     $pdf->SetFont('Arial','B',14);
 
-             $project = Project:: whereIn('id', $request->input("checked"))->get();
-                $pdf = PDF::loadView('add');
-    
-                return $pdf->download('edit.pdf');
-                print_r($pdf);
+            // //    if row get data from database
+            //     while($row = fetch_object_array($project)){
+               
+            // //    setting columns
+            //     $id = $row->id;
+            //     $Project_Title = $row->Project_Title;
+            //     $Project_Title = $row->Project_Title;
+            // //    importing columns  data
+            //      $pdf->Cell(20,10,$id,1);
+            //      $pdf->Cell(40,10,[$Project_Title],1);
+            //      $pdf->Cell(40,10,[$Project_Type],1);
+            //     // $filename="/projects/test.pdf";
+            //     $pdf->Ln();
+            //     // $pdf->Output('test.pdf','D');
+            //     $pdf->Output('project.pdf','D');      
+            
+            //     }
+
+
+
+
+
+// METHOD 01 TO SAVE IN PUBLIC FOLDER PDF
+    $project = Project:: whereIn('id',$request->input("checked"))->get();
+     $pdf = PDF::loadView('pdf', $project);
+    //  here we are doing concating with pdf name + time + ext 
+     $name = "pdf-".time().".pdf";
+    // $Pre::whereDate('created_at', date('Y-m-d'))->get();    
+    // Storage::put('/allpdf/pdf.pdf', $pdf->output($pdf));
+   
+    Storage::put('public/storage/'.$name, $pdf->output());
+    return '/storage/storage/'.$name;
+    // return $pdf->download('/pdf/pdf.pdf');
+
+
+   //  i practise it
+//    $new = "pdf-".time().".pdf";
+//    Storage::put('public/storage/'.$new,$pdf->output());
+//    return '/storage/storage/'.$new;
+
+
+
+
+
+
+
+// METHOD 02 TO SAVE IN PUBLIC FOLDER PDF
+
+                // $path = storage_path('assets/pdfview');
+
+                // if(!File::exists($path)) {
+                // File::makeDirectory($path, $mode = 0755, true, true);
+                // }
+
+                // else {}
+                // $pdf = PDF::loadView('pdf.pdfview', $project)->save(''.$path.'/'.$project.'.pdf');
+                // return $pdf->download(''.$filename.'.pdf');
+                
+            
                  print_r($project);
-
-                 
-
-
-
-
-           
                  exit;
 
         }
 
          public function pdf_project($id, Request $request){
-                
+
                  
        
-                $pdf = PDF::loadView('add');
+            //     $pdf = PDF::loadView('add',$row);
     
-                return $pdf->download('PDF.pdf');
-                // return view('add');
-            }
+            //     return $pdf->download('PDF.pdf');
+            //     return view('add');
+             }
 
 
 
