@@ -22,6 +22,13 @@ class ProjectsController extends Controller
         return view ('add');
 
         }
+        function index(){
+            return view ('newproject');
+        }
+
+
+
+
         // Save Project Function
     function saveProject(Request $request){
             //  dd($request->all());
@@ -88,10 +95,7 @@ class ProjectsController extends Controller
                         return $actionBtn;
                     })
               
-                    
 
-
-                    // ->orderColumn('id', '-id $1')
                     ->rawColumns(['action_edit','action_delete','action_export','id'])
                     ->make(true);
                      
@@ -110,7 +114,7 @@ class ProjectsController extends Controller
                 return view('edit')->with (compact('project'));
 
          }
-    public function deleteProject($id){
+        public function deleteProject($id){
             // dd($id);
             $project = Project::find($id);
             if($project){
@@ -154,94 +158,42 @@ class ProjectsController extends Controller
             }
          }                          
     
-    public function pdfView(Request $request){
+        public function pdfView(Request $request){
         
-        // $project = Project:: whereIn('id',$request->input("checked"))->get();
-        
+
+        // METHOD 01 TO SAVE IN PUBLIC FOLDER PDF
+
+        //it is getting all the data from database
+            $projects = Project:: whereIn('id',$request->input("checked"))->get();
             
-        // $project = Project:: whereIn('id',$request->input("checked"))->get();
-              
-            // // PDF FORMAT
-            //     $pdf = new FPDF('P','mm','A4');
-            //     $pdf->AddPage();
-            //     $pdf->SetFont('Arial','B',14);
-
-            // //    if row get data from database
-            //     while($row = fetch_object_array($project)){
-               
-            // //    setting columns
-            //     $id = $row->id;
-            //     $Project_Title = $row->Project_Title;
-            //     $Project_Title = $row->Project_Title;
-            // //    importing columns  data
-            //      $pdf->Cell(20,10,$id,1);
-            //      $pdf->Cell(40,10,[$Project_Title],1);
-            //      $pdf->Cell(40,10,[$Project_Type],1);
-            //     // $filename="/projects/test.pdf";
-            //     $pdf->Ln();
-            //     // $pdf->Output('test.pdf','D');
-            //     $pdf->Output('project.pdf','D');      
+        //   data is passing data to view as array
+            $data = [
+                'index'    => $projects,
+            ];
+            // here we handover this data array to loadview to show data in view
+            $pdf = PDF::loadView('pdf', $data);
             
-            //     }
-
-
-
-
-
-// METHOD 01 TO SAVE IN PUBLIC FOLDER PDF
-    $project = Project:: whereIn('id',$request->input("checked"))->get();
-     $pdf = PDF::loadView('pdf', $project);
-    //  here we are doing concating with pdf name + time + ext 
-     $name = "pdf-".time().".pdf";
-    // $Pre::whereDate('created_at', date('Y-m-d'))->get();    
-    // Storage::put('/allpdf/pdf.pdf', $pdf->output($pdf));
-   
-    Storage::put('public/storage/'.$name, $pdf->output());
-    return '/storage/storage/'.$name;
-    // return $pdf->download('/pdf/pdf.pdf');
-
-
-   //  i practise it
-//    $new = "pdf-".time().".pdf";
-//    Storage::put('public/storage/'.$new,$pdf->output());
-//    return '/storage/storage/'.$new;
-
-
-
-
-
-
-
-// METHOD 02 TO SAVE IN PUBLIC FOLDER PDF
-
-                // $path = storage_path('assets/pdfview');
-
-                // if(!File::exists($path)) {
-                // File::makeDirectory($path, $mode = 0755, true, true);
-                // }
-
-                // else {}
-                // $pdf = PDF::loadView('pdf.pdfview', $project)->save(''.$path.'/'.$project.'.pdf');
-                // return $pdf->download(''.$filename.'.pdf');
-                
+        //  here we are doing concating with pdf name + time + ext to save file with name 
+            $name = "pdf-".time().".pdf";
             
-                 print_r($project);
-                 exit;
+        // moving pdf to storage
+             Storage::put('public/storage/'.$name, $pdf->output());
+
+      // Save Pdf file in Public/storage/storage
+              return '/storage/storage/'.$name;
+            
+            
+
+              print_r($project);
+                //  exit;
 
         }
 
-         public function pdf_project($id, Request $request){
-
-                 
-       
-            //     $pdf = PDF::loadView('add',$row);
-    
-            //     return $pdf->download('PDF.pdf');
-            //     return view('add');
-             }
-
-
-
+             public function pdf_project($id, Request $request){
+            
+                $pdf = PDF::loadView('add',$row);
+                return $pdf->download('PDF.pdf');
+                }
 
 
 
