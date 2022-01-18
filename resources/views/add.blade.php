@@ -11,16 +11,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+
+
+<style>
+    #logo{
+        margin-left:5%;
+        margin-top:2%;
+        width:250px;
+    }
+    #h4{
+        
+        margin-left:35%;
+        color:black;
+}
+</style>
     <title>PROJECTS</title>
 
 </head>
 <!-- BODY  -->
 
 <body class="bg-light">
-    <div class="p-3 mb-2 text-light  bg-dark text-center">
+    <div class="">
+         <img id="logo" src="/Images/logo 2.png" >
         <div class="container">
-            <h1> CYBERNEST PROJECTS</h1>
+              <h2 id="h4">CYBERNEST PROJECTS</h2>
 
+           
+              
             <!-- container end here -->
         </div>
         <!-- Style Div  End -->
@@ -39,7 +56,7 @@
         <div class="row ">
             <div class="col-md-12 ">
                 <div class="card ">
-                    <div class="card-header  bg-dark text-white text-center">
+                    <div class="card-header  bg-light text-dark text-center">
                         <h3>New Project Details</h3>
                     </div>
                     <div class="card-body mt-5 text-dark">
@@ -47,9 +64,9 @@
                             id="addproject">
                             @csrf
                             <div class="form-group col-md-6">
-                                <label for="">Client Name</label>
+                                <label for="">Client Name:</label>
                                 <input type="text" name="Client_Name" id="Client_Name" value="{{old('Client_Name')}}"
-                                    class=" form-control  text-dark {{($errors->any()  &&  $errors->first('Client_Name') )? 'is-invalid': ''}}">
+                                    class=" form-control bg-light bg-light  text-dark {{($errors->any()  &&  $errors->first('Client_Name') )? 'is-invalid': ''}}">
 
                                 @if($errors->any())
                                 <p class="invalid-feedback">{{$errors->first('Client_Name')}}</p>
@@ -57,19 +74,19 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="">Client Email</label>
+                                <label for="">Client Email:</label>
                                 <input type="text" name="Client_Email" id="Client_Email" value="{{old('Client_Email')}}"
-                                    class="form-control  text-dark {{($errors->any()  &&  $errors->first('Client_Email') )? 'is-invalid': ''}}">
+                                    class="form-control bg-light  text-dark {{($errors->any()  &&  $errors->first('Client_Email') )? 'is-invalid': ''}}">
                                 @if($errors->any())
                                 <p class="invalid-feedback">{{$errors->first('Client_Email')}}</p>
 
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="">Project Title</label>
+                                <label for="">Project Title:</label>
                                 <input type="text" name="Project_Title" id="Project_Title"
                                     value="{{old('Project_Title')}}"
-                                    class="form-control text-dark {{($errors->any()  &&  $errors->first('Project_Title') )? 'is-invalid': ''}}">
+                                    class="form-control bg-light text-dark {{($errors->any()  &&  $errors->first('Project_Title') )? 'is-invalid': ''}}">
                                 @if($errors->any())
                                 <p class="invalid-feedback">{{$errors->first('Project_Title')}}</p>
 
@@ -77,25 +94,14 @@
 
                             </div>
                             <!-- Checkboxes -->
-                            <div class="form-group my-3">
-                                <div class="custom-control ">
-                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input"
-                                        checked required>
-                                    <label class="custom-control-label" for="credit">Credit card</label>
-                                </div>
-                                <div class="form-group custom-radio">
-                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
-                                        required>
-                                    <label class="custom-control-label" for="debit">Debit card</label>
-                                </div>
-
+                           
 
                                 <!-- Old Record -->
                                 <div class="form-group col-md-6">
-                                    <label for="">Project Technology</label>
+                                    <label for="">Project Technology:</label>
                                     <input type="text" name="Project_Technology" id="Project_Technology"
                                         value="{{old('Project_Technology')}}"
-                                        class="form-control   {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
+                                        class="form-control bg-light   {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
                                     @if($errors->any())
                                     <p class="invalid-feedback">{{$errors->first('Project_Technology')}}</p>
 
@@ -104,10 +110,10 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="">Project Type</label>
+                                    <label for="">Project Type:</label>
                                     <input type="text" name="Project_Type" id="Project_Type"
                                         value="{{old('Project_Type')}}"
-                                        class="form-control   {{($errors->any() && $errors->first('Project_Type') )? 'is-invalid': ''}}">
+                                        class="form-control bg-light   {{($errors->any() && $errors->first('Project_Type') )? 'is-invalid': ''}}">
                                     @if($errors->any())
                                     <p class="invalid-feedback">{{$errors->first('Project_Type')}}</p>
 
@@ -117,10 +123,10 @@
                                 </div>
 
                                 <div class="form-group col-md-6 ">
-                                    <label for="">Project Status</label>
+                                    <label for="">Project Status:</label>
                                     <input type="text" name="Project_Status" id="Project_Status"
                                         value="{{old('Project_Status')}}"
-                                        class="form-control  text-dark {{($errors->any()  &&  $errors->first('Project_Status') )? 'is-invalid': ''}}">
+                                        class="form-control bg-light  text-dark {{($errors->any()  &&  $errors->first('Project_Status') )? 'is-invalid': ''}}">
                                     @if($errors->any())
                                     <p class="invalid-feedback">{{$errors->first('Project_Status')}}</p>
 
@@ -128,16 +134,21 @@
 
                                 </div>
                                 <div class="fo ">
-                                    <label for="">Project Description</label>
+                                    <label for="">Project Description:</label>
                                     <textarea type="text" name="Project_Description" cols="30" rows="7"
                                         id="Project_Description" value="{{old('Project_Description')}}"
-                                        class="form-control  text-dark {{($errors->any()  &&  $errors->first('Project_Description') )? 'is-invalid': ''}}"></textarea>
+                                        class="form-control bg-light  text-dark {{($errors->any()  &&  $errors->first('Project_Description') )? 'is-invalid': ''}}"></textarea>
                                     @if($errors->any())
                                     <p class="invalid-feedback">{{$errors->first('Project_Description')}}</p>
 
                                     @endif
 
                                 </div>
+
+                                  
+                                   
+
+
 
 
                                 <div class="form-group  text-center mt-5 ">
@@ -146,7 +157,7 @@
                         </form>
 
                     </div>
-                    <div class="Footer mt-3 border-solid bg-dark text-center text-white">
+                    <div class="Footer mt-3 border-solid bg-light  text-center text-dark">
                         <div class="row">
                             <p>@Cybernest technology</p>
                             <!-- <h3 class="h3 text-dark">Follow Us </h3>   -->

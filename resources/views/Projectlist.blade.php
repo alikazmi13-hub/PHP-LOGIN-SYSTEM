@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
         
     <!-- Css File Path -->
-    <link rel="stylesheet" type="text/css" href="{{ ('css/projectlist.css') }}" >
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
      <!-- Bootstrap version 5.0 -->
@@ -40,10 +40,16 @@
           margin-top:2%;
             margin-left:4%;
       }
+      #pl{
+            margin-top:4%;
+            margin-left:8.5%;
+            font-family: 'Roboto', sans-serif;
+            
+      }
     .container{
      /* background-color:grey; */
       width:100%;
-      margin-top:3%;
+      margin-top:0%;
         }
         .btn-sm{
             margin-top:0%;
@@ -67,7 +73,7 @@
     <div class="container-fluid">
     <div id="row">
     <img id="logo" src="/Images/logo 2.png" width="250px">
-    
+    <h4 id="pl">PROJECTS LIST</h4>
     </div>
     @if (Session::has('msg'))
     <div class="col-md-12">
@@ -83,7 +89,7 @@
     <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >View Selected</a> 
     <button type="button"  class="btn btn-danger btn-sm" onclick="window.location.reload()">Reload page</button>
     <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">ADD PROJECT</a>
-    <table id="datatable" class="table table-bordered yajra-datatable" data-url="{{route('projects.list')}}">
+    <table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
     <thead class="thead bg-light text-black">
             <tr>
                 <th><input type="checkbox"  name="chk" class="project_check" data-id="'.$row->id.'"/></th>

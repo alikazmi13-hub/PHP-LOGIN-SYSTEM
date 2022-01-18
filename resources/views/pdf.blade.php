@@ -27,6 +27,7 @@
     }
     </style>
  <div class="container">
+   <img id="logo" src="/Images/logo 2.png" width="250px">
 <table class="table table-striped">
    <thead class="thead bg-dark text-white">
     <tr>
@@ -62,6 +63,7 @@
   </tbody>
 </table>
 
+  
 <p id="p">@cybernest|info@cybernest.com</p>
 <div>
 </body>
