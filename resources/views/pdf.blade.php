@@ -2,33 +2,53 @@
 
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PDF FORMAT</title>
-</head>
-<body>
-  <style>
+<style>
 
-    .body{
-      width:100%;
-      height:100vh;
-      
-    }
+    
     .container{
-      background-color:white;
+     background-color: white !important;
       color:black;
       max-width:100%;
+      height:100%;
+      margin-left:12%;
+      margin-right:12%;
+
     }
     .th{
-      background-color:red;
+      background-color:black;
       margin:1;
       color:white;
+       
+      font-family: 'Roboto', sans-serif;
     }
-    #p{
-      background-color:red;
+    
+    .row{
+      margin-top:0%;
+      width:100%;
+  
+      
     }
+    th{
+      text-align:center;
+      border:solid;
+      width:10px;
+    }
+    td{
+      text-align:center;
+    }
+   
     </style>
+  </head>
+
+<body>
+  
+  
  <div class="container">
-   <img id="logo" src="/Images/logo 2.png" width="250px">
-<table class="table table-striped">
+
+  <table class="table table-striped">
    <thead class="thead bg-dark text-white">
     <tr>
    <!-- <th><input type="checkbox"  name="chk" class="project_check" data-id="'.$row->id.'"/></th> -->
@@ -55,16 +75,14 @@
         <td>{{$p->Project_Technology}}</td>
         <td>{{$p->Project_Type}}</td>
         <td>{{$p->Project_Status}}</td>
-       
-
-                              
+                        
     </tr>
-     @endforeach
+      @endforeach
   </tbody>
+   
 </table>
-
-  
-<p id="p">@cybernest|info@cybernest.com</p>
+   
+       
 <div>
 </body>
 </html>

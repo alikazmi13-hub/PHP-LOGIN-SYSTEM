@@ -42,8 +42,10 @@
       }
       #pl{
             margin-top:4%;
-            margin-left:8.5%;
+            margin-left:5.5%;
             font-family: 'Roboto', sans-serif;
+            font-size:20px;
+         
             
       }
     .container{
@@ -72,8 +74,8 @@
     <!-- <div class="p-3 mb-2 bg-light text-dark"> -->
     <div class="container-fluid">
     <div id="row">
-    <img id="logo" src="/Images/logo 2.png" width="250px">
-    <h4 id="pl">PROJECTS LIST</h4>
+    <img id="logo" src="/Images/logo 2.png" width="160px">
+    <h4 id="pl">PROJECTS</h4>
     </div>
     @if (Session::has('msg'))
     <div class="col-md-12">
@@ -193,6 +195,7 @@
                         }
                     });
             
+                        
                         
             }) ;
 });

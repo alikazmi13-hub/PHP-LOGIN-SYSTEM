@@ -50,6 +50,9 @@ Route::get('/', function () {
 
 // YAJRA DATATABLES route for PROJECT FORM
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
+// TECHNOLOGIES ROUTE
+Route::get('/projects/pdf_landscape', [App\Http\Controllers\ProjectsController::class, 'tech'])->name('projects.pdf_landscape');
+
 //YAJRA DATATABLES function calling for PROJECT FORM
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
 // Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
@@ -67,7 +70,7 @@ Route::post('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::cla
 // Delete Record for PROJECT FORM
 Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::class, 'deleteProject'])->name('projects.delete');
 // PDF GENERATE
-Route::get('/projects/project_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_project'])->name('projects.project_pdf');
+Route::get('/projects/pdflandscape/{id}', [App\Http\Controllers\ProjectsController::class, 'PDF_PAGE'])->name('projects.pdflandscape');
 // Route::post('/projects/addpdfproject/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf'])->name('projects.pdf');
 // Route::post('project.Pdfview/', [App\Http\Controllers\ProjectsController::class, 'viewPDF'])->name('projects.viewPDF');
 

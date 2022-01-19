@@ -25,7 +25,9 @@ class ProjectsController extends Controller
         function index(){
             return view ('newproject');
         }
-
+         function tech(){
+         return view('pdf_landscape');  
+    }
 
 
 
@@ -91,7 +93,7 @@ class ProjectsController extends Controller
                     })
 
                      ->addColumn('action_export', function($row){
-                        $actionBtn = '<a href="/projects/project_pdf/'.$row->id .'" class="export btn btn-primary btn-sm">PDF</a>';
+                        $actionBtn = '<a href="/projects/pdflandscape/'.$row->id .'" class="export btn btn-primary btn-sm">PDF</a>';
                         return $actionBtn;
                     })
               
@@ -170,8 +172,9 @@ class ProjectsController extends Controller
             $data = [
                 'index'    => $projects,
             ];
+            
             // here we handover this data array to loadview to show data in view
-            $pdf = PDF::loadView('pdf', $data);
+            $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'landscape');;
             
         //  here we are doing concating with pdf name + time + ext to save file with name 
             $name = "pdf-".time().".pdf";
@@ -189,10 +192,30 @@ class ProjectsController extends Controller
 
         }
 
-             public function pdf_project($id, Request $request){
+
+
+
+
+
+             public function PDF_PAGE($id, Request $request){
+                $projects = Project::where('id',$request->$id)->get();
+                 print_r($id);exit;
+                
+                $singleitem = [
+                'items'    => $projects,
+            ];
+                
+                 $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape')->output();
+                
+                //  window.open(window.location.origin+data, '_blank');
+                //   $singlepdf = "pdflandscape-".time().".pdf";
             
-                $pdf = PDF::loadView('add',$row);
-                return $pdf->download('PDF.pdf');
+                // moving Pdf file in Public/singlepdf/singlepdf
+              
+
+                // Save Pdf file in Public/singlepdf/singlepdf
+                //  return '/singlepdf/singlepdf/'.$singlepdf;
+               
                 }
 
 

@@ -53,23 +53,23 @@
 
                 <div class="card-body">
                     <div class="table-responsive-md">
-                        <table id="pdftable" class="table table-bordered yajra-datatable"
-                            data-url="{{route('projects.PDF')}}">
+                        <table data-url="{{route('projects.PDFPAGE')}}">
                             <thead class="thead bg-dark text-white">
-                                <tr >
-                                    <th><input type="checkbox" id="'.$row->id.'" name="chk" class="project_check" data-id="'.$row->id.'"/></th>
-                                    <th data-sotable=" true">Project_Title</th>
-                                    <th data-sotable="false">Project_Technology</th>
-                                    <th data-sotable="false">Project_Type</th>
-                                    <th data-sotable="false">Project_Status</th>
-                                    <th width="100">EDIT </th>
-                                    <th width="100">Delete</th>
-                                    <th width="100">Export</th>
-
-                                </tr>
-
-                            </thead>
+                <tr>
+   <!-- <th><input type="checkbox"  name="chk" class="project_check" data-id="'.$row->id.'"/></th> -->
+      
+                            <th class="th">Client_Name</th>
+                            <th class="th">Client_Email</th>
+                            <th class="th">Project_Title</th>
+                            <th class="th">Project_Technology</th>
+                            <th class="th">Project_Type</th>
+                            <th class="th">Project_Status</th>
                             
+                                                            
+
+                        </tr>
+                        </thead>
+                    
                         </table>
                     </div>
                 </div>
