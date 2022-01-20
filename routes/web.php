@@ -51,7 +51,7 @@ Route::get('/', function () {
 // YAJRA DATATABLES route for PROJECT FORM
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
 // TECHNOLOGIES ROUTE
-Route::get('/projects/pdf_landscape', [App\Http\Controllers\ProjectsController::class, 'tech'])->name('projects.pdf_landscape');
+// Route::get('/projects/pdflandscape', [App\Http\Controllers\ProjectsController::class, 'tech'])->name('projects.pdf_landscape');
 
 //YAJRA DATATABLES function calling for PROJECT FORM
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
@@ -60,6 +60,7 @@ Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'g
 Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
 // Route::post('projects/allpdf/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.allpdf.pdf');
 // Route::post('public/storage/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('public.storage.pdf');
+Route::post('/projects/pdflandscape', [App\Http\Controllers\ProjectsController::class, 'singlepdf'])->name('projects.pdflandscape');
 
 // get Method For add new record for PROJECT FORM 
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');

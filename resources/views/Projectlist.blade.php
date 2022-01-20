@@ -88,9 +88,14 @@
     </div>
     @endif
     <div class="container">
+   
     <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >View Selected</a> 
+   
     <button type="button"  class="btn btn-danger btn-sm" onclick="window.location.reload()">Reload page</button>
+   
     <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">ADD PROJECT</a>
+
+    <a href="" class="btn btn-dark   btn-sm detailed_view">Detailed View</a>
     <table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
     <thead class="thead bg-light text-black">
             <tr>
@@ -180,6 +185,10 @@
         
 
     //  });
+    
+    
+// PDF FOR DATATABLES ONLY
+
         $.ajax({
                 
                 headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -195,13 +204,38 @@
                         }
                     });
             
-                        
+// Detailed View FOR MULTIPLE PAGES
+          
                         
             }) ;
+
+     $(".detailed_view").click(function(e) {
+        e.preventDefault();
+        var checked = [];
+
+
+        $("input:checkbox[name=ch]:checked").each(function() {
+            checked.push($(this).attr('data-id'));
+    });
+          $.ajax({
+                
+                headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                url:"/projects/pdflandscape",
+                method:"POST",
+                data:{checked:checked},
+                
+                success : function(data){
+                window.open(window.location.origin+data, '_blank');
+
+                                    
+                console.log(data);
+                        }
+                    });
+
 });
 
 
-
+});
 
 
       

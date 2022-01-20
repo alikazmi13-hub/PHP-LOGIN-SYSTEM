@@ -93,7 +93,7 @@ class ProjectsController extends Controller
                     })
 
                      ->addColumn('action_export', function($row){
-                        $actionBtn = '<a href="/projects/pdflandscape/'.$row->id .'" class="export btn btn-primary btn-sm">PDF</a>';
+                        $actionBtn = '<a href="/projects/'.$row->id .'" class="export btn btn-primary btn-sm">PDF</a>';
                         return $actionBtn;
                     })
               
@@ -197,16 +197,18 @@ class ProjectsController extends Controller
 
 
 
-             public function PDF_PAGE($id, Request $request){
-                $projects = Project::where('id',$request->$id)->get();
-                 print_r($id);exit;
+             public function PDF_PAGE( Request $request){
+               $projects = Project:: whereIn('id',$request->input("checked"))->get();
+                
+               
                 
                 $singleitem = [
                 'items'    => $projects,
             ];
                 
                  $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape')->output();
-                
+                  print_r($project);
+                // exit;
                 //  window.open(window.location.origin+data, '_blank');
                 //   $singlepdf = "pdflandscape-".time().".pdf";
             
@@ -222,7 +224,43 @@ class ProjectsController extends Controller
 
 
 
+                 public function singlepdf(Request $request){
+               $projects = Project:: whereIn('id',$request->input("checked"))->get();
+                
+               
+                
+                $singleitem = [
+                'items'    => $projects,
+            ];
+                
+                 $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape');
+                  print_r($projects);
 
+                  $name = "pdflandscape-".time().".pdf";
+            
+        // moving pdf to storage
+               Storage::put('public/singlepdf/'.$name, $pdf->output());
+
+      // Save Pdf file in Public/storage/storage
+                  return 'public/singlepdf/'.$name;
+
+
+
+
+                    // $pdf->output();
+
+
+                // exit;
+                //  window.open(window.location.origin+data, '_blank');
+                //   $singlepdf = "pdflandscape-".time().".pdf";
+            
+                // moving Pdf file in Public/singlepdf/singlepdf
+              
+
+                // Save Pdf file in Public/singlepdf/singlepdf
+                //  return '/singlepdf/singlepdf/'.$singlepdf;
+               
+                }
 
 
 
