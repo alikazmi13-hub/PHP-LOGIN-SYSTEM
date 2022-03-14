@@ -47,7 +47,7 @@
 <body>
     
     <div class="container">
-      div class="container">
+   
 
   <table class="table table-striped">
    <thead class="thead bg-dark text-white">
@@ -86,15 +86,7 @@
 
 
 
-<!--     
-    @foreach($items as $item)
-        <div class="card">
-           <h3>{{$item->Project_Title}}</h3>
-        <br>
-        <div class="box">{{$item->Project_Description}}</div>
-            <div class="page-break"></div>
-                <h1>Page 2</h1>
-         @endforeach -->
+
 <div>
 </body>
 </html>

@@ -5,12 +5,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Tags -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    <!--  -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/@yaireo/tagify"></script>
+  <script src="https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js"></script>
+  
 
 
 <style>
@@ -40,10 +52,11 @@
     
     #h4{
         
-        margin-left:5%;
+       text-align:center;
         margin-top:5%;
         font-family: 'Roboto', sans-serif;
-        font-size:20px;
+        font-size:30px;
+       
    
         }
     #hd{
@@ -91,7 +104,7 @@
 <body class="bd">
     <div class="container-fluid">
          <img id="logo" src="/Images/logo 2.png" >
-           <h2 id="h4">CYBERNEST PROJECTS</h2>
+           <h2 id="h4">Cybernest Projects</h2>
       
    
     <!-- Conatiner For Add Project Heading -->
@@ -142,10 +155,28 @@
             <!-- Old Record -->
             <div class="form-group col-md-6">
                 <label for="">Project Technology:</label>
-                <input type="text"  placeholder="Project Technology" name="Project_Technology" id="Project_Technology"
+
+                <select name="Project_Technology" id="Project_Technology"
                     value="{{old('Project_Technology')}}"
                     class="form-control    {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
-                @if($errors->any())
+                   
+                    <option selected value="">Select Technology</option>
+                    <option value="Wordpress">Wordpress</option>
+                    <option value="python">python</option>
+                    <option value="Swift">Swift</option>
+                    <option value="Wordpress">Laravel</option>
+                    <option value="python">Ruby on Rails</option>
+                    <option value="Swift">Android</option>
+                    <option value="Swift">IOS</option>
+                 
+                 </select>
+              
+                <!-- <input type="text"  placeholder="Project Technology" name="Project_Technology" id="Project_Technology"
+                    value="{{old('Project_Technology')}}"
+                    class="form-control    {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
+                -->
+               
+                    @if($errors->any())
                 <p class="invalid-feedback">{{$errors->first('Project_Technology')}}</p>
 
                 @endif
@@ -154,7 +185,7 @@
 
             <div class="form-group col-md-6">
                 <label for="">Project Type:</label>
-                <input type="text" placeholder="Project Type" name="Project_Type" id="Project_Type"
+                <input name="Project_Type" value='PHP,Laravel,python,wodpress,RubyonRails'  autofocus id="Project_Type"
                     value="{{old('Project_Type')}}"
                     class="form-control    {{($errors->any() && $errors->first('Project_Type') )? 'is-invalid': ''}}">
                 @if($errors->any())
@@ -165,7 +196,7 @@
 
             </div>
 
-            <div class="form-group col-md-6 ">
+            <div class="form-group col-md-6">
                 <label for="">Project Status:</label>
                 <input type="text"  placeholder="Project Status"  name="Project_Status" id="Project_Status"
                     value="{{old('Project_Status')}}"
@@ -176,7 +207,7 @@
                 @endif
 
             </div>
-            <div class="fo ">
+            <div class="form-group">
                 <label for="">Project Description:</label>
                 <textarea type="text"  placeholder="Project Description" name="Project_Description" cols="30" rows="7"
                     id="Project_Description" value="{{old('Project_Description')}}"
@@ -194,7 +225,7 @@
             </div>
         </div>
      </div>
-         <div id="ft" class="Footer mt-3 text-center ">
+         <div id="ft" class="Footer mt-3 text-center">
               <div class="row">
                   <p id="fp">@Cybernest technology</p>
                   <p>CYBERNEST THE WORLD OF TECHNOLOGY</p>
@@ -202,6 +233,15 @@
             </div>
         </div>
     </div>
+    
 </body>
+
+<script>
+    // The DOM element you wish to replace with Tagify
+var inputag = document.querySelector('input[name=Project_Type]');
+
+// initialize Tagify on the above input node reference
+new Tagify(inputag) 
+  </script>
 
 </html>

@@ -23,13 +23,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="{{asset('/bootstrap-tagsinput.css')}}" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+       <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
     <!-- Yajra datatables  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
     <!-- inline CSS -->
     <style>
     .container-fluid{
@@ -41,10 +46,10 @@
             margin-left:4%;
       }
       #pl{
-            margin-top:4%;
-            margin-left:5.5%;
-            font-family: 'Roboto', sans-serif;
-            font-size:20px;
+            margin-top:3%;
+            text-align:center;
+            font-family: 'Proza Libre', sans-serif;
+            font-size:30px;
          
             
       }
@@ -62,11 +67,25 @@
             background-color:white;
             font-family: 'Roboto', sans-serif;
         }
-    
+        #datatable_filter{
+          margin-top:3%;
+          margin-left:65%;
+          text-align:left;
+           font-family: 'Proza Libre', sans-serif;
+        
+        }
+        .form-control{
+            font-family: 'Proza Libre', sans-serif;
+            background-color:white;
+           
+        }
 
+        #datatable_paginate{
+            margin-left:65%;
+        }
     </style>
   <!-- Project Title -->
-<title>PROJECTSLIST</title>
+<title>projects</title>
 </head>
 <!-- BODY  -->
 
@@ -89,24 +108,24 @@
     @endif
     <div class="container">
    
-    <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >View Selected</a> 
+    <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >Generate PDF</a> 
    
-    <button type="button"  class="btn btn-danger btn-sm" onclick="window.location.reload()">Reload page</button>
+    
    
-    <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">ADD PROJECT</a>
+    <a href="{{route('projects.add')}}" class="btn btn-danger btn-sm">New Project</a>
 
-    <a href="" class="btn btn-dark   btn-sm detailed_view">Detailed View</a>
+   
     <table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
     <thead class="thead bg-light text-black">
             <tr>
-                <th><input type="checkbox"  name="chk" class="project_check" data-id="'.$row->id.'"/></th>
+                <th><input type="checkbox"  name="main_checkbox" class="project_check" data-id="'.$row->id.'"/></th>
                         <th data-sotable=" true">Project_Title</th>
                         <th data-sotable="false">Project_Technology</th>
                         <th data-sotable="false">Project_Type</th>
                         <th data-sotable="false">Project_Status</th>
                         <th width="100">EDIT </th>
                         <th width="100">Delete</th>
-                        <th width="100">Export</th>          
+                        
                         </tr>
                 </thead>
                         </table>
@@ -126,11 +145,15 @@
    
 
  $(document).ready(function()  {
-            var table = $('#datatable').DataTable({
+     var table = $('#datatable').DataTable({
             
     processing: true,
     serverSide: true,
+    ordering: false,
+    responsive: true,
 
+     
+     
     ajax: " {{route('projects.list')}}",
     columns: [{
         data: 'id'
@@ -159,13 +182,8 @@
             orderable: false,
             searchable: false,
         },
-        {
-            data: 'action_export',
-            name: 'Export',
-            orderable: false,
-            searchable: false,
-        },
-
+       
+        
     ],
     
 });
@@ -179,14 +197,7 @@
             checked.push($(this).attr('data-id'));
     });
 
-    //     $("input:checkbox[name=ch]:checked").map(function() {
-    //     // checked.push($(this).attr('data-id'));
-    //     checked.push($(this).val('id'));
-        
 
-    //  });
-    
-    
 // PDF FOR DATATABLES ONLY
 
         $.ajax({
@@ -204,11 +215,11 @@
                         }
                     });
             
-// Detailed View FOR MULTIPLE PAGES
+
           
                         
             }) ;
-
+// Detailed View FOR MULTIPLE PAGES
      $(".detailed_view").click(function(e) {
         e.preventDefault();
         var checked = [];
@@ -230,13 +241,24 @@
                                     
                 console.log(data);
                         }
-                    });
+                    })
 
 });
 
 
 });
-
+// Main Checkbox to select all Rows
+$(document).on('click','input[name="main_checkbox"]',function(){
+        if(this.checked){
+            $('input[name="ch"]').each(function(){
+                this.checked = true;
+            });
+        }else{
+              $('input[name="ch"]').each(function(){
+                this.checked = false;
+        });
+    }
+});
 
       
       

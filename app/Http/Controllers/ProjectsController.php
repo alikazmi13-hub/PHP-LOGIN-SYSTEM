@@ -92,13 +92,10 @@ class ProjectsController extends Controller
                         return $actionBtn;
                     })
 
-                     ->addColumn('action_export', function($row){
-                        $actionBtn = '<a href="/projects/'.$row->id .'" class="export btn btn-primary btn-sm">PDF</a>';
-                        return $actionBtn;
-                    })
+                   
               
 
-                    ->rawColumns(['action_edit','action_delete','action_export','id'])
+                    ->rawColumns(['action_edit','action_delete','id'])
                     ->make(true);
                      
 
@@ -224,7 +221,7 @@ class ProjectsController extends Controller
 
 
 
-                 public function singlepdf(Request $request){
+          public function singlepdf(Request $request){
                $projects = Project:: whereIn('id',$request->input("checked"))->get();
                 
                
