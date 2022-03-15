@@ -156,20 +156,11 @@
             <div class="form-group col-md-6">
                 <label for="">Project Technology:</label>
 
-                <select name="Project_Technology" id="Project_Technology"
-                    value="{{old('Project_Technology')}}"
-                    class="form-control    {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
+                <input   type="text" name="Project_Technology" id="Project_Technology" autocomplete="off" 
+                    value="{{old('Project_Technology')}}" 
+                    class="form-control   {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
                    
-                    <option selected value="">Select Technology</option>
-                    <option value="Wordpress">Wordpress</option>
-                    <option value="python">python</option>
-                    <option value="Swift">Swift</option>
-                    <option value="Wordpress">Laravel</option>
-                    <option value="python">Ruby on Rails</option>
-                    <option value="Swift">Android</option>
-                    <option value="Swift">IOS</option>
-                 
-                 </select>
+                
               
                 <!-- <input type="text"  placeholder="Project Technology" name="Project_Technology" id="Project_Technology"
                     value="{{old('Project_Technology')}}"
@@ -185,11 +176,20 @@
 
             <div class="form-group col-md-6">
                 <label for="">Project Type:</label>
-                <input name="Project_Type" value='PHP,Laravel,python,wodpress,RubyonRails'  autofocus id="Project_Type"
+            
+                <select name="Project_Type" autofocus id="Project_Type"
                     value="{{old('Project_Type')}}"
                     class="form-control    {{($errors->any() && $errors->first('Project_Type') )? 'is-invalid': ''}}">
-                @if($errors->any())
-                <p class="invalid-feedback">{{$errors->first('Project_Type')}}</p>
+                     <option value="">Choose Project_Type</option>
+                    <option value="Custom Software">Custom Software</option>
+                    <option value="Web Apps">Web Apps</option>
+                    <option value="Ecommerce">Ecommerce</option>
+                    <option value="Mobile Apps">Mobile Apps</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                    <option value="Enterprise Solution">Enterprise Solution</option>
+                 
+                 </select>
+                @if($errors->any()) <p class="invalid-feedback">{{$errors->first('Project_Type')}}</p>
 
                 @endif
 
@@ -208,15 +208,18 @@
 
             </div>
             <div class="form-group">
-                <label for="">Project Description:</label>
-                <textarea type="text"  placeholder="Project Description" name="Project_Description" cols="30" rows="7"
-                    id="Project_Description" value="{{old('Project_Description')}}"
-                    class="form-control    {{($errors->any()  &&  $errors->first('Project_Description') )? 'is-invalid': ''}}"></textarea>
+                <label for="">UseCase Description:</label>
+                <textarea type="text"  placeholder="Usecase_Description" name="Usecase_Description" cols="30" rows="7"
+                    id="Usecase_Description" value="{{old('Usecase_Description')}}"
+                    class="form-control    {{($errors->any()  &&  $errors->first('Usecase_Description') )? 'is-invalid': ''}}"></textarea>
                 @if($errors->any())
-                <p class="invalid-feedback">{{$errors->first('Project_Description')}}</p>
+                <p class="invalid-feedback">{{$errors->first('Usecase_Description')}}</p>
 
                 @endif
 
+                </div>
+                 
+           
             </div>
              <div class="form-group  text-center mt-5 ">
                  <button type="submit"  id="bt" class="btn">Submit Project</button>
@@ -238,10 +241,38 @@
 
 <script>
     // The DOM element you wish to replace with Tagify
-var inputag = document.querySelector('input[name=Project_Type]');
+    var inputag = document.querySelector('input[name=Project_Type]'); 
+    // initialize Tagify on the above input node reference
+    new Tagify(inputag) 
 
-// initialize Tagify on the above input node reference
-new Tagify(inputag) 
+
+// combine values of tags input using JS 
+//   $(document).ready(function() {
+//   $('button').click(function() {
+//     const combinedValue = $('input').val().concat($('select').val());
+//     alert(combinedValue);
+//   });
+// });
+
+
+
+
+    // working here for autocomplete
+$(document).ready(function(){
+        $("#Project_Technology").autocomplete({
+            source:[
+                'Python','RubyonRails','Wordpress'
+
+            ],
+            select:function(e,Seleteddata){
+                console.log(Seleteddata);
+            }
+        });
+    });
+
+
+
+
   </script>
 
 </html>

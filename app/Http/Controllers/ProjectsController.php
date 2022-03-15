@@ -28,8 +28,7 @@ class ProjectsController extends Controller
          function tech(){
          return view('pdf_landscape');  
     }
-
-
+        
 
         // Save Project Function
     function saveProject(Request $request){
@@ -41,7 +40,7 @@ class ProjectsController extends Controller
                 'Project_Technology'=>'required| max:255',
                 'Project_Type'=>'required| max:255',
                 'Project_Status'=>'required| max:100',
-                'Project_Description'=>'required'
+                'Usecase_Description'=>'required'
             ]);
 
             if($validator->passes()){
@@ -55,7 +54,7 @@ class ProjectsController extends Controller
                 $project->Project_Technology=$request->Project_Technology;
                 $project->Project_Type=$request->Project_Type;
                 $project->Project_Status=$request->Project_Status;
-                $project->Project_Description=$request->Project_Description;
+                $project->Usecase_Description=$request->Usecase_Description;
                 $project->save();
                 // it will show message that will display successful 
                 $request->session()->flash('msg','Your Project Details is Submitted');
@@ -82,20 +81,23 @@ class ProjectsController extends Controller
                         return $actionBtn;
                         
                     })
-                    ->addColumn('action_edit', function($row){
-                        $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm">Edit</a>';
-                        return $actionBtn;
-                        
-                    })
-                    ->addColumn('action_delete', function($row){
-                        $actionBtn = '<a href="'. route('projects.delete', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
-                        return $actionBtn;
-                    })
+                    
+                    // ->addColumn('action_1', function($row){
+                    //     $actionBtn = '<a href="'. route('projects.delete', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
+                    // '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm">Edit</a>';
+                    //     return $actionBtn;
+                    // })
 
-                   
+                  ->addColumn('action', function($row){
+                         $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm"><i class="bi bi-trash" /></a>
+                     
+
+                         <a href="'. route('projects.delete', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
+                         return $actionBtn;
+                     })
               
 
-                    ->rawColumns(['action_edit','action_delete','id'])
+                    ->rawColumns(['action','id'])
                     ->make(true);
                      
 
@@ -130,7 +132,7 @@ class ProjectsController extends Controller
                 'Project_Technology'=>'required| max:255',
                 'Project_Type'=>'required| max:255',
                 'Project_Status'=>'required| max:100',
-                'Project_Description'=>'required'
+                'Usecase_Description'=>'required'
             ]);
 
             if($validator->passes()){
@@ -144,7 +146,7 @@ class ProjectsController extends Controller
                 $project->Project_Technology=$request->Project_Technology;
                 $project->Project_Type=$request->Project_Type;
                 $project->Project_Status=$request->Project_Status;
-                $project->Project_Description=$request->Project_Description;
+                $project->Usecase_Description=$request->Usecase_Description;
                 $project->save();
                 // it will show message that will display successful 
                 $request->session()->flash('msg','PROJECT DETAILS UPDATED SUCCESSFULLY');
@@ -261,13 +263,15 @@ class ProjectsController extends Controller
 
 
 
+                            
+                public function single(){
+                    return view ('technology.single');
+                }
 
-
-
-
-
-
-
+                  public function multi(){
+                    return view ('technology.multi');
+                }
+                
 
 
 

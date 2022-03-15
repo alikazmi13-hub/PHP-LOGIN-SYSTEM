@@ -22,7 +22,7 @@ class CreateProjectsTable extends Migration
             $table->string('Project_Technology', 255);
             $table->string('Project_Type', 255);
             $table->string('Project_Status', 255);
-            $table->longText('Project_Description');
+            $table->longText('Usecase_Description');
             $table->timestamps();
         });
     }

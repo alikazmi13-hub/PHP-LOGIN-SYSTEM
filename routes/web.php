@@ -90,6 +90,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Post method for user logout
 Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
 
+
+
+Route::get('/add', [App\Http\Controllers\HomeController::class, 'single'])->name('add');
+
+
+
 /*
 |---------------------------------------------------------------------------------------------------------------------------
 |                               Admin Routes

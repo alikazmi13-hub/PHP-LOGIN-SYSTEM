@@ -92,11 +92,24 @@
                         @endif
 
                     </div>
+                    <!-- its showing not correct value needs to work -->
                     <div class="form-group col-md-6">
                         <label for="">Project Technology</label>
-                        <input type="text" name="Project_Technology" id="Project_Technology"
-                            value="{{old('Project_Technology',$project->Project_Technology)}}"
-                            class="form-control   {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
+                    <select name="Project_Technology" id="Project_Technology"
+                    value="{{old('Project_Technology',$project->Project_Technology)}}"
+                    class="form-control    {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
+                   
+                    <option selected value="">Select Technology</option>
+                    <option value="Wordpress">Wordpress</option>
+                    <option value="python">python</option>
+                    <option value="Swift">Swift</option>
+                    <option value="Wordpress">Laravel</option>
+                    <option value="python">Ruby on Rails</option>
+                    <option value="Swift">Android</option>
+                    <option value="Swift">IOS</option>
+                 
+                 </select>
+                        
                         @if($errors->any())
                         <p class="invalid-feedback">{{$errors->first('Project_Technology')}}</p>
 

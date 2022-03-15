@@ -97,12 +97,12 @@
     <h4 id="pl">PROJECTS</h4>
     </div>
     @if (Session::has('msg'))
-    <div class="col-md-12">
+    <div class="col-sm-3">
         <div class="alert alert-success" role="alert">{{Session::get('msg')}}</div>
     </div>
     @endif
     @if (Session::has('errormsg'))
-    <div class="col-md-12">
+    <div class="col-sm-3">
         <div class="alert alert-danger" role="alert">{{Session::get('errormsg')}}</div>
     </div>
     @endif
@@ -119,12 +119,12 @@
     <thead class="thead bg-light text-black">
             <tr>
                 <th><input type="checkbox"  name="main_checkbox" class="project_check" data-id="'.$row->id.'"/></th>
-                        <th data-sotable=" true">Project_Title</th>
-                        <th data-sotable="false">Project_Technology</th>
-                        <th data-sotable="false">Project_Type</th>
-                        <th data-sotable="false">Project_Status</th>
-                        <th width="100">EDIT </th>
-                        <th width="100">Delete</th>
+                        <th data-sotable=" true">Title</th>
+                        <th data-sotable="false">Technology</th>
+                        <th data-sotable="false">Type</th>
+                        <th data-sotable="false">Status</th>
+                        <th width="150">Action </th>
+                   
                         
                         </tr>
                 </thead>
@@ -146,10 +146,14 @@
 
  $(document).ready(function()  {
      var table = $('#datatable').DataTable({
-            
+          
     processing: true,
     serverSide: true,
-    ordering: false,
+    ordering:true,
+    columnDefs: [ {
+      targets: 0,
+      orderable: false
+    } ],
     responsive: true,
 
      
@@ -171,18 +175,20 @@
             data: 'Project_Status'
         },
         {
-            data: 'action_edit',
-            name: 'Edit',
+            data: 'action',
+            name: 'actionBtn',
+            defaultContent: '<i class="bi bi-trash"/>',
             orderable: false,
             searchable: false,
         },
-        {
-            data: 'action_delete',
-            name: 'Delete',
-            orderable: false,
-            searchable: false,
-        },
-       
+        //    {
+        //     data: 'action_2',
+        //     name: 'actionBtn2',
+        //      defaultContent: '<i class="fa fa-pencil"/>',
+        //     orderable: false,
+        //     searchable: false,
+        // },
+        
         
     ],
     
@@ -215,9 +221,7 @@
                         }
                     });
             
-
-          
-                        
+           
             }) ;
 // Detailed View FOR MULTIPLE PAGES
      $(".detailed_view").click(function(e) {
@@ -260,6 +264,9 @@ $(document).on('click','input[name="main_checkbox"]',function(){
     }
 });
 
+
+
+   
       
       
 </script>
