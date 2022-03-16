@@ -106,11 +106,52 @@
         <div class="alert alert-danger" role="alert">{{Session::get('errormsg')}}</div>
     </div>
     @endif
+    
+    <section class="py-5">
+        <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card header bg-light">
+                          <h5>Get the Records between two dates</h5>
+                     </div>
+                    <div class="card-body">
+                        <form action="" method="Get"> 
+                   
+                                        <div class="row">
+                                        <div class="col-md-4">   
+                                                <div class="form-group">
+                                                <label for="">From Date</label>
+                                                <input type="date" class="form-control"  name="from_date"  placeholder="From Date">
+                                                </div>
+                                        </div>
+                                            
+                                            <div class="col-md-4">   
+                                                <div class="form-group">
+                                                <label for="">To Date</label>
+                                                <input type="date" class="form-control"  name="to_date"  placeholder="To Date">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-4">   
+                                                <div class="form-group">
+                                                <label for="">Check</label><br> 
+                                                <button type="submit" class="btn btn-primary">Generate</button>
+                                            </div>
+                                        </div>
+                              </div>
+                         <div>
+                    <div> 
+                  <div>        
+             </form>
+            <div>
+        <div> 
+     <div> 
+    </section>
     <div class="container">
-   
     <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >Generate PDF</a> 
    
-    
+     <a href="" class="btn btn-primary btn-sm view_selected" id="Filter" >Filter</a> 
    
     <a href="{{route('projects.add')}}" class="btn btn-danger btn-sm">New Project</a>
 
@@ -124,11 +165,39 @@
                         <th data-sotable="false">Type</th>
                         <th data-sotable="false">Status</th>
                         <th width="150">Action </th>
-                   
-                        
-                        </tr>
+                    </tr>
                 </thead>
-                        </table>
+                <tbody>
+                    <?php
+                    
+                    if(isset($_GET['from_date'])&& isset($_GET['to_date']))
+                    {
+                        
+                        echo $from_date = $_GET['from_date'];
+                        $to_date = $_GET['to_date'];
+                        // $con =mysqli_connect("localhost","root","","cybernest_world");
+                        $query = "SELECT * FROM projects WHERE created_at BETWEEN '$from_date' AND '$to_date' ";
+                        $query_run = mysqli_query($query); 
+
+                        if(mysqli_num_rows($query_run)> 0 ){
+                            foreach($query_run as $row){
+                                echo $row['Client_Name'];
+                            }
+                        }else{
+                            echo "NO RECORD FOUND";
+                        }
+
+
+
+                    }
+                    
+                    
+                    
+                    ?>
+
+                </tbody>
+                
+                    </table>
                    </div>
               </div>
         </div>
@@ -193,13 +262,12 @@
     ],
     
 });
-
+// generate pdf 
     $(".view_selected").click(function(e) {
         e.preventDefault();
         var checked = [];
 
-
-        $("input:checkbox[name=ch]:checked").each(function() {
+     $("input:checkbox[name=ch]:checked").each(function() {
             checked.push($(this).attr('data-id'));
     });
 
@@ -252,7 +320,7 @@
 
 });
 // Main Checkbox to select all Rows
-$(document).on('click','input[name="main_checkbox"]',function(){
+    $(document).on('click','input[name="main_checkbox"]',function(){
         if(this.checked){
             $('input[name="ch"]').each(function(){
                 this.checked = true;

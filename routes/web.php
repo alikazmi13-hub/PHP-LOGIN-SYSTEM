@@ -92,7 +92,8 @@ Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, '
 
 
 
-Route::get('/add', [App\Http\Controllers\HomeController::class, 'single'])->name('add');
+// Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'Filter'])->name('projects.Filter');
+
 
 
 

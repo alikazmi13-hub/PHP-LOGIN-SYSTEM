@@ -19,7 +19,9 @@ class ProjectsController extends Controller
     }
         //  Add Project Function 
        function addProject(){
-        return view ('add');
+        $data["project_technology"] = array ( "Rails","Php","java","Laravel","React","Amazon Web Services","NodeJs", "Spring boot","Wordpress", "Angular","Symfony","Python","javascript","css","html","bootstrap");
+
+        return view ('add',$data);
 
         }
         function index(){
@@ -32,18 +34,26 @@ class ProjectsController extends Controller
 
         // Save Project Function
     function saveProject(Request $request){
-            //  dd($request->all());
-            $validator = Validator::make ($request->all(),[
+        
+        $data = $request->all();
+        if(isset($data['Project_Technology']))
+        {
+        $data['Project_Technology'] = implode(',',$data['Project_Technology']);
+
+        }
+            
+        $validator = Validator::make ($data,[
                 'Client_Name'=>'required| max :100',
                 'Client_Email'=> 'required| max:100| email',
                 'Project_Title'=>'required| max:255',
-                'Project_Technology'=>'required| max:255',
-                'Project_Type'=>'required| max:255',
+                'Project_Technology'=>'required',
+                'Project_Type'=>'required ',
                 'Project_Status'=>'required| max:100',
                 'Usecase_Description'=>'required'
             ]);
 
             if($validator->passes()){
+
                 //if Record in Database
                 // It will store these inputs data in database
                 // Inputs Storing Data to database
@@ -51,7 +61,7 @@ class ProjectsController extends Controller
                 $project->Client_Name=$request->Client_Name;
                 $project->Client_Email=$request->Client_Email;
                 $project->Project_Title=$request->Project_Title;
-                $project->Project_Technology=$request->Project_Technology;
+                $project->Project_Technology=$data['Project_Technology'];
                 $project->Project_Type=$request->Project_Type;
                 $project->Project_Status=$request->Project_Status;
                 $project->Usecase_Description=$request->Usecase_Description;
@@ -89,7 +99,7 @@ class ProjectsController extends Controller
                     // })
 
                   ->addColumn('action', function($row){
-                         $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm"><i class="bi bi-trash" /></a>
+                         $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm">Edit</a>
                      
 
                          <a href="'. route('projects.delete', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
@@ -264,18 +274,11 @@ class ProjectsController extends Controller
 
 
                             
-                public function single(){
-                    return view ('technology.single');
-                }
+                public function Filter(){
+                    
+                    }
 
-                  public function multi(){
-                    return view ('technology.multi');
-                }
-                
-
-
-
-
+              
 
 
 

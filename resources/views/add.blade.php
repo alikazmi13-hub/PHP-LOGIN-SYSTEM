@@ -10,20 +10,22 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />   
+        
     <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <!--  -->
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
-  <script src="https://unpkg.com/@yaireo/tagify"></script>
-  <script src="https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js"></script>
-  
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+            </script>
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/@yaireo/tagify"></script>
+        <script src="https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <style>
    
@@ -69,6 +71,7 @@
       font-size:20px;
   }
 
+  
     .form-control{
   
     color:#000000;
@@ -95,6 +98,7 @@
         |color:#000000;
        
 }
+
 </style>
     <title>PROJECTS</title>
 
@@ -153,21 +157,21 @@
         
 
             <!-- Old Record -->
-            <div class="form-group col-md-6">
+            <div class="form-group autocomplete col-md-6" id="Project_Techn">
                 <label for="">Project Technology:</label>
-
-                <input   type="text" name="Project_Technology" id="Project_Technology" autocomplete="off" 
-                    value="{{old('Project_Technology')}}" 
-                    class="form-control   {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
+             <select id="Project_Technology"  style="width: 100% height: 20%" name="Project_Technology[]" multiple="multiple" value="{{old('project_tech[]')}}" 
+                    class="form-control Project_Technology {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}"> 
+                   <!-- Loop -->
                    
-                
+                   @foreach($project_technology as $project_tech)
+                    <option value="{{$project_tech}}">{{$project_tech}}</option>
+                    @endforeach
+                     
+                    </select>
               
-                <!-- <input type="text"  placeholder="Project Technology" name="Project_Technology" id="Project_Technology"
-                    value="{{old('Project_Technology')}}"
-                    class="form-control    {{($errors->any()  &&  $errors->first('Project_Technology') )? 'is-invalid': ''}}">
-                -->
                
-                    @if($errors->any())
+               
+                @if($errors->any())
                 <p class="invalid-feedback">{{$errors->first('Project_Technology')}}</p>
 
                 @endif
@@ -179,8 +183,8 @@
             
                 <select name="Project_Type" autofocus id="Project_Type"
                     value="{{old('Project_Type')}}"
-                    class="form-control    {{($errors->any() && $errors->first('Project_Type') )? 'is-invalid': ''}}">
-                     <option value="">Choose Project_Type</option>
+                    class="form-control   {{($errors->any() && $errors->first('Project_Type') )? 'is-invalid': ''}}">
+                    <option value="">Choose Project_Type</option>
                     <option value="Custom Software">Custom Software</option>
                     <option value="Web Apps">Web Apps</option>
                     <option value="Ecommerce">Ecommerce</option>
@@ -189,7 +193,9 @@
                     <option value="Enterprise Solution">Enterprise Solution</option>
                  
                  </select>
-                @if($errors->any()) <p class="invalid-feedback">{{$errors->first('Project_Type')}}</p>
+                
+                 @if($errors->any())
+                 <p class="invalid-feedback">{{$errors->first('Project_Type')}}</p>
 
                 @endif
 
@@ -201,6 +207,7 @@
                 <input type="text"  placeholder="Project Status"  name="Project_Status" id="Project_Status"
                     value="{{old('Project_Status')}}"
                     class="form-control    {{($errors->any()  &&  $errors->first('Project_Status') )? 'is-invalid': ''}}">
+               
                 @if($errors->any())
                 <p class="invalid-feedback">{{$errors->first('Project_Status')}}</p>
 
@@ -212,7 +219,8 @@
                 <textarea type="text"  placeholder="Usecase_Description" name="Usecase_Description" cols="30" rows="7"
                     id="Usecase_Description" value="{{old('Usecase_Description')}}"
                     class="form-control    {{($errors->any()  &&  $errors->first('Usecase_Description') )? 'is-invalid': ''}}"></textarea>
-                @if($errors->any())
+              
+                    @if($errors->any())
                 <p class="invalid-feedback">{{$errors->first('Usecase_Description')}}</p>
 
                 @endif
@@ -240,37 +248,19 @@
 </body>
 
 <script>
-    // The DOM element you wish to replace with Tagify
-    var inputag = document.querySelector('input[name=Project_Type]'); 
-    // initialize Tagify on the above input node reference
-    new Tagify(inputag) 
+// autocomplete input tags
+$(document).ready(function() {
+    $('.Project_Technology').select2();
+    });
 
-
-// combine values of tags input using JS 
-//   $(document).ready(function() {
-//   $('button').click(function() {
-//     const combinedValue = $('input').val().concat($('select').val());
-//     alert(combinedValue);
-//   });
-// });
-
-
-
-
-    // working here for autocomplete
-$(document).ready(function(){
-        $("#Project_Technology").autocomplete({
-            source:[
-                'Python','RubyonRails','Wordpress'
-
-            ],
-            select:function(e,Seleteddata){
-                console.log(Seleteddata);
-            }
-        });
+// responsive
+    $(".Project_Technology").select2({
+        width: 'resolve' // need to override the changed default
     });
 
 
+    // array to string 
+    
 
 
   </script>
