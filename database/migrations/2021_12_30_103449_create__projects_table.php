@@ -27,6 +27,10 @@ class CreateProjectsTable extends Migration
         });
     }
 
+
+      
+
+
     /**
      * Reverse the migrations.
      *

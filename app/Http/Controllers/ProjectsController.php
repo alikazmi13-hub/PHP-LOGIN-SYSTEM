@@ -82,9 +82,12 @@ class ProjectsController extends Controller
 
                 // YAJRA DATATABLES 
                     if ($request->ajax()) {
-                    $data = Project::latest()->get();
-                    return Datatables::of($data)
+                    $data = Project :: latest()->get();
                     
+                    // $data = Project :: whereBetween('created_at',[$request->dateFrom.'00:00:00',$request->dateTo.'23:59:59']);
+                    // $data = Project :: latest('Project_Type')->get();
+                    return Datatables::of($data)
+                   
                     ->addIndexColumn()
                     ->addColumn('id', function($row){
                         $actionBtn = '<input type="checkbox" id="'.$row->id.'" name="ch" class="project_check" data-id="'.$row->id.'"/>';
@@ -92,11 +95,7 @@ class ProjectsController extends Controller
                         
                     })
                     
-                    // ->addColumn('action_1', function($row){
-                    //     $actionBtn = '<a href="'. route('projects.delete', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
-                    // '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm">Edit</a>';
-                    //     return $actionBtn;
-                    // })
+                   
 
                   ->addColumn('action', function($row){
                          $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm">Edit</a>
@@ -125,7 +124,9 @@ class ProjectsController extends Controller
                 return view('edit')->with (compact('project'));
 
          }
-        public function deleteProject($id){
+
+
+    public function deleteProject($id){
             // dd($id);
             $project = Project::find($id);
             if($project){
@@ -134,7 +135,7 @@ class ProjectsController extends Controller
             }
           }
 
-            function updateProject($id, Request $request){
+        function updateProject($id, Request $request){
              $validator = Validator::make ($request->all(),[
                 'Client_Name'=>'required| max :100',
                 'Client_Email'=> 'required| max:100| email',
@@ -204,9 +205,7 @@ class ProjectsController extends Controller
 
 
 
-
-
-             public function PDF_PAGE( Request $request){
+         public function PDF_PAGE( Request $request){
                $projects = Project:: whereIn('id',$request->input("checked"))->get();
                 
                
@@ -234,15 +233,12 @@ class ProjectsController extends Controller
 
 
           public function singlepdf(Request $request){
-               $projects = Project:: whereIn('id',$request->input("checked"))->get();
-                
                
-                
+            $projects = Project:: whereIn('id',$request->input("checked"))->get();
                 $singleitem = [
                 'items'    => $projects,
             ];
-                
-                 $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape');
+                $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape');
                   print_r($projects);
 
                   $name = "pdflandscape-".time().".pdf";
@@ -252,33 +248,11 @@ class ProjectsController extends Controller
 
       // Save Pdf file in Public/storage/storage
                   return 'public/singlepdf/'.$name;
+             }
 
 
 
-
-                    // $pdf->output();
-
-
-                // exit;
-                //  window.open(window.location.origin+data, '_blank');
-                //   $singlepdf = "pdflandscape-".time().".pdf";
-            
-                // moving Pdf file in Public/singlepdf/singlepdf
-              
-
-                // Save Pdf file in Public/singlepdf/singlepdf
-                //  return '/singlepdf/singlepdf/'.$singlepdf;
-               
-                }
-
-
-
-                            
-                public function Filter(){
-                    
-                    }
-
-              
+             
 
 
 

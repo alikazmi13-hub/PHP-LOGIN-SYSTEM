@@ -25,21 +25,40 @@
     <link href="{{asset('/bootstrap-tagsinput.css')}}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-       <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+       <!-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/> -->
     <!-- Yajra datatables  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/date-1.1.2/datatables.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/ju/dt-1.11.5/datatables.min.js"></script>
+    <!-- <script type="text/javascript" src="DataTables/datatables.min.js"></script> -->
+   
+   
+   
+   
+   
+   
+   
+   
     <!-- inline CSS -->
     <style>
     .container-fluid{
      width:100%;
      background-color:white;
+      /* background-image: url("https://unsplash.com/photos/L6V3NOVp-44"); */
         }
       #logo{
           margin-top:2%;
@@ -57,31 +76,61 @@
      /* background-color:grey; */
       width:100%;
       margin-top:0%;
+     
+      
         }
         .btn-sm{
             margin-top:0%;
             margin-bottom:1%;
         }
-       
+       #datatable_wrapper{
+            background-color:white;
+       }
         #datatable{
             background-color:white;
             font-family: 'Roboto', sans-serif;
         }
         #datatable_filter{
-          margin-top:3%;
-          margin-left:65%;
-          text-align:left;
-           font-family: 'Proza Libre', sans-serif;
+        margin-left:70%;
+        margin-bottom:2%;
         
+        text-align:left;
+        margin-top:2%;
+        font-family: 'Proza Libre', sans-serif;
+        
+        }
+        
+        .fg-toolbar{
+         background-color:white;
+        border-style:none;
+        }
+        #datatable_length  {
+        width:50%;
+        height:0px;
+        font-size:15px;
+        margin-left:2%;
+        text-align:left;
+        font-family: 'Proza Libre', sans-serif;
+        }
+         #datatable_length select {
+         width:35%;
+         margin-bottom:0%;
         }
         .form-control{
             font-family: 'Proza Libre', sans-serif;
             background-color:white;
            
         }
+        .col-md-4{
+        margin: 1px;
+        width: 20%;
+        border: 3px ;
+        padding: 0px;
+        text-align:center;
+        }
 
         #datatable_paginate{
-            margin-left:65%;
+            margin-left:70%;
         }
     </style>
   <!-- Project Title -->
@@ -112,24 +161,24 @@
           <div class="row justify-content-center">
               <div class="col-md-12">
                   <div class="card">
-                      <div class="card header bg-light">
+                      <div class="card header bg-primary text-white text-center ">
                           <h5>Get the Records between two dates</h5>
                      </div>
                     <div class="card-body">
                         <form action="" method="Get"> 
                    
-                                        <div class="row">
+                                        <div class="row justify-content-center">
                                         <div class="col-md-4">   
                                                 <div class="form-group">
                                                 <label for="">From Date</label>
-                                                <input type="date" class="form-control"  name="from_date"  placeholder="From Date">
+                                                <input type="date" id="dateFrom" class="form-control"  name="dateFrom"  placeholder="From Date">
                                                 </div>
                                         </div>
                                             
                                             <div class="col-md-4">   
                                                 <div class="form-group">
                                                 <label for="">To Date</label>
-                                                <input type="date" class="form-control"  name="to_date"  placeholder="To Date">
+                                                <input type="date" id="dateTo" class="form-control"  name="dateTo"  placeholder="To Date">
                                                 </div>
                                             </div>
                                             
@@ -151,9 +200,9 @@
     <div class="container">
     <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >Generate PDF</a> 
    
-     <a href="" class="btn btn-primary btn-sm view_selected" id="Filter" >Filter</a> 
+  
    
-    <a href="{{route('projects.add')}}" class="btn btn-danger btn-sm">New Project</a>
+    <a href="{{route('projects.add')}}" class="bi bi-trash"></a>
 
    
     <table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
@@ -167,35 +216,7 @@
                         <th width="150">Action </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-                    
-                    if(isset($_GET['from_date'])&& isset($_GET['to_date']))
-                    {
-                        
-                        echo $from_date = $_GET['from_date'];
-                        $to_date = $_GET['to_date'];
-                        // $con =mysqli_connect("localhost","root","","cybernest_world");
-                        $query = "SELECT * FROM projects WHERE created_at BETWEEN '$from_date' AND '$to_date' ";
-                        $query_run = mysqli_query($query); 
-
-                        if(mysqli_num_rows($query_run)> 0 ){
-                            foreach($query_run as $row){
-                                echo $row['Client_Name'];
-                            }
-                        }else{
-                            echo "NO RECORD FOUND";
-                        }
-
-
-
-                    }
-                    
-                    
-                    
-                    ?>
-
-                </tbody>
+                
                 
                     </table>
                    </div>
@@ -246,7 +267,6 @@
         {
             data: 'action',
             name: 'actionBtn',
-            defaultContent: '<i class="bi bi-trash"/>',
             orderable: false,
             searchable: false,
         },
@@ -334,8 +354,42 @@
 
 
 
-   
-      
+  $.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var from = dateFrom.val();
+        var to = dateTo.val();
+        var date = new DateTime( data[4] );
+ 
+        if (
+            ( from === null && to === null ) ||
+            ( from === null && date <= to ) ||
+            ( from <= date   && to === null ) ||
+            ( from <= date   && date <= to )
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
+ 
+$(document).ready(function() {
+    // Create date inputs
+var dateF,dateT;
+    dateF = new DateTime($('#dateFrom'), {
+        format: 'YYYY MMMM Do'
+    });
+    dateT = new DateTime($('#dateTo'), {
+        format: ' YYYY MMMM Do'
+    });
+ 
+    // DataTables initialisation
+    var table = $('#datatable').DataTable();
+ 
+    // Refilter the table
+    $('#dateFrom, #dateTo').on('change', function () {
+        table.draw();
+    });
+});
       
 </script>
 
