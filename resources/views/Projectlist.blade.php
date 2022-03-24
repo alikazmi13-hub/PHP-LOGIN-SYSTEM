@@ -67,33 +67,32 @@
     .container-fluid{
      width:100%;
      background-color:white;
-      /* background-image: url("https://unsplash.com/photos/L6V3NOVp-44"); */
+  
         }
       #logo{
           margin-top:2%;
-            margin-left:4%;
+          margin-left:4%;
       }
       #pl{
             margin-top:3%;
             text-align:center;
             font-family: 'Proza Libre', sans-serif;
             font-size:30px;
+            
          
             
       }
-    .container{
+    .py-5{
      /* background-color:grey; */
-      width:100%;
+      width:45%;
+      margin-left: auto;
       margin-top:0%;
-     
       
         }
-        .btn-sm{
-            margin-top:0%;
-            margin-bottom:1%;
-        }
+       
        #datatable_wrapper{
-            background-color:white;
+            background-color:black;
+            width:50%:
        }
         #datatable{
             background-color:white;
@@ -104,42 +103,39 @@
         margin-bottom:2%;
         
         text-align:left;
-        margin-top:2%;
+        margin-top:0%;
         font-family: 'Proza Libre', sans-serif;
         
         }
         
         .fg-toolbar{
-         background-color:white;
-        border-style:none;
+            background-color:white;
+            border-style:none;
         }
+        
         #datatable_length  {
-        width:50%;
+        width:90%;
         height:0px;
-        font-size:15px;
-        margin-left:2%;
-        text-align:left;
+        font-size:14px;
+        margin-top:1%;
+        margin-left:10%;
+        text-align:right;
         font-family: 'Proza Libre', sans-serif;
         }
          #datatable_length select {
          width:35%;
          margin-bottom:0%;
         }
-        .form-control{
-            font-family: 'Proza Libre', sans-serif;
-            background-color:white;
+
+        
+        .form-group{
+           
            
         }
-        .col-md-4{
-        margin: 1px;
-        width: 20%;
-        border: 3px ;
-        padding: 0px;
-        text-align:center;
-        }
+        
 
         #datatable_paginate{
-            margin-left:70%;
+            margin-left:80%;
         }
     </style>
   <!-- Project Title -->
@@ -165,28 +161,30 @@
     </div>
     @endif
     
+    <div class="container">
+
     <section class="py-5">
-        <div class="container ">
+        <div class=" dates">
           <div class="row justify-content-center">
               <div class="col-md-12">
                   <div class="card">
-                      <div class="card header bg-primary text-white text-center ">
-                          <h5>Get the Records between two dates</h5>
+                      <div class="card header bg-light text-black text-center ">
+                          <h5>Get The Records Between Two Dates</h5>
                      </div>
                     <div class="card-body">
                         <!-- <form action="" method="Get">  -->
                    
-                                        <div class="row justify-content-center input-daterange" >
+                                     <div class="row justify-content-center input-daterange" >
                                         <div class="col-md-4">   
                                                 <div class="form-group">
-                                                <label for="">From Date</label>
+                                               
                                                 <input type="text" id="from_date" class=" fa-solid fa-calendar date form-control"  name="from_date"  placeholder="From Date">
                                                 </div>
                                         </div>
                                             
                                             <div class="col-md-4">   
                                                 <div class="form-group">
-                                                <label for="">To Date</label>
+                                                
                                                 <input type="text" id="to_date" class=" fa-solid fa-calendar date form-control"  name="to_date"  placeholder="To Date">
                                                    
                                             </div>
@@ -208,9 +206,9 @@
         <div> 
      <div> 
     </section>
-    <div class="container">
     <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >Generate PDF</a> 
-   
+    
+    
   
    
     <a href="{{route('projects.add')}}" class="bi bi-trash"></a>
@@ -376,7 +374,7 @@
 
 
             // Date Rangepicker Function using Ajax call 
-            $('input').click(function(){
+            $('.form-control').click(function(){
                 $('.input-daterange').datepicker({
                     todayBtn:'linked',
                     foramt:'yyyy-mm-dd',
