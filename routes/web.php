@@ -55,12 +55,11 @@ Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show']
 
 //YAJRA DATATABLES function calling for PROJECT FORM
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
-// Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
+
 
 Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
-// Route::post('projects/allpdf/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.allpdf.pdf');
-// Route::post('public/storage/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('public.storage.pdf');
-Route::post('/projects/pdflandscape', [App\Http\Controllers\ProjectsController::class, 'singlepdf'])->name('projects.pdflandscape');
+
+// Route::post('/projects/pdflandscape', [App\Http\Controllers\ProjectsController::class, 'singlepdf'])->name('projects.pdflandscape');
 
 // get Method For add new record for PROJECT FORM 
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');

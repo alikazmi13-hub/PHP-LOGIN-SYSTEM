@@ -25,13 +25,10 @@
     <link href="{{asset('/bootstrap-tagsinput.css')}}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
        <!-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/> -->
     <!-- Yajra datatables  -->
@@ -41,14 +38,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/date-1.1.2/datatables.min.js"></script>
+  
 
+    <!-- FOR ARROWS SIGN -->
     <script type="text/javascript" src="https://cdn.datatables.net/v/ju/dt-1.11.5/datatables.min.js"></script>
     <!-- <script type="text/javascript" src="DataTables/datatables.min.js"></script> -->
    
+    <!-- Bootstrap datepicker 24-march-2022 -->
+    
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
+  <!-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
+  <!-- <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>   -->
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
    
-   
-   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+    
    
    
    
@@ -157,7 +166,7 @@
     @endif
     
     <section class="py-5">
-        <div class="container">
+        <div class="container ">
           <div class="row justify-content-center">
               <div class="col-md-12">
                   <div class="card">
@@ -165,27 +174,29 @@
                           <h5>Get the Records between two dates</h5>
                      </div>
                     <div class="card-body">
-                        <form action="" method="Get"> 
+                        <!-- <form action="" method="Get">  -->
                    
-                                        <div class="row justify-content-center">
+                                        <div class="row justify-content-center input-daterange" >
                                         <div class="col-md-4">   
                                                 <div class="form-group">
                                                 <label for="">From Date</label>
-                                                <input type="date" id="dateFrom" class="form-control"  name="dateFrom"  placeholder="From Date">
+                                                <input type="text" id="from_date" class=" fa-solid fa-calendar date form-control"  name="from_date"  placeholder="From Date">
                                                 </div>
                                         </div>
                                             
                                             <div class="col-md-4">   
                                                 <div class="form-group">
                                                 <label for="">To Date</label>
-                                                <input type="date" id="dateTo" class="form-control"  name="dateTo"  placeholder="To Date">
-                                                </div>
+                                                <input type="text" id="to_date" class=" fa-solid fa-calendar date form-control"  name="to_date"  placeholder="To Date">
+                                                   
                                             </div>
+                                            </div>
+                                           
                                             
                                             <div class="col-md-4">   
                                                 <div class="form-group">
-                                                <label for="">Check</label><br> 
-                                                <button type="submit" class="btn btn-primary">Generate</button>
+                                                <i class="bi bi-calendar"></i><br>
+                                                <button  href="" id="btn-filter" class="btn btn-primary">Filter</button>
                                             </div>
                                         </div>
                               </div>
@@ -213,7 +224,7 @@
                         <th data-sotable="false">Technology</th>
                         <th data-sotable="false">Type</th>
                         <th data-sotable="false">Status</th>
-                        <th width="150">Action </th>
+                        <th width="150">Action</th>
                     </tr>
                 </thead>
                 
@@ -234,163 +245,218 @@
 // Datatables
    
 
- $(document).ready(function()  {
-     var table = $('#datatable').DataTable({
-          
-    processing: true,
-    serverSide: true,
-    ordering:true,
-    columnDefs: [ {
-      targets: 0,
-      orderable: false
-    } ],
-    responsive: true,
-
-     
-     
-    ajax: " {{route('projects.list')}}",
-    columns: [{
-        data: 'id'
-        },
-        {
-            data: 'Project_Title'
-        },
-        {
-            data: 'Project_Technology'
-        },
-        {
-            data: 'Project_Type'
-        },
-        {
-            data: 'Project_Status'
-        },
-        {
-            data: 'action',
-            name: 'actionBtn',
-            orderable: false,
-            searchable: false,
-        },
-        //    {
-        //     data: 'action_2',
-        //     name: 'actionBtn2',
-        //      defaultContent: '<i class="fa fa-pencil"/>',
-        //     orderable: false,
-        //     searchable: false,
-        // },
-        
-        
-    ],
-    
-});
-// generate pdf 
-    $(".view_selected").click(function(e) {
-        e.preventDefault();
-        var checked = [];
-
-     $("input:checkbox[name=ch]:checked").each(function() {
-            checked.push($(this).attr('data-id'));
-    });
-
-
-// PDF FOR DATATABLES ONLY
-
-        $.ajax({
+        $(document).ready(function()  {
                 
-                headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"/projects/pdf",
-                method:"POST",
-                data:{checked:checked},
-                
-                success : function(data){
-                window.open(window.location.origin+data, '_blank');
+            var table = $('#datatable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ordering:true,
+                    
+                    columnDefs: [ {
+                    targets: 0,
+                    orderable: false
+                    } ],
+                    responsive: true,
 
-                                    
-                console.log(data);
-                        }
-                    });
+                    
+                    
+                    ajax: " {{route('projects.list')}}",
+                    
+                    columns: [{
+                        data: 'id'
+                        },
+                        {
+                            data: 'Project_Title'
+                        },
+                        {
+                            data: 'Project_Technology'
+                        },
+                        {
+                            data: 'Project_Type'
+                        },
+                        {
+                            data: 'Project_Status'
+                        },
+                        {
+                            data: 'action',
+                            name: 'actionBtn',
+                            orderable: false,
+                            searchable: false,
+                        },
+                        //    {
+                        //     data: 'action_2',
+                        //     name: 'actionBtn2',
+                        //      defaultContent: '<i class="fa fa-pencil"/>',
+                        //     orderable: false,
+                        //     searchable: false,
+                        // },
+                        
+                        
+                    ],
+                    
+                });
             
-           
-            }) ;
-// Detailed View FOR MULTIPLE PAGES
-     $(".detailed_view").click(function(e) {
-        e.preventDefault();
-        var checked = [];
+                // generate pdf 
+                $(".view_selected").click(function(e) {
+                    e.preventDefault();
+                    var checked = [];
+
+                $("input:checkbox[name=ch]:checked").each(function() {
+                        checked.push($(this).attr('data-id'));
+                });
 
 
-        $("input:checkbox[name=ch]:checked").each(function() {
-            checked.push($(this).attr('data-id'));
-    });
-          $.ajax({
+        // PDF FOR DATATABLES ONLY
+
+                $.ajax({
+                        
+                        headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        url:"/projects/pdf",
+                        method:"POST",
+                        data:{checked:checked},
+                        
+                        success : function(data){
+                        window.open(window.location.origin+data, '_blank');
+
+                                            
+                        console.log(data);
+                                }
+                            });
+                    
                 
-                headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"/projects/pdflandscape",
-                method:"POST",
-                data:{checked:checked},
-                
-                success : function(data){
-                window.open(window.location.origin+data, '_blank');
-
-                                    
-                console.log(data);
-                        }
-                    })
-
-});
+                    }) ;
 
 
-});
-// Main Checkbox to select all Rows
-    $(document).on('click','input[name="main_checkbox"]',function(){
-        if(this.checked){
-            $('input[name="ch"]').each(function(){
-                this.checked = true;
+                // Detailed View FOR MULTIPLE PAGES
+                    $(".detailed_view").click(function(e) {
+                        e.preventDefault();
+                        var checked = [];
+
+
+                        $("input:checkbox[name=ch]:checked").each(function() {
+                            checked.push($(this).attr('data-id'));
+                    });
+                        $.ajax({
+                                
+                            headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            url:"/projects/pdflandscape",
+                            method:"POST",
+                            data:{checked:checked},
+                            
+                            success : function(data){
+                            window.open(window.location.origin+data, '_blank');
+
+                                                
+                            console.log(data);
+                                    }
+                                })
+
             });
-        }else{
-              $('input[name="ch"]').each(function(){
-                this.checked = false;
-        });
-    }
-});
 
 
-
-  $.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var from = dateFrom.val();
-        var to = dateTo.val();
-        var date = new DateTime( data[4] );
- 
-        if (
-            ( from === null && to === null ) ||
-            ( from === null && date <= to ) ||
-            ( from <= date   && to === null ) ||
-            ( from <= date   && date <= to )
-        ) {
-            return true;
-        }
-        return false;
-    }
-);
- 
-$(document).ready(function() {
-    // Create date inputs
-var dateF,dateT;
-    dateF = new DateTime($('#dateFrom'), {
-        format: 'YYYY MMMM Do'
-    });
-    dateT = new DateTime($('#dateTo'), {
-        format: ' YYYY MMMM Do'
-    });
- 
-    // DataTables initialisation
-    var table = $('#datatable').DataTable();
- 
-    // Refilter the table
-    $('#dateFrom, #dateTo').on('change', function () {
-        table.draw();
-    });
-});
+            });
       
+      
+            // Main Checkbox to select all Rows
+                $(document).on('click','input[name="main_checkbox"]',function(){
+                    if(this.checked){
+                        $('input[name="ch"]').each(function(){
+                            this.checked = true;
+                        });
+                    }else{
+                        $('input[name="ch"]').each(function(){
+                            this.checked = false;
+                    });
+                }
+                });
+
+
+       
+ 
+
+
+            // Date Rangepicker Function using Ajax call 
+            $('input').click(function(){
+                $('.input-daterange').datepicker({
+                    todayBtn:'linked',
+                    foramt:'yyyy-mm-dd',
+                    autoclose:true
+                });
+                // it will load data in datatables 
+                load_data();
+                // load data table for ajax call server side
+                function load_data(from_date = '', to_date = '')
+                {
+                 var table = $('#datatable').DataTable({
+                        Process:true,
+                        serverSide:true,
+                        
+                         ajax:{
+                            url : " {{route('projects.list')}}",
+                            data:  {from_date:from_date,to_date:to_date}
+
+                         },
+                            columns: [{
+                                data: 'id'
+                                },
+                                {
+                                    data: 'Project_Title'
+                                },
+                                {
+                                    data: 'Project_Technology'
+                                },
+                                {
+                                    data: 'Project_Type'
+                                },
+                                {
+                                    data: 'created_at'
+                                },
+                                {
+                                    data: 'action',
+                                    name: 'actionBtn',
+                                    orderable: false,
+                                    searchable: false,
+                                },
+                               
+                                
+                                
+                            ],
+
+
+
+
+
+                    })
+                }
+   
+                
+                 $('#btn-filter').click(function(){
+                    var from_date =$('#from_date').val();
+                     var to_date =$('#to_date').val();
+
+                     if(from_date != '' && to_date != ''){
+                         $('#datatable').DataTable().destroy();
+                            load_data(from_date,to_date);
+
+                        }
+                        else{
+                            alert('Both Date Is Required');
+                        }
+                });
+
+
+
+
+
+
+
+
+});
+                
+
+
+
+                
 </script>
 
 </html>

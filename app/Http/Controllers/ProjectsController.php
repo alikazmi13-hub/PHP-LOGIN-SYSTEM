@@ -7,6 +7,7 @@ use Validator;
 use DB;
 use Storage;
 use PDF;
+use Carbon\Carbon;
 use Yajra\DataTables\DataTables;
 class ProjectsController extends Controller
 {
@@ -79,18 +80,44 @@ class ProjectsController extends Controller
 
             ////////////////////// get Data using $draw,start,rowperpage /////////////////////
     public function getData(Request $request){
+            
+                // // YAJRA DATATABLES 
+                if ($request->ajax()) {
+                    if(!empty($request->from_date))
+                        {
+                        $newStartDate = date("Y-m-d", strtotime($request->from_date));
+                        $newEndDate = date("Y-m-d", strtotime($request->to_date));
 
-                // YAJRA DATATABLES 
-                    if ($request->ajax()) {
-                    $data = Project :: latest()->get();
+                        $data = DB::table('projects')
+                            ->whereBetween('created_at', array($newStartDate." 00:00:00", $newEndDate." 23:59:59"))
+                            ->get();
+                            //  dd($data);exit();
+                        }
+                        
+                        else
+                        {
+                        $data = Project :: latest()->get();
+                        }
+                        // dd($data);
+                        return Datatables::of($data)
+                        
+
+                        
+                                            
+
+
+
+
+
+
+
+
+
                     
-                    // $data = Project :: whereBetween('created_at',[$request->dateFrom.'00:00:00',$request->dateTo.'23:59:59']);
-                    // $data = Project :: latest('Project_Type')->get();
-                    return Datatables::of($data)
                    
-                    ->addIndexColumn()
+                    
                     ->addColumn('id', function($row){
-                        $actionBtn = '<input type="checkbox" id="'.$row->id.'" name="ch" class="project_check" data-id="'.$row->id.'"/>';
+                        $actionBtn = '<input type="checkbox" id="'.$row->id.'" name="ch" class=" project_check" data-id="'.$row->id.'"/>';
                         return $actionBtn;
                         
                     })
@@ -98,10 +125,10 @@ class ProjectsController extends Controller
                    
 
                   ->addColumn('action', function($row){
-                         $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="edit btn btn-success btn-sm">Edit</a>
+                         $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="fas fa-edit btn btn-success btn-sm"></a>
                      
 
-                         <a href="'. route('projects.delete', $row->id) .'" class="delete btn btn-danger btn-sm">Delete</a>';
+                         <a href="'. route('projects.delete', $row->id) .'" class="fa fa-trash btn btn-danger btn-sm"></a>';
                          return $actionBtn;
                      })
               
@@ -232,31 +259,27 @@ class ProjectsController extends Controller
 
 
 
-          public function singlepdf(Request $request){
-               
-            $projects = Project:: whereIn('id',$request->input("checked"))->get();
-                $singleitem = [
-                'items'    => $projects,
-            ];
-                $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape');
-                  print_r($projects);
+            public function singlepdf(Request $request){
+                
+                $projects = Project:: whereIn('id',$request->input("checked"))->get();
+                    $singleitem = [
+                    'items'    => $projects,
+                ];
+                    $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape');
+                    print_r($projects);
 
-                  $name = "pdflandscape-".time().".pdf";
-            
-        // moving pdf to storage
-               Storage::put('public/singlepdf/'.$name, $pdf->output());
+                    $name = "pdflandscape-".time().".pdf";
+                        
+                        // moving pdf to storage
+                            Storage::put('public/singlepdf/'.$name, $pdf->output());
 
-      // Save Pdf file in Public/storage/storage
-                  return 'public/singlepdf/'.$name;
-             }
-
-
-
-             
+                    // Save Pdf file in Public/storage/storage
+                                return 'public/singlepdf/'.$name;
+                    }
 
 
 
-
+                  
 
 
 
