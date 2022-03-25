@@ -56,9 +56,6 @@ Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show']
 //YAJRA DATATABLES function calling for PROJECT FORM
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
 
-
-Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
-
 // Route::post('/projects/pdflandscape', [App\Http\Controllers\ProjectsController::class, 'singlepdf'])->name('projects.pdflandscape');
 
 // get Method For add new record for PROJECT FORM 
@@ -70,9 +67,9 @@ Route::post('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::cla
 // Delete Record for PROJECT FORM
 Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::class, 'deleteProject'])->name('projects.delete');
 // PDF GENERATE
-Route::get('/projects/pdflandscape/{id}', [App\Http\Controllers\ProjectsController::class, 'PDF_PAGE'])->name('projects.pdflandscape');
-// Route::post('/projects/addpdfproject/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf'])->name('projects.pdf');
-// Route::post('project.Pdfview/', [App\Http\Controllers\ProjectsController::class, 'viewPDF'])->name('projects.viewPDF');
+Route::get('/projects/pdflandscape/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_landscape'])->name('projects.pdflandscape');
+// PDF Generate on checked
+Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
 
 
 

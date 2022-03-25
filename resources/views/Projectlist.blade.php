@@ -114,11 +114,11 @@
         }
         
         #datatable_length  {
-        width:90%;
+        width:10%;
         height:0px;
         font-size:14px;
         margin-top:1%;
-        margin-left:10%;
+        margin-left:0%;
         text-align:right;
         font-family: 'Proza Libre', sans-serif;
         }
@@ -135,7 +135,8 @@
         
 
         #datatable_paginate{
-            margin-left:80%;
+            margin-left:72%;
+           
         }
     </style>
   <!-- Project Title -->
@@ -195,6 +196,7 @@
                                                 <div class="form-group">
                                                 <i class="bi bi-calendar"></i><br>
                                                 <button  href="" id="btn-filter" class="btn btn-primary">Filter</button>
+                                                
                                             </div>
                                         </div>
                               </div>
@@ -207,8 +209,8 @@
      <div> 
     </section>
     <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >Generate PDF</a> 
-    
-    
+     <!-- <button  href="" id="pdf-landscape " class="btn btn-danger btn-sm">Single PDf</button>
+     -->
   
    
     <a href="{{route('projects.add')}}" class="bi bi-trash"></a>
@@ -326,7 +328,7 @@
 
 
                 // Detailed View FOR MULTIPLE PAGES
-                    $(".detailed_view").click(function(e) {
+                    $("#pdf_landscape").click(function(e) {
                         e.preventDefault();
                         var checked = [];
 

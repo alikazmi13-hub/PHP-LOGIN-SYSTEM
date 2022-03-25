@@ -126,6 +126,7 @@ class ProjectsController extends Controller
 
                   ->addColumn('action', function($row){
                          $actionBtn = '<a href="/projects/edit/'.$row->id.'"  class="fas fa-edit btn btn-success btn-sm"></a>
+                         <a href="projects/pdflandscape/'.$row->id.'"  class="fas fa-print btn btn-danger btn-sm" id="pdf_landscape"></a>
                      
 
                          <a href="'. route('projects.delete', $row->id) .'" class="fa fa-trash btn btn-danger btn-sm"></a>';
@@ -197,88 +198,84 @@ class ProjectsController extends Controller
             }
          }                          
     
-        public function pdfView(Request $request){
-        
-
-        // METHOD 01 TO SAVE IN PUBLIC FOLDER PDF
-
-        //it is getting all the data from database
-            $projects = Project:: whereIn('id',$request->input("checked"))->get();
-            
-        //   data is passing data to view as array
-            $data = [
-                'index'    => $projects,
-            ];
-            
-            // here we handover this data array to loadview to show data in view
-            $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'landscape');;
-            
-        //  here we are doing concating with pdf name + time + ext to save file with name 
-            $name = "pdf-".time().".pdf";
-            
-        // moving pdf to storage
-             Storage::put('public/storage/'.$name, $pdf->output());
-
-      // Save Pdf file in Public/storage/storage
-              return '/storage/storage/'.$name;
-            
-            
-
-              print_r($project);
-                //  exit;
-
-        }
 
 
+                //  Generate PDf on Checked for pdf.blade.php
 
-
-         public function PDF_PAGE( Request $request){
-               $projects = Project:: whereIn('id',$request->input("checked"))->get();
+                public function pdfView(Request $request){
                 
-               
-                
-                $singleitem = [
-                'items'    => $projects,
-            ];
-                
-                 $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape')->output();
-                  print_r($project);
-                // exit;
-                //  window.open(window.location.origin+data, '_blank');
-                //   $singlepdf = "pdflandscape-".time().".pdf";
-            
-                // moving Pdf file in Public/singlepdf/singlepdf
-              
 
-                // Save Pdf file in Public/singlepdf/singlepdf
-                //  return '/singlepdf/singlepdf/'.$singlepdf;
-               
+                // METHOD 01 TO SAVE IN PUBLIC FOLDER PDF
+
+                //it is getting all the data from database
+                    $projects = Project:: whereIn('id',$request->input("checked"))->get();
+                    
+                //   data is passing data to view as array
+                    $data = [
+                        'index'    => $projects,
+                    ];
+                    
+                    // here we handover this data array to loadview to show data in view
+                    $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'landscape');;
+                    
+                //  here we are doing concating with pdf name + time + ext to save file with name 
+                    $name = "pdf-".time().".pdf";
+                    
+                // moving pdf to storage
+                    Storage::put('public/storage/'.$name, $pdf->output());
+
+            // Save Pdf file in Public/storage/storage
+                    return '/storage/storage/'.$name;
+                    
+                    
+
+                    // print_r($project);
+                        //  exit;
+
                 }
 
 
 
 
+        //  public function pdf_landscape(Request $request){
+        //         $projects = Project:: whereIn('id',[$request->id])->get('Client_Name');
+                    
+        //             $singleitem = [
+        //             'items'    => $projects,
+        //         ];
+                    
+        //             $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape')->output();
 
-            public function singlepdf(Request $request){
+        //             print_r($projects);
+        //             exit;
+        //              window.open(window.location.origin+data, '_blank');
+                  
+        //         //  moving Pdf file in Public/singlepdf/singlepdf
+        //             $singlepdf = "pdflandscape-".time().".pdf";
+
+        //     //  Save Pdf file in Public/singlepdf/singlepdf
+        //              return '/singlepdf/singlepdf/'.$singlepdf;
+               
+        //   }
+
+
+                   public function pdf_landscape(Request $request){
                 
-                $projects = Project:: whereIn('id',$request->input("checked"))->get();
-                    $singleitem = [
-                    'items'    => $projects,
-                ];
-                    $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape');
-                    print_r($projects);
-
-                    $name = "pdflandscape-".time().".pdf";
-                        
-                        // moving pdf to storage
-                            Storage::put('public/singlepdf/'.$name, $pdf->output());
-
-                    // Save Pdf file in Public/storage/storage
-                                return 'public/singlepdf/'.$name;
+               
+                    $projects = Project::whereIn('id',[$request->id])->get();
+               
+                    $singlepdf = [
+                        'items' => $projects,
+                     ];
+                 
+                     // here we handover this data array to loadview to show data in view
+                    //  $pdf = PDF::loadView('pdflandscape', $singlepdf)->setPaper('a4', 'landscape');
+                         return view('pdflandscape', $singlepdf);
+                     
                     }
 
 
-
+                    
                   
 
 
@@ -287,13 +284,3 @@ class ProjectsController extends Controller
 
 // THIS IS END OF MAIN BRACKET
     }
-       
-           
-       
-        
-                    
-
-    
-    
-    
-    
