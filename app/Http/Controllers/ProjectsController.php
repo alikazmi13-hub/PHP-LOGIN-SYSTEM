@@ -25,12 +25,12 @@ class ProjectsController extends Controller
         return view ('add',$data);
 
         }
-        function index(){
-            return view ('newproject');
-        }
-         function tech(){
-         return view('pdf_landscape');  
-    }
+    //     // function index(){
+    //     //     return view ('newproject');
+    //     // }
+    //     //  function tech(){
+    //     //  return view('pdf_landscape');  
+    // }
         
 
         // Save Project Function

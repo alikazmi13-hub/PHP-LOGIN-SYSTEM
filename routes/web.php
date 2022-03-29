@@ -32,7 +32,9 @@ Route::get('/', function () {
 // Here We are getting Project Controller and its Show method
 //Route::get('/projects', 'ProjectController@show ');
 
-
+Route::get('/Admin', function () {
+    return view('/Admin.Admin_dashboard');
+});
 
 /*
 |---------------------------------------------------------------------------------------------------------------------------

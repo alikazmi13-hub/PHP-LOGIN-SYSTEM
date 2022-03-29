@@ -65,7 +65,7 @@
 
 <body>
   
- 
+  <img id="logo" src="Images/logo 2.png" style="width:150px; height:30px;">
       
     
 

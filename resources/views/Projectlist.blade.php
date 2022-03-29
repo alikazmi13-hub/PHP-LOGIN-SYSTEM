@@ -69,7 +69,7 @@
      width:100%;
      /* background-color:white; */
   background-color: #ffffff;
-background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+/* background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%); */
         }
       #logo{
           margin-top:2%;
@@ -93,23 +93,21 @@ background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
         }
        
        .thead{
-             max-width:100%;
+            max-width:100%;
             padding:auto;
             text-align:center;
             margin:auto;
        }
        #datatable_wrapper{
-            /* background-color:black; */
             width:50%:
        }
         #datatable{
-            background-color:white;
+            background-color:#F9F9F8;
             font-family: 'Roboto', sans-serif;
         }
         #datatable_filter{
         margin-left:70%;
         margin-bottom:2%;
-        
         text-align:left;
         margin-top:0%;
         font-family: 'Proza Libre', sans-serif;
@@ -117,7 +115,8 @@ background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
         }
         
         .fg-toolbar{
-            background-color:white;
+           background-color: #ffffff;
+            /* background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%); */
             border-style:none;
         }
         
@@ -137,7 +136,9 @@ background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
 
         #datatable_paginate{
             margin-left:72%;
-           
+        }
+        #pdf{
+            margin-bottom:2%;
         }
     </style>
   <!-- Project Title -->
@@ -391,7 +392,7 @@ background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
 
 
             // Date Rangepicker Function using Ajax call 
-            $('.form-control').on('change',function(){
+            $('input').on('click',function(){
                 $('.input-daterange').datepicker({
                     todayBtn:'linked',
                     foramt:'yyyy-mm-dd',
