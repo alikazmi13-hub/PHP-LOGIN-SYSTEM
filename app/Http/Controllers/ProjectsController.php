@@ -168,10 +168,10 @@ class ProjectsController extends Controller
                 'Client_Name'=>'required| max :100',
                 'Client_Email'=> 'required| max:100| email',
                 'Project_Title'=>'required| max:255',
-                'Project_Technology'=>'required| max:255',
-                'Project_Type'=>'required| max:255',
+                'Project_Technology'=>'required',
+                'Project_Type'=>'required|',
                 'Project_Status'=>'required| max:100',
-                'Usecase_Description'=>'required'
+                'Usecase_Description'=>'required|  max:524288.'
             ]);
 
             if($validator->passes()){
@@ -193,8 +193,8 @@ class ProjectsController extends Controller
                 return redirect('projects');
                 }else{
                 // Return Error
-                echo "hello";
-                return redirect('/projects/edit/'. $id)->withErrors($validator)->withinput();
+                echo "Not Updated Data Showing Error";
+             return redirect('/projects/edit/'. $id)->withErrors($validator)->withinput();
             }
          }                          
     
@@ -216,7 +216,7 @@ class ProjectsController extends Controller
                     ];
                     
                     // here we handover this data array to loadview to show data in view
-                    $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'landscape');;
+                    $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'portrait');;
                     
                 //  here we are doing concating with pdf name + time + ext to save file with name 
                     $name = "pdf-".time().".pdf";
@@ -237,27 +237,7 @@ class ProjectsController extends Controller
 
 
 
-        //  public function pdf_landscape(Request $request){
-        //         $projects = Project:: whereIn('id',[$request->id])->get('Client_Name');
-                    
-        //             $singleitem = [
-        //             'items'    => $projects,
-        //         ];
-                    
-        //             $pdf = PDF::loadView('pdflandscape',$singleitem )->setPaper('a4', 'landscape')->output();
-
-        //             print_r($projects);
-        //             exit;
-        //              window.open(window.location.origin+data, '_blank');
-                  
-        //         //  moving Pdf file in Public/singlepdf/singlepdf
-        //             $singlepdf = "pdflandscape-".time().".pdf";
-
-        //     //  Save Pdf file in Public/singlepdf/singlepdf
-        //              return '/singlepdf/singlepdf/'.$singlepdf;
-               
-        //   }
-
+      
 
                    public function pdf_landscape(Request $request){
                 
@@ -267,11 +247,24 @@ class ProjectsController extends Controller
                     $singlepdf = [
                         'items' => $projects,
                      ];
+                    
+                // here we handover this data array to loadview to show data in view
+                
+                    $mylandscape = PDF::loadView('pdflandscape', $singlepdf)->setPaper('A4', 'landscape');;
+                    
+                // pdf Stream
+                 return $mylandscape->stream('mylandscape.pdf');
+
+                // Save With This Name
+                $name = "landscapes-".time().".pdf";
+
+    
+             //  Save in 
+                 Storage::put('public/landscapes/'.$name, $mylandscape->output());
+                
+                    //  window.open($mylandscape, '_blank');
+
                  
-                     // here we handover this data array to loadview to show data in view
-                    //  $pdf = PDF::loadView('pdflandscape', $singlepdf)->setPaper('a4', 'landscape');
-                         return view('pdflandscape', $singlepdf);
-                     
                     }
 
 

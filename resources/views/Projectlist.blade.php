@@ -65,9 +65,11 @@
     <!-- inline CSS -->
     <style>
     .container-fluid{
+          
      width:100%;
-     background-color:white;
-  
+     /* background-color:white; */
+  background-color: #ffffff;
+background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
         }
       #logo{
           margin-top:2%;
@@ -90,8 +92,14 @@
       
         }
        
+       .thead{
+             max-width:100%;
+            padding:auto;
+            text-align:center;
+            margin:auto;
+       }
        #datatable_wrapper{
-            background-color:black;
+            /* background-color:black; */
             width:50%:
        }
         #datatable{
@@ -126,13 +134,6 @@
          width:35%;
          margin-bottom:0%;
         }
-
-        
-        .form-group{
-           
-           
-        }
-        
 
         #datatable_paginate{
             margin-left:72%;
@@ -179,14 +180,14 @@
                                         <div class="col-md-4">   
                                                 <div class="form-group">
                                                
-                                                <input type="text" id="from_date" class=" fa-solid fa-calendar date form-control"  name="from_date"  placeholder="From Date">
+                                                <input type="text" id="from_date" class=" fa-solid fa-calendar date form-control dates"  name="from_date"  placeholder="From Date">
                                                 </div>
                                         </div>
                                             
                                             <div class="col-md-4">   
                                                 <div class="form-group">
                                                 
-                                                <input type="text" id="to_date" class=" fa-solid fa-calendar date form-control"  name="to_date"  placeholder="To Date">
+                                                <input type="text" id="to_date" class=" fa-solid fa-calendar date form-control dates"  name="to_date"  placeholder="To Date">
                                                    
                                             </div>
                                             </div>
@@ -217,13 +218,17 @@
 
    
     <table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
-    <thead class="thead bg-light text-black">
+    <thead class="thead ">
             <tr>
                 <th><input type="checkbox"  name="main_checkbox" class="project_check" data-id="'.$row->id.'"/></th>
-                        <th data-sotable=" true">Title</th>
+                       
+                        <th data-sotable="true">Name</th>
+                        <th data-sotable="true">Email</th>
+                        <th data-sotable="false">Title</th>
                         <th data-sotable="false">Technology</th>
                         <th data-sotable="false">Type</th>
                         <th data-sotable="false">Status</th>
+                        <th data-sotable="false">Create</th>
                         <th width="150">Action</th>
                     </tr>
                 </thead>
@@ -263,26 +268,36 @@
                     ajax: " {{route('projects.list')}}",
                     
                     columns: [{
-                        data: 'id'
-                        },
-                        {
-                            data: 'Project_Title'
-                        },
-                        {
-                            data: 'Project_Technology'
-                        },
-                        {
-                            data: 'Project_Type'
-                        },
-                        {
-                            data: 'Project_Status'
-                        },
-                        {
-                            data: 'action',
-                            name: 'actionBtn',
-                            orderable: false,
-                            searchable: false,
-                        },
+                                data: 'id'
+                                 },
+                                {
+                                data: 'Client_Name'
+                                },
+                                {
+                                    data: 'Client_Email'
+                                },
+                                {
+                                    data: 'Project_Title'
+                                },
+                                {
+                                    data: 'Project_Technology'
+                                },
+                                {
+                                    data: 'Project_Type'
+                                },
+                                {
+                                    data: 'Project_Status'
+                                },
+                                 {
+                                    data: 'created_at'
+                                },
+                        
+                                {
+                                    data: 'action',
+                                    name: 'actionBtn',
+                                    orderable: false,
+                                    searchable: false,
+                                },
                         //    {
                         //     data: 'action_2',
                         //     name: 'actionBtn2',
@@ -327,31 +342,31 @@
                     }) ;
 
 
-                // Detailed View FOR MULTIPLE PAGES
-                    $("#pdf_landscape").click(function(e) {
-                        e.preventDefault();
-                        var checked = [];
+                // Landscape View FOR MULTIPLE PAGES
+            //         $("#pdf_landscape").click(function(e) {
+            //             e.preventDefault();
+            //             var checked = [];
 
 
-                        $("input:checkbox[name=ch]:checked").each(function() {
-                            checked.push($(this).attr('data-id'));
-                    });
-                        $.ajax({
+            //             $("input:checkbox[name=ch]:checked").click(function() {
+            //                 checked.push($(this).attr('data-id'));
+            //         });
+            //             $.ajax({
                                 
-                            headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                            url:"/projects/pdflandscape",
-                            method:"POST",
-                            data:{checked:checked},
+            //                 headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            //                 url:"/projects/pdflandscape",
+            //                 method:"POST",
+            //                 data:{checked:checked},
                             
-                            success : function(data){
-                            window.open(window.location.origin+data, '_blank');
+            //                 success : function(data){
+            //                 window.open(window.location.origin+data, '_blank');
 
                                                 
-                            console.log(data);
-                                    }
-                                })
+            //                 console.log(data);
+            //                         }
+            //                     })
 
-            });
+            // });
 
 
             });
@@ -376,7 +391,7 @@
 
 
             // Date Rangepicker Function using Ajax call 
-            $('.form-control').click(function(){
+            $('.form-control').on('change',function(){
                 $('.input-daterange').datepicker({
                     todayBtn:'linked',
                     foramt:'yyyy-mm-dd',
@@ -400,6 +415,12 @@
                                 data: 'id'
                                 },
                                 {
+                                    data: 'Client_Name'
+                                },
+                                {
+                                    data: 'Client_Email'
+                                },
+                                {
                                     data: 'Project_Title'
                                 },
                                 {
@@ -407,6 +428,9 @@
                                 },
                                 {
                                     data: 'Project_Type'
+                                },
+                                {
+                                    data: 'Project_Status'
                                 },
                                 {
                                     data: 'created_at'
@@ -422,9 +446,16 @@
                                 
                             ],
 
+                            method:"POST",
+                            // data:{checked:checked},
+                            
+                            success : function(data){
+                            window.open(window.location.origin+data, '_blank');
 
+                                                
+                            console.log(data);
 
-
+                            }
 
                     })
                 }

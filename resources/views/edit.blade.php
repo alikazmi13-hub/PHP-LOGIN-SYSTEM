@@ -141,11 +141,11 @@
                     </div>
                     <div class="form-group col-md-12 ">
                         <label for="">Project Description</label>
-                        <textarea type="text" name="Project_Description" cols="30" rows="7" id="Project_Description"
+                        <textarea type="text" name="Usecase_Description" cols="30" rows="7" id="Usecase_Description"
                             class=" form-control text-dark
-                            {{($errors->any()  &&  $errors->first('Project_Description') )? 'is-invalid': ''}}">"{{old('Project_Description',$project->Project_Description)}}</textarea>
+                            {{($errors->any()  &&  $errors->first('Usecase_Description') )? 'is-invalid': ''}}">"{{old('Usecase_Description',$project->Usecase_Description)}}</textarea>
                         @if($errors->any())
-                        <p class="invalid-feedback">{{$errors->first('Project_Description')}}</p>
+                        <p class="invalid-feedback">{{$errors->first('Usecase_Description')}}</p>
 
                         @endif
 
