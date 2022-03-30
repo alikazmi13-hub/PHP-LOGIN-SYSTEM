@@ -78,7 +78,7 @@
       #pl{
             margin-top:3%;
             text-align:center;
-            font-family: 'Proza Libre', sans-serif;
+           font-family: 'Merriweather', serif;
             font-size:30px;
             
          
@@ -119,7 +119,10 @@
             /* background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%); */
             border-style:none;
         }
-        
+        #h5{
+            font-family: 'Merriweather', serif;
+            background-color:#F9F9F8;
+        }
         #datatable_length  {
         width:10%;
         height:0px;
@@ -172,7 +175,7 @@
               <div class="col-md-12">
                   <div class="card">
                       <div class="card header bg-light text-black text-center ">
-                          <h5>Get The Records Between Two Dates</h5>
+                          <h5 id="h5">Get The Records Between Two Dates</h5>
                      </div>
                     <div class="card-body">
                         <!-- <form action="" method="Get">  -->
@@ -344,30 +347,30 @@
 
 
                 // Landscape View FOR MULTIPLE PAGES
-            //         $("#pdf_landscape").click(function(e) {
-            //             e.preventDefault();
-            //             var checked = [];
+                    $("#pdf_landscape").click(function(e) {
+                        e.preventDefault();
+                        var checked = [];
 
 
-            //             $("input:checkbox[name=ch]:checked").click(function() {
-            //                 checked.push($(this).attr('data-id'));
-            //         });
-            //             $.ajax({
+                        $("input:checkbox[name=ch]:checked").click(function() {
+                            checked.push($(this).attr('data-id'));
+                    });
+                        $.ajax({
                                 
-            //                 headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            //                 url:"/projects/pdflandscape",
-            //                 method:"POST",
-            //                 data:{checked:checked},
+                            headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            url:"/projects/pdflandscape",
+                            method:"POST",
+                            data:{checked:checked},
                             
-            //                 success : function(data){
-            //                 window.open(window.location.origin+data, '_blank');
+                            success : function(data){
+                            window.open(window.location.origin+data, '_blank');
 
                                                 
-            //                 console.log(data);
-            //                         }
-            //                     })
+                            console.log(data);
+                                    }
+                                })
 
-            // });
+            });
 
 
             });

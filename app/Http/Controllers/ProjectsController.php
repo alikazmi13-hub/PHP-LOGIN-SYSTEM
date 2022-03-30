@@ -243,33 +243,36 @@ class ProjectsController extends Controller
                 
                
                     $projects = Project::whereIn('id',[$request->id])->get();
-               
+                     $checked=[];
+
                     $singlepdf = [
                         'items' => $projects,
                      ];
                     
-                // here we handover this data array to loadview to show data in view
-                
-                    $mylandscape = PDF::loadView('pdflandscape', $singlepdf)->setPaper('A4', 'landscape');;
-                    
-                // pdf Stream
-                 return $mylandscape->stream('mylandscape.pdf');
 
-                // Save With This Name
-                $name = "landscapes-".time().".pdf";
+                    
+
+                     
+                // here we handover this data array to loadview to show data in view
+                    $mylandscape = PDF::loadView('pdflandscape', $singlepdf)->setPaper('A4', 'landscape');;
+                            
+                        // pdf Stream
+                        return $mylandscape->stream('mylandscape.pdf');
+
+                        // Save With This Name
+                        $name = "landscapes-".time().".pdf";
 
     
-             //  Save in 
-                 Storage::put('public/landscapes/'.$name, $mylandscape->output());
-                
-                    //  window.open($mylandscape, '_blank');
-
+                    //  Save in 
+                        Storage::put('public/landscapes/'.$name, $mylandscape->output());
+                        
+                        
                  
-                    }
-
+                    
+                }
 
                     
-                  
+
 
 
 
