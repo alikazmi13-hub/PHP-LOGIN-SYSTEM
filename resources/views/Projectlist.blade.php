@@ -141,7 +141,13 @@
             margin-left:72%;
         }
         #pdf{
-            margin-bottom:2%;
+            margin-bottom:0%;
+        }
+
+        .card-btn{
+            width:40%;
+            text-align:left;
+            margin-top:0%;
         }
     </style>
   <!-- Project Title -->
@@ -213,14 +219,17 @@
         <div> 
      <div> 
     </section>
+   <div class="card-btn">
     <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >Generate PDF</a> 
-     <!-- <button  href="" id="pdf-landscape " class="btn btn-danger btn-sm">Single PDf</button>
-     -->
-  
-   
-    <a href="{{route('projects.add')}}" class="bi bi-trash"></a>
+    
+    <a  href="" id="multiplepdf" class="btn btn-danger btn-sm multipage">Single PDf</a>
+    
+    <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">Add Project</a>
+    
+    </div>
 
-   
+
+
     <table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
     <thead class="thead ">
             <tr>
@@ -255,12 +264,11 @@
    
 
         $(document).ready(function()  {
-                
             var table = $('#datatable').DataTable({
                     processing: true,
                     serverSide: true,
                     ordering:true,
-                    
+
                     columnDefs: [ {
                     targets: 0,
                     orderable: false
@@ -319,9 +327,10 @@
                 $(".view_selected").click(function(e) {
                     e.preventDefault();
                     var checked = [];
-
+                    
                 $("input:checkbox[name=ch]:checked").each(function() {
                         checked.push($(this).attr('data-id'));
+                        console.log(checked);
                 });
 
 
@@ -338,7 +347,7 @@
                         window.open(window.location.origin+data, '_blank');
 
                                             
-                        console.log(data);
+                        // console.log(data);
                                 }
                             });
                     
@@ -347,30 +356,31 @@
 
 
                 // Landscape View FOR MULTIPLE PAGES
-                    $("#pdf_landscape").click(function(e) {
-                        e.preventDefault();
-                        var checked = [];
+         $("#multiplepdf").click(function(e) {
+                    e.preventDefault();
+                    var selected = [];
+                    
+                $("input:checkbox[name=ch]:checked").each(function() {
+                        selected.push($(this).attr('data-id'));
+                        
+                });
 
+                $.ajax({
+                        
+                    headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url:"/projects/m_pdf/",
+                    method:"POST",
+                    data:{selected:selected},
+                    
+                    success : function(data){
+                    window.open(window.location.origin+data, '_blank');
 
-                        $("input:checkbox[name=ch]:checked").click(function() {
-                            checked.push($(this).attr('data-id'));
-                    });
-                        $.ajax({
-                                
-                            headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                            url:"/projects/pdflandscape",
-                            method:"POST",
-                            data:{checked:checked},
-                            
-                            success : function(data){
-                            window.open(window.location.origin+data, '_blank');
+                                        
+                    //  console.log(data);
+                            }
+                        })
 
-                                                
-                            console.log(data);
-                                    }
-                                })
-
-            });
+    });
 
 
             });

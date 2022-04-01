@@ -216,7 +216,7 @@ class ProjectsController extends Controller
                     ];
                     
                     // here we handover this data array to loadview to show data in view
-                    $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'portrait');;
+                    $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'landscape');;
                     
                 //  here we are doing concating with pdf name + time + ext to save file with name 
                     $name = "pdf-".time().".pdf";
@@ -243,18 +243,15 @@ class ProjectsController extends Controller
                 
                
                     $projects = Project::whereIn('id',[$request->id])->get();
-                     $checked=[];
+                     
 
                     $singlepdf = [
                         'items' => $projects,
                      ];
                     
 
-                    
-
-                     
                 // here we handover this data array to loadview to show data in view
-                    $mylandscape = PDF::loadView('pdflandscape', $singlepdf)->setPaper('A4', 'landscape');;
+                    $mylandscape = PDF::loadView('pdflandscape', $singlepdf)->setPaper('A4', 'landscape');
                             
                         // pdf Stream
                         return $mylandscape->stream('mylandscape.pdf');
@@ -272,6 +269,44 @@ class ProjectsController extends Controller
                 }
 
                     
+
+
+////////////////   Multiplepdf   ////////////////////////////
+
+        public function Multiplepdf(Request $request){
+      
+        //it is getting all the data from database
+             $projects = Project:: whereIn('id',[$request->input('selected')])->get();
+           
+            
+        //   data is passing data to view as array
+                 
+             $multi = [ 'multiple'  => $projects];
+        
+             
+                foreach($projects as $hours)
+                    {
+                    $multipdf = PDF :: loadView('m_pdf', array("multi"=>$multi))->setPaper('a4', 'Landscape');
+                    
+                    }
+                     return $multipdf->Stream('multipdf.pdf');
+                        // return $multipdf->stream();
+
+
+
+
+           
+        // Save With This Name
+                 $name = "multipdf-".time().".pdf";
+
+        //  Save in 
+                Storage::put('public/multipdf/'.$name, $multipdf->output());
+              
+            //    return $multipdf->stream();
+
+
+                }
+
 
 
 

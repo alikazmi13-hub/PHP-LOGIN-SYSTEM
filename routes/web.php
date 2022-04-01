@@ -52,9 +52,7 @@ Route::get('/Admin', function () {
 
 // YAJRA DATATABLES route for PROJECT FORM
 Route::get('/projects', [App\Http\Controllers\ProjectsController::class, 'show'])->name('projects');
-// TECHNOLOGIES ROUTE
-// Route::get('/projects/pdflandscape', [App\Http\Controllers\ProjectsController::class, 'tech'])->name('projects.pdf_landscape');
-
+ 
 //YAJRA DATATABLES function calling for PROJECT FORM
 Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'getData'])->name('projects.list');
 //  Route::post('/projects/pdflandscape', [App\Http\Controllers\ProjectsController::class, 'singlepdf'])->name('projects.pdflandscape');
@@ -63,18 +61,22 @@ Route::get('/projects/list', [App\Http\Controllers\ProjectsController::class, 'g
 Route::get('/projects/add', [App\Http\Controllers\ProjectsController::class, 'addProject'])->name('projects.add');
 //Edit Route for PROJECT FORM
 Route::get('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::class, 'editProject'])->name('projects.edit');
+
 // UPDATE IN DATABASE for PROJECT FORM 
 Route::post('/projects/edit/{id}', [App\Http\Controllers\ProjectsController::class, 'updateProject'])->name('projects.update');
+
 // Delete Record for PROJECT FORM
 Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::class, 'deleteProject'])->name('projects.delete');
 // PDF GENERATE
 Route::GET('/projects/pdflandscape/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_landscape'])->name('projects.pdflandscape');
+
 // PDF Generate on checked
 Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
 
+// MUltiple Pages Landscpaes 
+ Route::post('/projects/m_pdf', [App\Http\Controllers\ProjectsController::class, 'Multiplepdf'])->name('projects.m_pdf');
 
-
-// Route::get('/projects-data', [App\Http\Controllers\ProjectsController::class, 'getData']);
+ Route::get('/projects/m_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'Multiplepdf'])->name('projects.m_pdf');
 
 // post Method For Form submission
 Route::post('/projects/add', [App\Http\Controllers\ProjectsController::class, 'saveProject'])->name('projects.saveProject');
@@ -100,18 +102,22 @@ Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, '
 |---------------------------------------------------------------------------------------------------------------------------
 |
 */
-Route::group(['prefix'=> 'admin'],function(){
-Route::group(['midleware'=>'admin.guest'],function(){
-    // Admin guest will login view route 
+    Route::group(['prefix'=> 'admin'],function(){
+
+    Route::group(['midleware'=>'admin.guest'],function(){
+
+        // Admin guest will login view route 
     Route::view ('/login','admin.login')->name('admin.login');
+
     // It will authenticate guest admin login
     Route::post('/login',[App\Http\Controllers\AdminController::class ,'authenticate'])->name('admin.auth');
 
 
     });
+    
     // This Route will use by admin,
-    Route::group(['midleware','admin.auth'],function(){
-        // Admin will login and after login it wil show dashboard
+        Route::group(['midleware','admin.auth'],function(){
+    // Admin will login and after login it wil show dashboard
         Route::get('/Dashboard',[App\Http\Controllers\DashboardController :: class, 'dashboard'])->name('admin.dashboard');
     });
     // post method for admin logout
