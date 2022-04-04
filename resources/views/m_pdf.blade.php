@@ -26,18 +26,20 @@
 
 
 .body{
-  background-color: #FFFFFF ;
-  color:white;
-  font-family: 'Inconsolata', monospace;
+    background-color: #000000;;
+    color:white;
+    font-family: 'Inconsolata', monospace;
+   width:100%;
+  height:100%;
     }
     .col-md-12{
-       background-color: #651FFF;  /* fallback for old browsers */
+       /* fallback for old browsers */
        font-family: 'Roboto Slab', serif;
        
       }
      .card-header{
-        background-color:#F5F5F5;
-        color:#651FFF;
+        /* background-color:#F5F5F5; */
+        color:#FFFFFF;
        
       }
       .page-break {
@@ -45,7 +47,8 @@
 }
      .card-title{
       font-family: 'Merriweather', serif;
-      font-size:30px;
+      font-size:35px;
+      text-align:center;
      }
      #mainimg{
        width:400px;
@@ -83,53 +86,44 @@
 
 <body class="body">
 
+     
+
   <!-- image logo -->
-  <img id="logo" src="Images/slogo 2.png" style="width:150px; height:30px;">
+  <img id="logo" src="Images/whitelogo.png" style="width:250px; height:50px;">
     
        
 <!-- Main Column 12 -->
         
-<div class="col-md-12  mt-1">
+<div class="col-md-12 mt-1">
               
-@foreach($multi['multiple'] as $newitem)
+      @foreach($multi['multiple'] as $newitem)
+
+       
           <div class="card-header mt-1">
-          
-          <h5 class="card-title">{{$newitem->Project_Title}}</h5>
-          
-        </div>
+            <h5 class="card-title">{{$newitem->Project_Title}}</h5>
+          </div>
             
-            <div class="card-body mt-1">
-             <h5>{{$newitem->Usecase_Description}}</h5>
-              <img id="mainimg" src="Images/main2.jpg"class="rounded" alt="...">
+          <div class="card-body mt-1">
+            <h5>{{$newitem->Usecase_Description}}</h5>
+             <img id="mainimg" src="Images/main2.jpg"class="rounded" alt="...">
            
             
             <div class="flex">
-            <h5 id="tec">TECHNOLOGIES</h5>
-            <img src="Images/main 3.png" class="rounded" alt="...">
+              <h5 id="tec">TECHNOLOGIES</h5>
+              <img src="Images/main 3.png" class="rounded" alt="...">
             </div>
-
- @endforeach
-           </div>
-
-          <p style="page-break-before: always;"></p>
-
-           
-          <h1>Page 1</h1>
-<div class="page-break"></div>
-<h1>Page 2</h1>
-       
-         
-     
           
-    </div>
       
-     
+          </div>
 
+<div class="page-break">
+ 
+</div>
 
+       @endforeach
+      </div>
 
-
- <h5 id="tec">TECHNOLOGIES</h5>
-
+      
 
    </body>
 

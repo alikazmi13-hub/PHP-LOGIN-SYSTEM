@@ -2,10 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+       <img id="logo" src="Images/logo 2.png" style="width:180px; height:40px;">
+    
+    
+       <div class="row justify-content-center">
         <div class="col-md-8">
+            
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
+                
 
                 <div class="card-body">
                     @if (session('status'))
@@ -19,5 +24,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

@@ -220,9 +220,8 @@
      <div> 
     </section>
    <div class="card-btn">
-    <a href="" class="btn btn-success btn-sm view_selected" id="pdf" >Generate PDF</a> 
-    
-    <a  href="" id="multiplepdf" class="btn btn-danger btn-sm multipage">Single PDf</a>
+   
+    <a  href="" id="multiplepdf" class="btn btn-danger btn-sm multipage">PDF Records</a>
     
     <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">Add Project</a>
     
@@ -323,62 +322,37 @@
                     
                 });
             
-                // generate pdf 
-                $(".view_selected").click(function(e) {
-                    e.preventDefault();
-                    var checked = [];
-                    
-                $("input:checkbox[name=ch]:checked").each(function() {
-                        checked.push($(this).attr('data-id'));
-                        console.log(checked);
-                });
-
-
-        // PDF FOR DATATABLES ONLY
-
-                $.ajax({
-                        
-                        headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        url:"/projects/pdf",
-                        method:"POST",
-                        data:{checked:checked},
-                        
-                        success : function(data){
-                        window.open(window.location.origin+data, '_blank');
-
-                                            
-                        // console.log(data);
-                                }
-                            });
-                    
-                
-                    }) ;
+          
 
 
                 // Landscape View FOR MULTIPLE PAGES
          $("#multiplepdf").click(function(e) {
-                    e.preventDefault();
-                    var selected = [];
-                    
-                $("input:checkbox[name=ch]:checked").each(function() {
-                        selected.push($(this).attr('data-id'));
+            e.preventDefault();
+                var Checked = [];
+
+            $("input:checkbox[name=ch]:checked").each(function() {
+                Checked.push($(this).attr('data-id'));
                         
                 });
+                // console.log('Checked',Checked.join())
+                 window.open('http://localhost:8000/projects/m_pdf?ids='+Checked.join(), '_blank');
 
-                $.ajax({
+
+                // $.ajax({
                         
-                    headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url:"/projects/m_pdf/",
-                    method:"POST",
-                    data:{selected:selected},
+                //     headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                //     url:"/projects/m_pdf",
+                //     method:"POST",
+                //     data:{Checked:Checked},
                     
-                    success : function(data){
-                    window.open(window.location.origin+data, '_blank');
+                //     success : function(data){
+                //     window.open('http://localhost:8000/projects/m_pdf?ids='+Checked.join(), '_blank');
+
 
                                         
-                    //  console.log(data);
-                            }
-                        })
+                //     //  console.log(data);
+                //             }
+                //         })
 
     });
 

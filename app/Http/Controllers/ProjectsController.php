@@ -25,12 +25,7 @@ class ProjectsController extends Controller
         return view ('add',$data);
 
         }
-    //     // function index(){
-    //     //     return view ('newproject');
-    //     // }
-    //     //  function tech(){
-    //     //  return view('pdf_landscape');  
-    // }
+    
         
 
         // Save Project Function
@@ -101,21 +96,6 @@ class ProjectsController extends Controller
                         // dd($data);
                         return Datatables::of($data)
                         
-
-                        
-                                            
-
-
-
-
-
-
-
-
-
-                    
-                   
-                    
                     ->addColumn('id', function($row){
                         $actionBtn = '<input type="checkbox" id="'.$row->id.'" name="ch" class=" project_check" data-id="'.$row->id.'"/>';
                         return $actionBtn;
@@ -171,7 +151,7 @@ class ProjectsController extends Controller
                 'Project_Technology'=>'required',
                 'Project_Type'=>'required|',
                 'Project_Status'=>'required| max:100',
-                'Usecase_Description'=>'required|  max:524288.'
+                'Usecase_Description'=>'required|  max:150.'
             ]);
 
             if($validator->passes()){
@@ -200,49 +180,11 @@ class ProjectsController extends Controller
     
 
 
-                //  Generate PDf on Checked for pdf.blade.php
-
-                public function pdfView(Request $request){
-                
-
-                // METHOD 01 TO SAVE IN PUBLIC FOLDER PDF
-
-                //it is getting all the data from database
-                    $projects = Project:: whereIn('id',$request->input("checked"))->get();
-                    
-                //   data is passing data to view as array
-                    $data = [
-                        'index'    => $projects,
-                    ];
-                    
-                    // here we handover this data array to loadview to show data in view
-                    $pdf = PDF::loadView('pdf', $data)->setPaper('a4', 'landscape');;
-                    
-                //  here we are doing concating with pdf name + time + ext to save file with name 
-                    $name = "pdf-".time().".pdf";
-                    
-                // moving pdf to storage
-                    Storage::put('public/storage/'.$name, $pdf->output());
-
-            // Save Pdf file in Public/storage/storage
-                    return '/storage/storage/'.$name;
-                    
-                    
-
-                    // print_r($project);
-                        //  exit;
-
-                }
-
-
-
-
-      
-
-                   public function pdf_landscape(Request $request){
+               
+            public function pdf_landscape(Request $request){
                 
                
-                    $projects = Project::whereIn('id',[$request->id])->get();
+                $projects = Project::whereIn('id',[$request->id])->get();
                      
 
                     $singlepdf = [
@@ -263,9 +205,6 @@ class ProjectsController extends Controller
                     //  Save in 
                         Storage::put('public/landscapes/'.$name, $mylandscape->output());
                         
-                        
-                 
-                    
                 }
 
                     
@@ -276,34 +215,30 @@ class ProjectsController extends Controller
         public function Multiplepdf(Request $request){
       
         //it is getting all the data from database
-             $projects = Project:: whereIn('id',[$request->input('selected')])->get();
+            $projects = Project:: whereIn('id',explode(',', $request->input('ids')))->get();
            
             
         //   data is passing data to view as array
-                 
              $multi = [ 'multiple'  => $projects];
-        
-             
+
+
                 foreach($projects as $hours)
-                    {
-                    $multipdf = PDF :: loadView('m_pdf', array("multi"=>$multi))->setPaper('a4', 'Landscape');
-                    
-                    }
-                     return $multipdf->Stream('multipdf.pdf');
-                        // return $multipdf->stream();
+               
+                {
+                $multipdf = PDF :: loadView('m_pdf', array("multi"=>$multi))->setPaper('A4', 'Landscape');
+                
+                }
+               
+                    return $multipdf->Stream();
 
+                
+                    // Save With This Name
+                     $name = "alikazmi-".time().".pdf";
 
-
-
-           
-        // Save With This Name
-                 $name = "multipdf-".time().".pdf";
-
-        //  Save in 
+                //  Save in 
                 Storage::put('public/multipdf/'.$name, $multipdf->output());
-              
-            //    return $multipdf->stream();
-
+                
+                    
 
                 }
 

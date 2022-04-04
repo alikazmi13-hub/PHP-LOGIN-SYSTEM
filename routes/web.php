@@ -71,12 +71,13 @@ Route::get('/projects/delete/{id}', [App\Http\Controllers\ProjectsController::cl
 Route::GET('/projects/pdflandscape/{id}', [App\Http\Controllers\ProjectsController::class, 'pdf_landscape'])->name('projects.pdflandscape');
 
 // PDF Generate on checked
-Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
+// Route::post('/projects/pdf', [App\Http\Controllers\ProjectsController::class, 'pdfView'])->name('projects.pdf');
 
 // MUltiple Pages Landscpaes 
- Route::post('/projects/m_pdf', [App\Http\Controllers\ProjectsController::class, 'Multiplepdf'])->name('projects.m_pdf');
+ Route::POST('/projects/m_pdf', [App\Http\Controllers\ProjectsController::class, 'Multiplepdf'])->name('projects.m_pdf');
+ 
+ Route::GET('/projects/m_pdf', [App\Http\Controllers\ProjectsController::class, 'Multiplepdf'])->name('projects.m_pdf');
 
- Route::get('/projects/m_pdf/{id}', [App\Http\Controllers\ProjectsController::class, 'Multiplepdf'])->name('projects.m_pdf');
 
 // post Method For Form submission
 Route::post('/projects/add', [App\Http\Controllers\ProjectsController::class, 'saveProject'])->name('projects.saveProject');
