@@ -186,30 +186,26 @@
                     <div class="card-body">
                         <!-- <form action="" method="Get">  -->
                    
-                                     <div class="row justify-content-center input-daterange" >
+                         <div class="row justify-content-center input-daterange" >
                                         <div class="col-md-4">   
                                                 <div class="form-group">
-                                               
-                                                <input type="text" id="from_date" class=" fa-solid fa-calendar date form-control dates"  name="from_date"  placeholder="From Date">
+                                                     <input type="text" id="from_date" class=" fa-solid fa-calendar date form-control dates"  name="from_date"  placeholder="From Date">
                                                 </div>
                                         </div>
                                             
                                             <div class="col-md-4">   
                                                 <div class="form-group">
-                                                
-                                                <input type="text" id="to_date" class=" fa-solid fa-calendar date form-control dates"  name="to_date"  placeholder="To Date">
-                                                   
-                                            </div>
+                                                     <input type="text" id="to_date" class=" fa-solid fa-calendar date form-control dates"  name="to_date"  placeholder="To Date">
+                                                 </div>
                                             </div>
                                            
                                             
                                             <div class="col-md-4">   
                                                 <div class="form-group">
-                                                <i class="bi bi-calendar"></i><br>
-                                                <button  href="" id="btn-filter" class="btn btn-primary">Filter</button>
-                                                
+                                                    <i class="bi bi-calendar"></i>
+                                                        <button  href="" id="btn-filter" class="btn btn-primary btn-sm">Filter</button>
+                                                </div>
                                             </div>
-                                        </div>
                               </div>
                          <div>
                     <div> 
@@ -219,17 +215,14 @@
         <div> 
      <div> 
     </section>
+
    <div class="card-btn">
-   
-    <a  href="" id="multiplepdf" class="btn btn-danger btn-sm multipage">PDF Records</a>
-    
-    <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">Add Project</a>
-    
+     <a  href="" id="multiplepdf" class="btn btn-primary btn-sm multipage">Generate PDF</a>
+        <a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">New Project</a>
     </div>
 
 
-
-    <table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
+<table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
     <thead class="thead ">
             <tr>
                 <th><input type="checkbox"  name="main_checkbox" class="project_check" data-id="'.$row->id.'"/></th>
@@ -309,13 +302,7 @@
                                     orderable: false,
                                     searchable: false,
                                 },
-                        //    {
-                        //     data: 'action_2',
-                        //     name: 'actionBtn2',
-                        //      defaultContent: '<i class="fa fa-pencil"/>',
-                        //     orderable: false,
-                        //     searchable: false,
-                        // },
+                        
                         
                         
                     ],
@@ -361,17 +348,17 @@
       
       
             // Main Checkbox to select all Rows
-                $(document).on('click','input[name="main_checkbox"]',function(){
-                    if(this.checked){
-                        $('input[name="ch"]').each(function(){
-                            this.checked = true;
-                        });
+            $(document).on('click','input[name="main_checkbox"]',function(){
+                if(this.checked){
+                    $('input[name="ch"]').each(function(){
+                        this.checked = true;
+                });
                     }else{
                         $('input[name="ch"]').each(function(){
                             this.checked = false;
                     });
                 }
-                });
+             });
 
 
        
@@ -379,7 +366,7 @@
 
 
             // Date Rangepicker Function using Ajax call 
-            $('input').on('click',function(){
+            $('.dates').on('click',function(){
                 $('.input-daterange').datepicker({
                     todayBtn:'linked',
                     foramt:'yyyy-mm-dd',
@@ -388,7 +375,7 @@
                 // it will load data in datatables 
                 load_data();
                 // load data table for ajax call server side
-                function load_data(from_date = '', to_date = '')
+            function load_data(from_date = '', to_date = '')
                 {
                  var table = $('#datatable').DataTable({
                         Process:true,

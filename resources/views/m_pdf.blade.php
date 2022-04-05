@@ -26,105 +26,107 @@
 
 
 .body{
-    background-color: #000000;;
-    color:white;
-    font-family: 'Inconsolata', monospace;
-   width:100%;
-  height:100%;
+    padding:0;
+    width:100%;
+    margin:0;
+    height:100%;
+    
     }
-    .col-md-12{
-       /* fallback for old browsers */
-       font-family: 'Roboto Slab', serif;
-       
+    
+    .container{
+     
+      padding:0;
+      width:100%;
+      margin:0;
+      height:100%;
       }
-     .card-header{
-        /* background-color:#F5F5F5; */
-        color:#FFFFFF;
-       
+    #logo{
+        background-color:#FFFFFF;
+        padding:40%;
+        margin-top:10%;
+    }
+    #mh{
+        font-size:24px;
+        margin-left: 45%;
+        margin-top: -20%;
+        width:100%;
+        text-align: center;
+        border: 1px solid red;
+    }
+      #title{
+        font-size:34px;
+        color:white;
+        background-color:red;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        text-align: center;
+        
       }
-      .page-break {
-    page-break-after: always;
-}
-     .card-title{
-      font-family: 'Merriweather', serif;
-      font-size:35px;
-      text-align:center;
-     }
-     #mainimg{
-       width:400px;
-       height:250px;
-       margin-left:1%;
-       margin-top:3%;
-       opacity:0.9;
-       border:solid;
-     }
-     .card-body{
-       /* font-family: 'Merriweather', serif; */
-       letter-spacing: 3px;
-       text-align:justify;
-     }
-     .flex{
-       float:right;
-       margin-right:8%;
-       text-align:right;
-       margin-bottom:25px;
-       width:40%;
-       margin-top:10px;
-       height:30%;
-     }
-     .rounded{
-       width:250px;
-       height:200px;
       
-     }
-     #tec{
-       font-family: 'Merriweather', serif;
-      font-size:30px;
-     }
+      .col-md-12{
+        /* background-color:red; */
+        width:100%;
+        margin-top:0%;
+       
+
+      }
+      #description{
+        font-size:18px;
+        padding-left: 0%;
+        margin-top: 1%;
+        text-align: justify;
+        
+      }
+      #tec{
+        border:1rm solid red;
+      }
+
+
+
+
+
+
+
+
+
+     
+      .page-break {
+      page-break-after: always;
+      }
+   
+
         </style>
   </head>
 
 <body class="body">
+  @foreach($multi['multiple'] as $newitem)
+   <!-- image logo -->
+   <div class="container">
+      <img id="logo" src="Images/logo 2.png" style="width:550px; height:100px;">
+      <h5 id="mh">We design and build secure, resilient software 
+      for companies that need to scale.</h5>
+      <!-- Pages Break -->
+      
 
-     
-
-  <!-- image logo -->
-  <img id="logo" src="Images/whitelogo.png" style="width:250px; height:50px;">
-    
-       
-<!-- Main Column 12 -->
-        
-<div class="col-md-12 mt-1">
-              
-      @foreach($multi['multiple'] as $newitem)
-
-       
-          <div class="card-header mt-1">
-            <h5 class="card-title">{{$newitem->Project_Title}}</h5>
-          </div>
-            
-          <div class="card-body mt-1">
-            <h5>{{$newitem->Usecase_Description}}</h5>
-             <img id="mainimg" src="Images/main2.jpg"class="rounded" alt="...">
-           
-            
-            <div class="flex">
-              <h5 id="tec">TECHNOLOGIES</h5>
-              <img src="Images/main 3.png" class="rounded" alt="...">
+      <!-- Data Body -->
+      <div class="page-break">Break</div>
+       <div class="row">
+          <h5 id="title">{{$newitem->Project_Title}}</h5>
             </div>
-          
+
+          <div class="col-md-12">
+        <p id="description">{{$newitem->Usecase_Description}}</p>
+          <br>
+          <h5>Technology</h5>
+          <p id="tec">{{$newitem->Project_Technology}}</p>
       
-          </div>
-
-<div class="page-break">
- 
-</div>
-
-       @endforeach
       </div>
-
-      
-
-   </body>
+    
+   
+    
+      @endforeach
+  </div>
+ <div class="page-break">Break</div>
+</body>
 
 </html>

@@ -233,10 +233,10 @@ class ProjectsController extends Controller
 
                 
                     // Save With This Name
-                     $name = "alikazmi-".time().".pdf";
+                //      $name = "alikazmi-".time().".pdf";
 
-                //  Save in 
-                Storage::put('public/multipdf/'.$name, $multipdf->output());
+                // //  Save in 
+                // Storage::put('public/multipdf/'.$name, $multipdf->output());
                 
                     
 
