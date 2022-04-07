@@ -11,24 +11,28 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font Family -->
 
+    <link rel=“preconnect” href=“https://fonts.googleapis.com”>
+<link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
+<link href=“https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap” rel=“stylesheet”>
 
     <title>landscape pdf</title>
     <style>
-    .body {}
+    .body {
+        font-family: 'Inconsolata', monospace;
+        font-weight:400px;
+    }
 
     .container {
         padding: 0;
         width: 100% !important;
         margin: 0;
-
-        height: 100%;
-
-    }
+       }
 
     #logo {
         background-color: #FFFFFF;
-        padding: 40%;
+        padding: 20% 40% 30%;
         margin-top: 10% !important;
     }
 
@@ -53,7 +57,6 @@
     }
 
     .row {
-
         width: 100%;
         margin-left: 0%;
         margin-top: 0 !important;
@@ -77,22 +80,19 @@
         float: right;
         height: 100%;
     }
-
-
-    #tec {
-        font-size: 18px;
-        letter-spacing: 1px;
-        width: 300px;
-        padding: 10px;
-        margin: 0px;
-        text-align: justify;
-    }
-
     .primary {
-        /* background-color:#000000;
-        color:#FFFFFF; */
-        width: 50%;
+        margin-bottom: 10px;
     }
+    .badges {
+        font-size: 16px;
+        padding: 4px 8px 8px;
+        border-radius: 20px;
+        background: #ddd;
+        color: #000;
+        font-weight: bold;
+        display: inline-block;
+    }
+
 
     #name {
         font-size: 18px;
@@ -103,7 +103,19 @@
         text-align: justify;
 
     }
-
+    .projects-list {
+        position: relative;
+    }
+    .mini-logo {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .mini-logo img {
+        width: 40px;
+        height: auto;
+        display: block;
+    }
     .page-break {
         page-break-after: always;
         text-align: center;
@@ -113,41 +125,44 @@
 </head>
 
 <body class="body">
-    @foreach($multi['multiple'] as $newitem)
-
 
     <!-- image logo -->
-    <div class="container">
-        <img id="logo" src="Images/logo 2.png" style="width:550px; height:100px;">
-        <h5 id="mh">We Design And Build Secure, Resilient Software
-            For Companies That Need To Scale.</h5>
-        <! <div class="page-break">
-    </div>
+        <div class="container">
+            <img id="logo" src="Images/logo 2.png" style="width:550px; height:100px;">
+            <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
+            <div class="page-break"></div>
+        </div>
 
-    <!-- Data Body -->
-    <div class="row ">
-        <h5 id="title" class="title">{{$newitem->Project_Title}}</h5>
-        <br>
-        <h5 class="primary">Name</h5>
-        <p id="name">{{$newitem->Client_Name}}</p>
-        <div class="col-md-8">
-            <h5 class="primary">Usecase Description</h5>
-            <p id="description">{{$newitem->Usecase_Description}}</p>
+    @foreach($multi['multiple'] as $newitem)
+    <div class="projects-list">
+        <div class="mini-logo">
+            <img src="Images/logo.png">
+        </div>
+        <!-- Data Body -->
+        <div class="row">
+            
+            <h5 id="title" class="title">{{$newitem->Project_Title}}</h5>
             <br>
-            <h5 class="primary">Technology</h5>
-            <p id="tec">{{$newitem->Project_Technology}}</p>
-            <br>
-            <h5 class="primary">Project Type</h5>
-            <p id="tec">{{$newitem->Project_Type}}</p>
+            
+            <p id="name">{{$newitem->Client_Name}}</p>
+            <div class="col-md-8">
+                
+                <p id="description">{{$newitem->Usecase_Description}}</p>
+                <br><br>
+                
+                <div class="badges" id="tec">{{$newitem->Project_Technology}}</div>
+                <br><br>
+                
+                <div class="" id="tec">{{$newitem->Project_Type}}</div>
+
+            </div>
 
         </div>
 
+
+        <div class="page-break"></div>
     </div>
-
-
     @endforeach
-    </div>
-    <div class="page-break">Break</div>
 </body>
 
 </html>
