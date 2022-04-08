@@ -19,29 +19,40 @@
     <title>landscape pdf</title>
    
    <style>
-    .body {
-        font-family: 'Inconsolata', monospace;
+       
+    body {
+        
         font-weight:600px;
+        padding: 0;
+        margin: 0;
         
        }
 
-    .container {
+        @page { 
+            margin: 0px; 
+            font-family: 'Open Sans', sans-serif;
+        }
+        .container {
         padding: 0;
         margin: 0;
     }
     .main-bg {
         width: 100%;
-        height: 680px;
+        height: 100%;
         background-repeat: no-repeat;
         background-image: url("Images/logos/top2.jpg"); 
         background-size: cover;
     }
     .inner-page {
         width: 100%;
-        height: 680px;
+        height: 100%;
         background-repeat: no-repeat;
         background-image: url("Images/logos/inner.jpg"); 
         background-size: cover;
+    }
+    .inner-page .holder {
+        width: 900px;
+        margin: 10% auto;
     }
     .main-bg .container {
         padding: 20%;
@@ -50,25 +61,26 @@
 
     #logo {
         margin-bottom: 20px;
+        margin:6%; 
         
     }
 
     #mh {
+        font-family: "Open Sans", sans-serif;
         font-size: 24px;
         width: 100%;
         letter-spacing: 1px;
         font-weight:600;
         text-align: center;
-        
+        margin-left:0%;
         
     }
 
     #title {
         font-size: 34px;
-        
-        letter-spacing: 2px;
+        font-family: "Open Sans", sans-serif;
         margin-left: 0px 0px;
-        width:93.4% auto;
+        width:100% auto;
         text-align:center;
     }
 
@@ -80,16 +92,14 @@
     }
 
     .col-md-8 {
-        width: 100%;
-        margin-top: 10%;
+        width: 80%;
+        margin: 10% auto;
         
     }
 
     #description {
-        width: 900px;
         padding: 10px;
         margin: 0px;
-        text-align: justify;
     }
 
     .col-md-4 {
@@ -98,9 +108,6 @@
     }
     .primary {
         margin-bottom: 10px;
-    }
-    #title{
-        font-family: 'Open Sans', sans-serif;
     }
     .badges {
         font-size: 16px;
@@ -118,23 +125,23 @@
         width: 300px;
         padding: 20px;
         margin: 2px;
-        text-align: justify;
 
     }
     .projects-list {
         position: relative;
         
+        left:90%;
     }
     .mini-logo {
         position: absolute;
-        bottom: 60px;
-        right:0;
+        bottom: 50px;
         
     }
     .mini-logo img {
         width: 40px;
         height: auto;
         display: block;
+        right:0px;
     }
     .row-2{
     width:100%;
@@ -142,8 +149,8 @@
         
     }
     #logoimg{
-    height:32px;
-    width:32px;
+    height:40px;
+    width:40px;
     background-size:32px;
     display: inline-block;
     }
@@ -164,11 +171,11 @@
     <!-- image logo -->
         <div class="main-bg">
             <div class="container">
-                <img id="logo" src="Images/logo 2.png" style="width:550px; height:100px;">
+                <img id="logo" src="Images/logo 2.png" style="width:580px; height:100px;">
                 <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
             </div>
         </div>
-        <div class="page-break"></div>
+        <!-- <div class="page-break"></div> -->
     @foreach($multi['multiple'] as $newitem)
         <div class="projects-list">
             <div class="mini-logo">
@@ -181,33 +188,28 @@
     
         <!-- Data Body -->
         <div class="inner-page">
-            <div class="row">
             
-            <h5 id="title" class="title">{{$newitem->Project_Title}}</h5>
-            <br>
-        
-            <p id="name">{{$newitem->Client_Name}}</p>
-            <div class="col-md-8">
-                
-                <p id="description">{{$newitem->Usecase_Description}}</p>
-                <br><br>
-                
-                <div class="row-2" id="tec">
-                    @foreach ($techs as $tech)
-                        <img id="logoimg" src="Images/logos/{{strtolower($tech)}}.png" >
-                    @endforeach
+            <div class="holder">
+                <h5 id="title" class="title">{{$newitem->Project_Title}}</h5>
+                <p id="name">{{$newitem->Client_Name}}</p>
                     
-                </div>
-                <br><br>
+                    <p id="description">{{$newitem->Usecase_Description}}</p>
+                    <br><br>
+                    
+                    <div class="row-2" id="tec">
+                        @foreach ($techs as $tech)
+                            <img id="logoimg" src="Images/logos/{{strtolower($tech)}}.png" >
+                        @endforeach
+                        
+                    </div>
+                    <br><br>
 
-                <div class="" id="tec">{{$newitem->Project_Type}}</div>
-
+                    <div class="" id="tec">{{$newitem->Project_Type}}</div>
             </div>
 
         </div>
-        </div>
 
-       <div class="page-break"></div>
+       <!-- <div class="page-break"></div> -->
     @endforeach
 </body>
 
