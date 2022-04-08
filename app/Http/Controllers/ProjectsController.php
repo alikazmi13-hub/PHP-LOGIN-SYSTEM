@@ -223,27 +223,25 @@ class ProjectsController extends Controller
             
 
                 foreach($projects as $hours)
-            ini_set('max_execution_time', '300'); //300 seconds = 5 minutes
-               
+                
                 {
              
-                    $multipdf = PDF :: loadView('m_pdf', array("multi"=>$multi))->setPaper('A4', 'Landscape')->Save('storage/multipdf/alikazmi.pdf');
-                
+                    $multipdf = PDF :: loadView('m_pdf', array("multi"=>$multi))->setPaper('A4', 'Landscape');
                 }
                
                   return $multipdf->Stream();
                 
                 //     // Save With This Name
-                $name = "Muliples".time().".pdf";
+                // $name = "Muliples".time().".pdf";
 
-                // // //  Save in 
-                Storage::put('public/multipdf/'. $multipdf->output());
+                // // // //  Save in 
+                // Storage::put('public/multipdf/'. $multipdf->output());
               
 
                 }
 
 
-
+                
 
 
 

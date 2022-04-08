@@ -149,6 +149,24 @@
             text-align:left;
             margin-top:0%;
         }
+        .mode { 
+            float:right; 
+            margin-top: 20px;
+            margin-right: 20px;
+        } 
+        .change { 
+            cursor: pointer; 
+            border: 1px solid #555; 
+            border-radius: 10%; 
+            width: 20px; 
+            text-align: center; 
+            padding: 8px; 
+            margin-left: 8px; 
+        } 
+        .dark{ 
+            background-color: #222; 
+            color: #e6e6e6; 
+        }
     </style>
   <!-- Project Title -->
 <title>projects</title>
@@ -156,13 +174,19 @@
 <!-- BODY  -->
 
 <body>
+
+
+   
+       
+       
     <!-- <div class="p-3 mb-2 bg-light text-dark"> -->
     <div class="container-fluid">
-    <div id="row">
-    <img id="logo" src="/Images/logo 2.png" width="160px">
-    <h4 id="pl">PROJECTS</h4>
-    </div>
-    @if (Session::has('msg'))
+        <div id="row">
+            <img id="logo" src="/Images/logo 2.png" width="160px">
+                <h4 id="pl">PROJECTS</h4>
+        </div>
+    
+@if (Session::has('msg'))
     <div class="col-sm-3">
         <div class="alert alert-success" role="alert">{{Session::get('msg')}}</div>
     </div>
@@ -246,7 +270,7 @@
      </div>
      <!-- MAIN CONATINER FLUID END -->
     </div>
-        <!-- <meta name="csrf-token" content="{{ csrf_token() }}" /> -->
+    <!-- <meta name="csrf-token" content="{{ csrf_token() }}" /> -->
 </body>
 
 <script>
@@ -325,21 +349,7 @@
                  window.open('http://localhost:8000/projects/m_pdf?ids='+Checked.join(), '_blank');
 
 
-                // $.ajax({
-                        
-                //     headers :{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                //     url:"/projects/m_pdf",
-                //     method:"POST",
-                //     data:{Checked:Checked},
-                    
-                //     success : function(data){
-                //     window.open('http://localhost:8000/projects/m_pdf?ids='+Checked.join(), '_blank');
-
-
-                                        
-                //     //  console.log(data);
-                //             }
-                //         })
+                
 
     });
 
@@ -460,6 +470,15 @@
 });
                 
 
+        $( ".change" ).on("click", function() { 
+            if( $( "body" ).hasClass( "dark" )) { 
+                $( "body" ).removeClass( "dark" ); 
+                $( ".change" ).text( "OFF" ); 
+            } else { 
+                $( "body" ).addClass( "dark" ); 
+                $( ".change" ).text( "ON" ); 
+            } 
+        }); 
 
 
                 
