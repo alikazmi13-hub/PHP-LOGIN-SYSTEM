@@ -187,30 +187,24 @@
     @endphp
     
         <!-- Data Body -->
-        <div class="inner-page">
-            
-            <div class="holder">
-                <h5 id="title" class="title">{{$newitem->Project_Title}}</h5>
+    <div class="inner-page">
+        <div class="holder">
+            <h5 id="title" class="title">{{$newitem->Project_Title}}</h5>
                 <p id="name">{{$newitem->Client_Name}}</p>
-                    
                     <p id="description">{{$newitem->Usecase_Description}}</p>
                     <br><br>
-                    
                     <div class="row-2" id="tec">
                         @foreach ($techs as $tech)
                             <img id="logoimg" src="Images/logos/{{strtolower($tech)}}.png" >
-                        @endforeach
-                        
-                    </div>
-                    <br><br>
-
+                                 @endforeach
+                        </div>
+                 <br><br>
                     <div class="" id="tec">{{$newitem->Project_Type}}</div>
             </div>
 
         </div>
 
-       <!-- <div class="page-break"></div> -->
-    @endforeach
+       @endforeach
 </body>
 
 </html>
