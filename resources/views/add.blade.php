@@ -3,6 +3,7 @@
 
 <head>
         <meta charset="utf-8">
+        <link rel="icon" href="{{ url('/Images/logo.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
         <!-- Tags -->
@@ -259,7 +260,7 @@ $(document).ready(function() {
     });
 
 
-    // array to string 
+    
     
 
 

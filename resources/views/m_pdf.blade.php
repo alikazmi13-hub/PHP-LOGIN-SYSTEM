@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <link rel="icon" href="{{ url('/Images/logo.png') }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS only -->
@@ -32,7 +33,7 @@
             margin: 0px; 
             font-family: 'Open Sans', sans-serif;
         }
-        .container {
+    .container {
         padding: 0;
         margin: 0;
     }

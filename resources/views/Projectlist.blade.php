@@ -1,7 +1,9 @@
     <!DOCTYPE html>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     	<head>
-    		<meta charset="utf-8">
+			<!-- Fevicon -->
+			<link rel="icon" href="{{ url('/Images/logo.png') }}">
+			<meta charset="utf-8">
     		<!-- Responsive -->
     		<meta name="viewport" content="width=device-width, initial-scale=1">
     		<!-- CSRF Token -->
@@ -35,6 +37,7 @@
     			.container-fluid {
     				width: 100%;
     				background-color: #ffffff;
+					
     			}
 
     			#logo {
@@ -140,7 +143,7 @@
     			}
     		</style>
     		<!-- Project Title -->
-    		<title>projects</title>
+    		<title>Projects</title>
     	</head>
     	<body>
     		<div class="container-fluid">
@@ -176,7 +179,7 @@
     											<div class="col-md-4">
     												<div class="form-group">
     													<i class="bi bi-calendar"></i>
-    													<button href="" id="btn-filter" class="btn btn-primary btn-sm">Filter</button>
+    													<button href="" id="btn-filter" class="btn btn-outline-dark btn-sm">Filter</button>
     												</div>
     											</div>
     										</div>
@@ -189,8 +192,8 @@
     															<div>
     				</section>
     				<div class="card-btn">
-    					<a href="" id="multiplepdf" class="btn btn-primary btn-sm multipage">Generate PDF</a>
-    					<a href="{{route('projects.add')}}" class="btn btn-primary btn-sm">New Project</a>
+    					<a href="" id="multiplepdf" class="btn btn-outline-dark btn-sm multipage">Generate PDF</a>
+    					<a href="{{route('projects.add')}}" class="btn btn-outline-dark btn-sm">New Project</a>
     				</div>
     				<table id="datatable" class="table table-bordered  yajra-datatable" data-url="{{route('projects.list')}}">
     					<thead class="thead ">
@@ -335,14 +338,6 @@
     				}
     			});
     		});
-    		$(".change").on("click", function() {
-    			if ($("body").hasClass("dark")) {
-    				$("body").removeClass("dark");
-    				$(".change").text("OFF");
-    			} else {
-    				$("body").addClass("dark");
-    				$(".change").text("ON");
-    			}
-    		});
+    		
     	</script>
     </html>

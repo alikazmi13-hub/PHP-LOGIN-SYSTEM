@@ -4,9 +4,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProjectsController;
 
+use App\Http\Controllers\mailserverController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/mail', [App\Http\Controllers\mailserver::class, 'index']);
 
 Route::get('/Admin', function () {
     return view('/Admin.Admin_dashboard');
