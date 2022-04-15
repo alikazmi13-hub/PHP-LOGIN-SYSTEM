@@ -15,7 +15,12 @@ class ProjectsController extends Controller
         function show(){
              return view('Projectlist');  
          }
-        //  Add Project Function 
+        /**
+             * add Project method
+             * 
+             * @param Request
+             * @return $request
+             */
        
         function addProject(){
             $data["project_technology"] = array ( "Rails","Php","java","Laravel","React","Amazon Web Services","NodeJs", "Spring boot","Wordpress", "Angular","Symfony","Python","javascript","css","html","bootstrap");
@@ -24,7 +29,13 @@ class ProjectsController extends Controller
     
         
 
-    // Save Project Function
+        /**
+         * Save Project method
+         * 
+         * @param 
+         * @return
+         */
+        
         function saveProject(Request $request){
         $data = $request->all();
             if(isset($data['Project_Technology']))
@@ -44,10 +55,6 @@ class ProjectsController extends Controller
                 ]);
 
             if($validator->passes()){
-
-                //if Record in Database
-                // It will store these inputs data in database
-                // Inputs Storing Data to database
                 $project = new Project;
                 $project->Client_Name=$request->Client_Name;
                 $project->Client_Email=$request->Client_Email;
@@ -68,10 +75,18 @@ class ProjectsController extends Controller
             }
         }
 
-          /// get Data using $draw,start,rowperpage ///
+          
+
+             /**
+             * getdata Project method
+             * 
+             * @param 
+             * @return
+             */
+
             public function getData(Request $request){
             
-                // // YAJRA DATATABLES 
+             
                 if ($request->ajax()) {
                     if(!empty($request->from_date))
                     {
@@ -115,7 +130,12 @@ class ProjectsController extends Controller
      }
                 
 
-            // MAIN FUNCTIONALITIES LIKE EDIT 
+            /**
+             * Edit Project method
+             * 
+             * @param 
+             * @return 
+             **/
                 function editProject($id, Request $request){
                         $project = Project::where('id', $id)->first();
                         if(!$project){
@@ -127,6 +147,13 @@ class ProjectsController extends Controller
                     }
 
 
+            /**
+             * Delete Project method
+             * 
+             * @param 
+             * @return
+             */
+
                 public function deleteProject($id){
                         // dd($id);
                         $project = Project::find($id);
@@ -135,6 +162,14 @@ class ProjectsController extends Controller
                             return redirect ('projects');
                         }
                     }
+
+
+            /**
+             * Update Project method
+             * 
+             * @param 
+             * @return
+             */
 
                 function updateProject($id, Request $request){
                     $validator = Validator::make ($request->all(),[
@@ -171,7 +206,12 @@ class ProjectsController extends Controller
                     }
                 }                          
             
-
+                /**
+             * PDF Project method
+             * 
+             * @param 
+             * @return
+             */
 
                
             public function pdf_landscape(Request $request){
@@ -179,23 +219,28 @@ class ProjectsController extends Controller
                     $singlepdf = [
                         'items' => $projects,
                      ];
-                 // here we handover this data array to loadview to show data in view
+                 
                 $mylandscape = PDF::loadView('pdflandscape', $singlepdf)->setPaper('A4', 'landscape');
                         
-                    // pdf Stream
+                   
                     return $mylandscape->stream('mylandscape.pdf');
 
-                    // Save With This Name
+                   
                     $name = "landscapes-".time().".pdf";
 
 
-                //  Save in 
+                
                     Storage::put('public/landscapes/'.$name, $mylandscape->output());
                     
                 }
 
                     
-        /////////   Multiplepdf   //////
+            /**
+             * Multiplepdf Project method
+             * 
+             * @param 
+             * @return
+             */
 
             public function Multiplepdf(Request $request){
       
@@ -210,9 +255,18 @@ class ProjectsController extends Controller
                         $multipdf = PDF :: loadView('m_pdf', array("multi"=>$multi))->setPaper('A4', 'Landscape');
                     }
                 
-                    return $multipdf->Stream();
-   
+                    return $multipdf->stream();
+;
+
+                   
                     }
 
-// THIS IS END OF MAIN BRACKET
+
+
+
+
+
+
+
+
     }

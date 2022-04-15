@@ -20,10 +20,9 @@
     <title>landscape pdf</title>
    
    <style>
-       
+      
     body {
-        
-        font-weight:600px;
+        font-family: "Open Sans", sans-serif;
         padding: 0;
         margin: 0;
         
@@ -62,12 +61,12 @@
 
     #logo {
         margin-bottom: 20px;
-        margin:6%; 
+        margin-left:15%; 
         
     }
 
     #mh {
-        font-family: "Open Sans", sans-serif;
+        
         font-size: 24px;
         width: 100%;
         letter-spacing: 1px;
@@ -79,10 +78,10 @@
 
     #title {
         font-size: 34px;
-        font-family: "Open Sans", sans-serif;
         margin-left: 0px 0px;
-        width:100% auto;
+        width:100%;
         text-align:center;
+        font-family: "Open Sans", sans-serif;
     }
 
     .row {
@@ -99,6 +98,7 @@
     }
 
     #description {
+        font-family: "Open Sans", sans-serif;
         padding: 10px;
         margin: 0px;
     }
@@ -112,6 +112,7 @@
     }
     .badges {
         font-size: 16px;
+        font-family: "Open Sans", sans-serif;
         padding: 4px 8px 8px;
         border-radius: 20px;
         font-weight: bold;
@@ -126,10 +127,12 @@
         width: 300px;
         padding: 20px;
         margin: 2px;
+        font-family: "Open Sans", sans-serif;
 
     }
     .projects-list {
         position: relative;
+        font-family: "Open Sans", sans-serif;
         
         left:90%;
     }
@@ -160,6 +163,97 @@
         text-align: center;
         margin-left: 50%;
     }
+    
+        .about-page{
+        width: 100%;
+        height: 98%;
+        font-family: "Open Sans", sans-serif;
+        background-repeat: no-repeat;
+        background-image: url("Images/m9.png"); 
+        background-size: cover;
+       
+        
+    }
+
+     .col-md-8{
+         margin-top:1%;
+         width:90%;
+         height:50%;
+         margin-left:25;
+         color:#000000;
+         /* background:#FFFFFF; */
+                 
+     }
+    #about-image{
+       width:400px;
+       height:100px;
+       margin-top:30px;
+       margin-left:30%!important;
+    }
+    #ab{
+         font-size:50px;
+         margin-left:0%;
+         margin-top:40px;
+         text-align:center;
+         color:#FFFFFF;
+        font-family: "Open Sans", sans-serif;
+
+
+
+        }
+        #about{
+             text-align:center;
+             margin-top:50px;
+             margin-left:10%;
+             color:#FFFFFF;
+             font-size:16px;
+             line-height: 1.8;
+             font-family: "Open Sans", sans-serif;
+
+
+            }
+
+        .last-page{
+        width: 100%;
+        height: 96.5%;
+        background-repeat: no-repeat;
+        background-image: url("Images/m9.png"); 
+        background-size: cover;
+        color:#FFFFFF;
+        font-family: "Open Sans", sans-serif;
+       
+        
+    }
+    #last-container{
+      padding: 0px;
+      margin: 0px;
+      width: 100%;
+      height: 90%;
+    }
+    #last-image{
+       width:400px;
+       height:100px;
+       margin-top:100px;
+       margin-left:45%!important;
+    }
+    #th{
+         font-size:40px;
+         margin-left:55%;
+         margin-top:100px;
+         text-align:center;
+         font-family: "Open Sans", sans-serif;
+
+        }
+        #em{
+            text-align:right;
+             margin-top:280px;
+             line-height: 1.8;
+             float:left;
+             margin-left:7%;
+             font-family: "Open Sans", sans-serif;
+
+        }
+        
     </style>
 </head>
 
@@ -172,8 +266,17 @@
     <!-- image logo -->
         <div class="main-bg">
             <div class="container">
-                <img id="logo" src="Images/logo 2.png" style="width:580px; height:100px;">
+                <img id="logo" src="Images/logo 2.png" style="width:480px; height:100px;">
                 <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
+            </div>
+        </div>
+
+         <div class="about-page">
+              <img id="about-image" src="Images/whitelogo.png" >
+            <h1 id="ab">About us</h1>
+                <div class="col-md-8" id="about-container">
+                   
+                         <h6 id="about">Cyber Nest is one of the fastest growing software company. We have highly experienced team who have successfully launched various projects and proved ours skills. We take responsibility of the work, and maintain the best relationship with our customers.</h6>
             </div>
         </div>
         <!-- <div class="page-break"></div> -->
@@ -190,7 +293,7 @@
         <!-- Data Body -->
     <div class="inner-page">
         <div class="holder">
-            <h5 id="title" class="title">{{$newitem->Project_Title}}</h5>
+            <h2 id="title" class="title">{{$newitem->Project_Title}}</h2>
                 <p id="name">{{$newitem->Client_Name}}</p>
                     <p id="description">{{$newitem->Usecase_Description}}</p>
                     <br><br>
@@ -206,6 +309,13 @@
         </div>
 
        @endforeach
+        <div class="last-page">
+            <div class="container" id="last-container">
+                <img id="last-image" src="Images/whitelogo.png" >
+                    <h1 id="th">Thank You</h1>
+                    <h6 id="em">2918 Avenue I Unit #5055 Brooklyn || NY, US | info@cybernest.com</h6>
+            </div>
+        </div>
 </body>
 
 </html>
