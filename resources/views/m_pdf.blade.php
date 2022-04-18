@@ -17,7 +17,7 @@
     <link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
     <link href=“https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap” rel=“stylesheet”>
 
-    <title>landscape pdf</title>
+    <title>PDF</title>
    
    <style>
       
@@ -38,11 +38,39 @@
     }
     .main-bg {
         width: 100%;
-        height: 100%;
+        height: 100%; 
+        background: #264483;
+        opacity:0.9;
         background-repeat: no-repeat;
         background-image: url("Images/logos/top2.jpg"); 
         background-size: cover;
     }
+   
+  .content{
+   
+    width:800px;
+    height:100%;
+    position:absolute;
+    left:0px;
+    bottom: 0;
+    background: #3d5fb0;
+    opacity:0.5;
+    
+  }
+    .d-flex{
+        position:absolute;
+        background: #264483;
+        width:900px;
+        height:100%;
+        color:white;
+        z-index:2;
+        left:420px;
+        bottom: 0;
+        text-align:right;
+
+    }
+
+
     .inner-page {
         width: 100%;
         height: 100%;
@@ -60,11 +88,16 @@
     
 
     #logo {
-        margin-bottom: 20px;
-        margin-left:15%; 
+        
+        margin-bottom: 30px;
+        margin-left:10%; 
         
     }
-
+    .h32{
+        text-align:right;
+        color:white;
+        margin-left:130px;
+    }
     #mh {
         
         font-size: 24px;
@@ -165,48 +198,65 @@
     }
     
         .about-page{
-        width: 100%;
-        height: 98%;
+        width: 1200px;
+        height: 800px;
         font-family: "Open Sans", sans-serif;
-        background-repeat: no-repeat;
+        /* background-repeat: no-repeat;
         background-image: url("Images/m9.png"); 
-        background-size: cover;
+        background-size: cover; */
+        background: #000000;
        
         
     }
 
-     .col-md-8{
+     .col-md-4{
          margin-top:1%;
-         width:90%;
-         height:50%;
-         margin-left:25;
-         color:#000000;
-         /* background:#FFFFFF; */
+         width:35%;
+         height:98.6%;
+         float:left;
+         left:2;
+         
+         
                  
      }
     #about-image{
-       width:400px;
-       height:100px;
-       margin-top:30px;
-       margin-left:30%!important;
+       width:220px;
+       height:50px;
+       margin-top:90%;
+       border:solid;
+       border-color:white;
+       margin-left:24%!important;
     }
     #ab{
          font-size:50px;
          margin-left:0%;
-         margin-top:40px;
+         margin-top:90px;
          text-align:center;
          color:#FFFFFF;
-        font-family: "Open Sans", sans-serif;
+         font-family: "Open Sans", sans-serif;
 
 
 
         }
+        span{
+            text-align:right;     
+        }
+        .flex{
+           background: #FFFFFF;
+           width:43%;
+           height:30%;
+           margin-left:18%;
+           top:1100px;
+       
+           
+           position: absolute;
+
+        }
         #about{
-             text-align:center;
-             margin-top:50px;
-             margin-left:10%;
-             color:#FFFFFF;
-             font-size:16px;
+             text-align:justify;
+             margin-left:1.9%;
+             color:black;
+             font-size:22px;
              line-height: 1.8;
              font-family: "Open Sans", sans-serif;
 
@@ -265,25 +315,40 @@
 
     <!-- image logo -->
         <div class="main-bg">
-            <div class="container">
-                <img id="logo" src="Images/logo 2.png" style="width:480px; height:100px;">
-                <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
-            </div>
+            <div class="container bg-primary text-light">
+                <!-- <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;"> -->
+                  <img id="logo" src="Images/logo2.png"  style="width:420px; height:80px;">
+                    <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
+                     
+                    <div class="content">
+                         <h3></h3>
+                         
+                         </div>              
+                     </div>
+                       <div class="d-flex align-items-md-end">
+                                <h3 class="h32">info@cybernest.com</h3>
+                                <h3  class="h32">www.cybernest.com</h3> 
+                             </div>   
+                
         </div>
 
          <div class="about-page">
-              <img id="about-image" src="Images/whitelogo.png" >
-            <h1 id="ab">About us</h1>
-                <div class="col-md-8" id="about-container">
-                   
-                         <h6 id="about">Cyber Nest is one of the fastest growing software company. We have highly experienced team who have successfully launched various projects and proved ours skills. We take responsibility of the work, and maintain the best relationship with our customers.</h6>
+              <div class="col-md-4 bg-primary" id="">
+                    <h1 id="ab"><span style="color:black">About</span><br>Company</h1>
+                        <!-- <img id="about-image" src="/Images/whitelogo.png" > -->
+                           <img id="about-image" src="Images/whitelogo.png" >
+                    
+             </div>
+            <div class="flex square rounded p-5">
+                 <h6 id="about">Cyber Nest is one of the fastest growing software company.
+                 We have highly experienced team who have successfully launched various projects and proved ours skills.We take responsibility of the work, and maintain the best relationship with our customers.</h6>
             </div>
         </div>
         <!-- <div class="page-break"></div> -->
     @foreach($multi['multiple'] as $newitem)
         <div class="projects-list">
             <div class="mini-logo">
-                <img src="Images/logo.png">
+                <img src="/Images/logo.png">
             </div>
         </div>
     @php
@@ -299,7 +364,7 @@
                     <br><br>
                     <div class="row-2" id="tec">
                         @foreach ($techs as $tech)
-                            <img id="logoimg" src="Images/logos/{{strtolower($tech)}}.png" >
+                            <img id="logoimg" src="/Images/logos/{{strtolower($tech)}}.png" >
                                  @endforeach
                         </div>
                  <br><br>
@@ -311,7 +376,7 @@
        @endforeach
         <div class="last-page">
             <div class="container" id="last-container">
-                <img id="last-image" src="Images/whitelogo.png" >
+                <img id="last-image" src="/Images/whitelogo.png" >
                     <h1 id="th">Thank You</h1>
                     <h6 id="em">2918 Avenue I Unit #5055 Brooklyn || NY, US | info@cybernest.com</h6>
             </div>

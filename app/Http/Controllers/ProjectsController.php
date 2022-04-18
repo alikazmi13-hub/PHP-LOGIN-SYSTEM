@@ -254,12 +254,12 @@ class ProjectsController extends Controller
                 
                         $multipdf = PDF :: loadView('m_pdf', array("multi"=>$multi))->setPaper('A4', 'Landscape');
                     }
-                
+                    // return view('m_pdf')->with (compact('multi'));
+
                     return $multipdf->stream();
-;
 
                    
-                    }
+            }
 
 
 
