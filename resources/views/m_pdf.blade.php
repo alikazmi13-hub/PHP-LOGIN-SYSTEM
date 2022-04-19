@@ -35,11 +35,12 @@
     .container {
         padding: 0;
         margin: 0;
+    
     }
     .main-bg {
-        width: 100%;
-        height: 100%; 
-        background: #264483;
+        max-width: 100%;
+        height: 100%;
+        /* background: #264483; */
         opacity:0.9;
         background-repeat: no-repeat;
         background-image: url("Images/logos/top2.jpg"); 
@@ -48,27 +49,32 @@
    
   .content{
    
-    width:800px;
-    height:100%;
+    width:900px;
+    height:50px;
     position:absolute;
     left:0px;
-    bottom: 0;
+    bottom:25px;
+    color:white;
     background: #3d5fb0;
-    opacity:0.5;
+     border-top-style: solid;
+    
     
   }
     .d-flex{
         position:absolute;
         background: #264483;
         width:900px;
-        height:100%;
+        height:60px;
         color:white;
         z-index:2;
         left:420px;
-        bottom: 0;
+        bottom: 0px;
         text-align:right;
+        border-top-style: solid;
+}
+        
 
-    }
+    
 
 
     .inner-page {
@@ -198,34 +204,34 @@
     }
     
         .about-page{
-        width: 1200px;
-        height: 800px;
+         max-width: 1320px;
+        height: 700px;
         font-family: "Open Sans", sans-serif;
-        /* background-repeat: no-repeat;
-        background-image: url("Images/m9.png"); 
-        background-size: cover; */
         background: #000000;
+        
        
         
     }
 
      .col-md-4{
-         margin-top:1%;
-         width:35%;
-         height:98.6%;
+         margin-top:0;
+         width:300px;
+         height:700px;
          float:left;
-         left:2;
+         left:0;
+         border:solid;
          
          
                  
      }
     #about-image{
-       width:220px;
-       height:50px;
-       margin-top:90%;
+       width:170px;
+       height:40px;
+       margin-top:290px;
        border:solid;
        border-color:white;
-       margin-left:24%!important;
+       margin-left:15%!important;
+       /* background: ; */
     }
     #ab{
          font-size:50px;
@@ -234,6 +240,7 @@
          text-align:center;
          color:#FFFFFF;
          font-family: "Open Sans", sans-serif;
+         opacity:0.9;
 
 
 
@@ -243,14 +250,11 @@
         }
         .flex{
            background: #FFFFFF;
-           width:43%;
-           height:30%;
-           margin-left:18%;
-           top:1100px;
-       
-           
+           width:900px;
+           height: 240px;
+           margin-left:270px;
            position: absolute;
-
+            margin-top:240px;
         }
         #about{
              text-align:justify;
@@ -262,6 +266,99 @@
 
 
             }
+
+        .Address-page{
+         margin-top:0px;
+         max-width: 1320px;
+         height: 700px;
+         opacity:0.8;
+         font-family: "Open Sans", sans-serif;
+         
+     
+      
+            }
+        .col-md-6{
+            margin-top:40px;
+            left:0px;
+            bottom:0px;
+            width:500px;
+            height:100px;
+            color:#0000FF;
+            background: #003366;
+             
+            
+            
+        }
+       
+        .add-image{
+        width:50px;
+        height:50px;
+        margin-left:1200px;
+        margin-top:50px;
+        position:absolute;
+       
+       
+
+        }
+        .Address-regional{
+        font-size:35px;
+        padding-left:265px;
+        margin-top:90px;
+        font-family:'sans','sans-sarif';
+        background: #FFFFFF;
+        color:#003366;
+        
+        
+        
+        
+          
+  
+        }
+        .add{
+           font-family:'sans','sans-sarif';
+           color: #FFFFFF;
+            background: #003366;
+        }
+        .ad-h1{
+            margin-top:220px;
+            font-size:22px;
+            margin-left:320px;
+            width:350px;        
+            text-align:justify;
+            height:70px;
+            font-family:'sans','sans-sarif';
+            
+
+
+         
+            
+        }
+        .ad-h2{
+            margin-top:10px;
+            font-size:22px;
+            margin-left:320px;
+            width:350px;
+            height:70px;
+            font-family:'sans','sans-sarif';
+
+        }
+       
+        .builing-image{
+        width:20px;
+        height:20px;
+        margin-left:0;
+        margin-top:0;
+        position:absolute;
+        }
+
+
+
+
+
+
+
+
+
 
         .last-page{
         width: 100%;
@@ -309,41 +406,56 @@
 
 <body class="body">
 
-
-
-
-
     <!-- image logo -->
         <div class="main-bg">
             <div class="container bg-primary text-light">
                 <!-- <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;"> -->
-                  <img id="logo" src="Images/logo2.png"  style="width:420px; height:80px;">
+                  <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;">
                     <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
-                     
-                    <div class="content">
-                         <h3></h3>
-                         
-                         </div>              
-                     </div>
-                       <div class="d-flex align-items-md-end">
+                </div>
+
+                <div class="content">
+                    <div class="d-flex align-items-md-end">
                                 <h3 class="h32">info@cybernest.com</h3>
                                 <h3  class="h32">www.cybernest.com</h3> 
-                             </div>   
-                
+                            </div>   
+                  </div>
         </div>
 
+            <!-- About Page -->
          <div class="about-page">
               <div class="col-md-4 bg-primary" id="">
                     <h1 id="ab"><span style="color:black">About</span><br>Company</h1>
                         <!-- <img id="about-image" src="/Images/whitelogo.png" > -->
-                           <img id="about-image" src="Images/whitelogo.png" >
+                           <img id="about-image" src="/Images/whitelogo.png" >
                     
-             </div>
-            <div class="flex square rounded p-5">
+                        </div>
+            <div class="flex square rounded pt-5">
                  <h6 id="about">Cyber Nest is one of the fastest growing software company.
                  We have highly experienced team who have successfully launched various projects and proved ours skills.We take responsibility of the work, and maintain the best relationship with our customers.</h6>
             </div>
         </div>
+
+
+        <!-- Where we Stand -->
+          <div class="Address-page bg-primary">
+               <div class="col-md-6  bg-primary text-light" id="add-container">
+              <img class="add-image" src="/Images/logo.png">
+              <h1 class="add">Where We Stand</h1>
+                 <span class="Address-regional ">Regional Office</span>
+                <br>
+                <h6 class="ad-h1 text-light"><img class="builing-image" src="/Images/building.png"><br>2918 Avenue I Unit #5055 Brooklyn NY 11210 United States</h6>
+                      <br>  
+                      <h6 class="ad-h2 text-light "><img class="builing-image" src="/Images/building.png"><br>345, Block H-3 Johar Town, Lahore, 54000</h6>
+                 </div>
+            
+           
+        </div>
+
+
+
+
+
         <!-- <div class="page-break"></div> -->
     @foreach($multi['multiple'] as $newitem)
         <div class="projects-list">
