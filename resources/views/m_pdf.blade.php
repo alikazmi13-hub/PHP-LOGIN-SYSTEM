@@ -37,7 +37,7 @@
         margin: 0;
     
     }
-    .main-bg {
+    .main-bg{
         max-width: 100%;
         height: 100%;
         /* background: #264483; */
@@ -49,29 +49,18 @@
    
   .content{
    
-    width:900px;
-    height:50px;
+    width:100%;
+    height:10%;
     position:absolute;
     left:0px;
     bottom:25px;
-    color:white;
+    color:black;
     background: #3d5fb0;
-     border-top-style: solid;
+    border-top-style: solid;
     
     
   }
-    .d-flex{
-        position:absolute;
-        background: #264483;
-        width:900px;
-        height:60px;
-        color:white;
-        z-index:2;
-        left:420px;
-        bottom: 0px;
-        text-align:right;
-        border-top-style: solid;
-}
+   
         
 
     
@@ -99,10 +88,10 @@
         margin-left:10%; 
         
     }
-    .h32{
+    .h52{
         text-align:right;
         color:white;
-        margin-left:130px;
+        margin-right:100px;
     }
     #mh {
         
@@ -114,6 +103,165 @@
         margin-left:0%;
         
     }
+
+/* About */
+  .About{
+        /* width:900px;
+        height:700px; */
+        width:100%;
+        height:100%;
+        padding:0;
+        margin:0;
+        top:5px;
+        bottom:0;
+        
+    }
+     #ab-container{
+        height:600px;
+        width:900px;
+        padding:0;
+        margin:0;
+        top:0;
+        bottom:0;
+        
+    }
+    #heading-1{
+         margin-left:50px;
+         margin-top:50px;
+         color:#000;
+         font-size:40px;
+
+    }
+    #ab-p{
+         margin-left:50px;
+         margin-top:50px;
+         font-size:26px;
+         height:100px;
+         width:500px;
+         text-align:justify;
+        
+    }
+    .col{
+        width:800px;
+        height:100px;
+        margin-top:20px;
+        background:#000;
+        color:white;
+    }
+
+    #about-image{
+        width:200px;
+        height:40px;
+        margin-top:10px;
+        border-top:solid;
+        border-color:white;
+        margin-left:70%!important;
+    }
+ #logo-mini{   
+        width:45px;
+        height:45px;
+        margin-top:40px;
+        border-color:white;
+        margin-left:85%!important;
+    }
+
+    /* Address */
+  .Address-section{
+        /* width:900px;
+        height:700px; */
+        width:100%;
+        height:100%;
+        padding:0;
+        margin:0;
+        top:5px;
+        bottom:0;
+        
+    }
+     #add-container{
+        height:600px;
+        width:900px;
+        padding:0;
+        margin:0;
+        top:0;
+        bottom:0;
+        
+    }
+    #heading-1{
+         margin-left:50px;
+         margin-top:50px;
+         color:#000;
+         font-size:40px;
+
+    }
+    #address-column{
+          display: inline-block;
+          width: 30%;
+          height:0%;
+          margin-top:60px;
+          margin-left:90px;
+          border:solid #FFFFFF;
+          border-radius:5px;
+          
+    }
+    #add-p1{
+         margin-top:0px;
+         font-size:22px;
+         text-align:center;
+       
+        
+    }
+    #add-p2{
+         margin-left:0px;
+         font-size:22px;
+        text-align:center;
+        
+    }
+    .col{
+        width:800px;
+        height:100px;
+        margin-top:20px;
+        background:#000;
+        color:white;
+    }
+
+    #add-image{
+        width:200px;
+        height:40px;
+        margin-top:10px;
+        border-top:solid;
+        border-color:white;
+        margin-left:70%!important;
+    }
+ #logo-mini{   
+        width:45px;
+        height:45px;
+        margin-top:40px;
+        border-color:white;
+        margin-left:85%!important;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     #title {
         font-size: 34px;
@@ -203,163 +351,16 @@
         margin-left: 50%;
     }
     
-        .about-page{
-         max-width: 1320px;
-        height: 700px;
-        font-family: "Open Sans", sans-serif;
-        background: #000000;
-        
-       
-        
-    }
-
-     .col-md-4{
-         margin-top:0;
-         width:300px;
-         height:700px;
-         float:left;
-         left:0;
-         border:solid;
-         
-         
-                 
-     }
-    #about-image{
-       width:170px;
-       height:40px;
-       margin-top:290px;
-       border:solid;
-       border-color:white;
-       margin-left:15%!important;
-       /* background: ; */
-    }
-    #ab{
-         font-size:50px;
-         margin-left:0%;
-         margin-top:90px;
-         text-align:center;
-         color:#FFFFFF;
-         font-family: "Open Sans", sans-serif;
-         opacity:0.9;
-
-
-
-        }
-        span{
-            text-align:right;     
-        }
-        .flex{
-           background: #FFFFFF;
-           width:900px;
-           height: 240px;
-           margin-left:270px;
-           position: absolute;
-            margin-top:240px;
-        }
-        #about{
-             text-align:justify;
-             margin-left:1.9%;
-             color:black;
-             font-size:22px;
-             line-height: 1.8;
-             font-family: "Open Sans", sans-serif;
-
-
-            }
-
-        .Address-page{
-         margin-top:0px;
-         max-width: 1320px;
-         height: 700px;
-         opacity:0.8;
-         font-family: "Open Sans", sans-serif;
-         
-     
       
-            }
-        .col-md-6{
-            margin-top:40px;
-            left:0px;
-            bottom:0px;
-            width:500px;
-            height:100px;
-            color:#0000FF;
-            background: #003366;
-             
-            
-            
-        }
-       
-        .add-image{
-        width:50px;
-        height:50px;
-        margin-left:1200px;
-        margin-top:50px;
-        position:absolute;
-       
-       
 
-        }
-        .Address-regional{
-        font-size:35px;
-        padding-left:265px;
-        margin-top:90px;
-        font-family:'sans','sans-sarif';
-        background: #FFFFFF;
-        color:#003366;
-        
-        
-        
-        
-          
+   
   
-        }
-        .add{
-           font-family:'sans','sans-sarif';
-           color: #FFFFFF;
-            background: #003366;
-        }
-        .ad-h1{
-            margin-top:220px;
-            font-size:22px;
-            margin-left:320px;
-            width:350px;        
-            text-align:justify;
-            height:70px;
-            font-family:'sans','sans-sarif';
-            
-
-
-         
-            
-        }
-        .ad-h2{
-            margin-top:10px;
-            font-size:22px;
-            margin-left:320px;
-            width:350px;
-            height:70px;
-            font-family:'sans','sans-sarif';
-
-        }
-       
-        .builing-image{
-        width:20px;
-        height:20px;
-        margin-left:0;
-        margin-top:0;
-        position:absolute;
-        }
 
 
 
 
 
-
-
-
-
-
+/* Last Pages */
         .last-page{
         width: 100%;
         height: 96.5%;
@@ -409,53 +410,48 @@
     <!-- image logo -->
         <div class="main-bg">
             <div class="container bg-primary text-light">
-                <!-- <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;"> -->
-                  <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;">
+                <img id="logo" src="Images/logo2.png"  style="width:420px; height:80px;">
+                  <!-- <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;"> -->
                     <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
                 </div>
 
-                <div class="content">
-                    <div class="d-flex align-items-md-end">
-                                <h3 class="h32">info@cybernest.com</h3>
-                                <h3  class="h32">www.cybernest.com</h3> 
-                            </div>   
-                  </div>
+                    <div class="content">
+                        <h5 class="h52">info@cybernest.com</h5>
+                                <h5  class="h52">www.cybernest.com</h3> 
+                    </div>
         </div>
 
             <!-- About Page -->
-         <div class="about-page">
-              <div class="col-md-4 bg-primary" id="">
-                    <h1 id="ab"><span style="color:black">About</span><br>Company</h1>
-                        <!-- <img id="about-image" src="/Images/whitelogo.png" > -->
-                           <img id="about-image" src="/Images/whitelogo.png" >
-                    
-                        </div>
-            <div class="flex square rounded pt-5">
-                 <h6 id="about">Cyber Nest is one of the fastest growing software company.
-                 We have highly experienced team who have successfully launched various projects and proved ours skills.We take responsibility of the work, and maintain the best relationship with our customers.</h6>
-            </div>
-        </div>
+        <section class="About bg-primary">
+            <img id="logo-mini" src="Images/logo.png">
+          <div class="container bg-primary text-light" id="ab-container">
+            <h6 id="heading-1">About Us</h6>
+                <p class="bg-primary" id="ab-p">Cyber Nest is one of the fastest growing software company. We have highly experienced team who have successfully launched various projects and proved ours skills. We take responsibility of the work, and maintain the best relationship with our customers.</p>
+             </div>
+           <img id="about-image" src="Images/whitelogo.png" >
+    </section>
 
+    <!--  -->
 
-        <!-- Where we Stand -->
-          <div class="Address-page bg-primary">
-               <div class="col-md-6  bg-primary text-light" id="add-container">
-              <img class="add-image" src="/Images/logo.png">
-              <h1 class="add">Where We Stand</h1>
-                 <span class="Address-regional ">Regional Office</span>
-                <br>
-                <h6 class="ad-h1 text-light"><img class="builing-image" src="/Images/building.png"><br>2918 Avenue I Unit #5055 Brooklyn NY 11210 United States</h6>
-                      <br>  
-                      <h6 class="ad-h2 text-light "><img class="builing-image" src="/Images/building.png"><br>345, Block H-3 Johar Town, Lahore, 54000</h6>
-                 </div>
+         <section class="Address-section bg-dark">
+            <img id="logo-mini" src="Images/logo.png">
+          <div class="container bg-dark text-light" id="add-container">
+            <h6 id="heading-1">Where We Stand</h6>
             
-           
-        </div>
+            <div class="col-md-8" id="address-column">
+                <p class="bg-dark text-light" id="add-p1">2918 Avenue I Unit #5055 Brooklyn NY 11210 United States</p>
+            </div>    
+     <div class="col-md-8"id="address-column">
+                <p class="bg-dark text-light" id="add-p2">345, Block H-3 Johar Town, Lahore, 54000</p>
+                </div>
+            </div>
+           <img id="add-image" src="Images/whitelogo.png" >
+    </section>
 
 
 
 
-
+       
         <!-- <div class="page-break"></div> -->
     @foreach($multi['multiple'] as $newitem)
         <div class="projects-list">
