@@ -29,7 +29,7 @@
 
      @page { 
     margin: 0px; 
-    font-family: 'Bebas Neue', cursive;
+        font-family: 'Lora', serif;
 }
     .container {
         padding: 0;
@@ -128,15 +128,18 @@
          margin-top:50px;
          color:#000;
          font-size:40px;
+         font-style:bold;
+         font-family: 'Lora', serif;
 
     }
     #ab-p{
-         margin-left:50px;
+         margin-left:100px;
          margin-top:50px;
          font-size:26px;
-         height:100px;
-         width:500px;
+         height:200px;
+         width:900px;
          text-align:justify;
+         font-family: 'Lato', sans-serif;    
         
     }
     .col{
@@ -151,46 +154,44 @@
         width:200px;
         height:40px;
         margin-top:10px;
-        border-top:solid;
-        border-color:white;
-        margin-left:70%!important;
+        margin-left:75%!important;
     }
+     
     #logo-mini{   
         width:45px;
         height:45px;
         margin-top:40px;
-        border-color:white;
         margin-left:85%!important;
     }
 
     /* Address */
-  .Address-section{
-       
+   .address-section{
         width:100%;
         height:100%;
         padding:0;
         margin:0;
         top:5px;
         bottom:0;
+            
+        }
         
-    }
-     #add-container{
-        height:600px;
+        #add-row-1{
         width:900px;
-        padding:0;
-        margin:0;
-        top:0;
-        bottom:0;
-        
-    }
-    #heading-1{
-    margin-left:50px;
-    margin-top:50px;
-    color:#000;
-    font-size:40px;
-    font-family: 'Bebas Neue', cursive;
+        margin-left:100px;
+        padding: 1px;
+        margin-top:-10px;
+        position:absolute;
+        }
 
-    }
+        
+        #heading-1{
+        margin-left:50px;
+        margin-top:50px;
+        color:#000;
+        font-size:40px;
+        font-family: 'Lora', serif;
+        font-style:bold;
+        }
        #heading-2{
     margin-left:100px;
     width:250px;
@@ -199,47 +200,30 @@
     color:white;
     font-weight:900px;
     text-align:center;
-    font-family: 'Bebas Neue', cursive;
+    font-style:bold;
+    font-family: 'Lora', serif;
 
     }
-    #address-column{
-    display: inline-block;
-    width: 40%;
-    height:15%;
-    margin-top:10%;
-    margin-right:-20%;
-    border-top:solid #FFFFFF;
-    border-radius:10px;
-    border-bottom:solid #FFFFFF;
-    font-family: 'Lato', sans-serif;
+    #add-col{
+        width: 30%;
+        border: 1px solid;
+        padding: 2px;
+        background:;
+        margin-left: 100px;
+        display: inline-block;
     }
-    #address_column{
-    font-family: 'Lato', sans-serif;      
-    display: inline-block;
-    width: 40%;
-    height:15%;
-    margin-top:10%;
-    margin-right:10%;
-    border-top:solid #FFFFFF;
-    border-radius:10px;
-    border-bottom:solid #FFFFFF;
-    }
-    #add-p1{
-    margin-top:5px;
-    font-size:20px;
-    text-align:left;
-    margin-left:10px;
-
-        
-    }
-    #add-p2{
-    margin-top:5px;
-    font-size:20px;
-    text-align:left;
-    margin-left:10px;
-
-        
-    }
+         #add-h6{
+            color:black;
+            text-align:left;
+            margin-left:1px;
+            margin-top:5px;
+            padding-top:5px;
+            letter-spacing:1px;
+            border-top:1px solid;
+             background: #ededed;
+            font-family: 'Lato', sans-serif;  
+  }
+   
     .col{
     width:800px;
     height:100px;
@@ -252,28 +236,26 @@
         width:200px;
         height:40px;
         margin-top:10px;
-        border-top:solid;
-        border-color:white;
-        margin-left:70%!important;
+        margin-left:75%!important;
     }
+     
         #logo-mini{   
         width:45px;
         height:45px;
         margin-top:40px;
-        border-color:white;
         margin-left:85%!important;
             }
             #flex{
             position: absolute;
-            width:400px;
+            width:30%;
             bottom: 150px;
             right: 400px;
-            background:#ffffff;
+            background:;
             border:solid;
             text-align:center;
-            font-family: 'Lato', sans-serif;
-            border-radius: 50px;
-            letter-spacing: 3px;
+            font-family: 'Lato', sans-serif;    
+            border-radius: 20px;
+            letter-spacing: 1px;
                 }
 
     /* SERVICES */
@@ -301,7 +283,8 @@
         margin-top:50px;
         color:#000;
         font-size:40px;
-
+        font-family: 'Lora', serif;
+        font-style:bold;
         }
     
         #ser-col{
@@ -311,6 +294,8 @@
         background:;
         margin-left: 100px;
         display: inline-block;
+       
+
         
         }
         .full-width {
@@ -323,35 +308,32 @@
             color:black;
             text-align:left;
             margin-left:1px;
-            margin-top:2px;
-            background: #ddd;
-            opacity:0.7;
-        
-
+            margin-top:5px;
+            font-family: 'Lato', sans-serif;  
         }
 
         #ser-h6{
             color:black;
-            background: #fff;
             text-align:left;
             margin-left:1px;
-            margin-top:1px;
-            font-family: 'sans', sans-serif;
+            margin-top:5px;
+            padding-top:5px;
+            letter-spacing:1px;
+            border-top:1px solid;
+             background: #ededed;
+            font-family: 'Lato', sans-serif;  
 
         }
         #ser-image{
-            width:135px;
+            width:180px;
             height:30px;
             margin-top:360px !important;
-            border-top:solid;
-            border-color:black;
-            margin-left:70%!important;
+            margin-left:75%!important;
         }
     #ser-logo-mini{   
             width:45px;
             height:45px;
             margin-top:70px;
-            border-color:white;
             margin-left:85%!important;
         }
 
@@ -385,6 +367,8 @@
         margin-top:50px;
         color:#000;
         font-size:40px;
+        font-style:bold;
+        font-family: 'Lora', serif;
 
         }
     
@@ -396,6 +380,7 @@
         background:;
         margin-left: 1%;
         display: inline-block;
+        background: #ededed;
         
         }
       
@@ -422,55 +407,93 @@
             width:55px;
             height:55px;
             margin-left:88px;
-            margin-top:-15px;
+            margin-top:-20px;
             border-top:none;
-
-         
-           
 
         }
         #ind-image{
-            width:135px;
-            height:30px;
+             width:180px;
+             height:30px;
             margin-top:320px !important;
-            border-top:solid;
-            border-color:black;
-            margin-left:70%!important;
+            margin-left:75%!important;
         }
     #ind-logo-mini{   
             width:45px;
             height:45px;
             margin-top:70px;
-            border-color:white;
             margin-left:85%!important;
         }
 
 
+        /* TECHNOLOGIES */
+        .technology{
+      
+        width:100%;
+        height:100%;
+        padding:0;
+        margin:0;
+        top:5px;
+        bottom:0;
+        
+    }
+     #tec-container{
+        height:600px;
+        width:900px;
+        padding:0;
+        margin:0;
+        top:0;
+        bottom:0;
+        
+    }
+    #heading-1{
+         margin-left:50px;
+         margin-top:50px;
+         color:#000;
+         font-size:40px;
+         font-style:bold;
+         font-family: 'Lora', serif;
 
+    }
+    #tec-p{
+         margin-left:100px;
+         margin-top:50px;
+         font-size:26px;
+         height:200px;
+         width:900px;
+         text-align:justify;
+        font-family: 'Lato', sans-serif;
+       
+    }
+    
+    .col{
+        width:800px;
+        height:100px;
+        margin-top:20px;
+        background:#000;
+        color:white;
+    }
 
+    #tec-image{
+        width:180px;
+        height:30px;
+        margin-top:10px;
+        margin-left:75%!important;
+    }
+    #logo-mini{   
+        width:45px;
+        height:45px;
+        margin-top:40px;
+        margin-left:85%!important;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /* PROJECTS RECORD */
         #title {
-            font-size: 34px;
-            margin-left: 0px 0px;
+            font-size: 36px;
             width:100%;
-            text-align:center;
-            font-family: 'Bebas Neue', cursive;
+            margin-top:200px;
+            text-align:left;
+            font-style:bold;
+            font-family: 'Lora', serif;
         }
 
         .row {
@@ -481,20 +504,23 @@
         }
 
         .col-md-8 {
-            width: 80%;
-            margin: 10% auto;
-            
+            width: 50%;
+            margin-top:60%;
+            /* background: #000; */
         }
 
         #description {
-            font-family: 'Bebas Neue', cursive;
+            font-family: 'Lato', sans-serif;  
             padding: 10px;
-            margin: 0px;
+            margin-top: 0px;
+            background:#fff;
+            width:50%;
+            height:20%;
         }
 
         .col-md-4 {
             float: right;
-            height: 100%;
+            /* height: 100%; */
         }
         .primary {
             margin-bottom: 10px;
@@ -511,12 +537,13 @@
 
 
         #name {
-            font-size: 18px;
+            font-size: 22px;
             letter-spacing: 1px;
             width: 300px;
-            padding: 20px;
-            margin: 2px;
-            font-family: 'Bebas Neue', cursive;
+            padding: 5px;
+            margin: 5px;
+            font-family: 'Lato', sans-serif;  
+            
 
         }
         .projects-list {
@@ -526,7 +553,7 @@
         }
         .mini-logo {
             position: absolute;
-            bottom: 50px;
+            top:50px;
             
         }
         .mini-logo img {
@@ -534,25 +561,43 @@
         height: auto;
         display: block;
         right:0px;
-    }
+        }
+    
         .row-2{
-        width:100%;
-        margin-left: 20px;
+        width:30%;
+        margin-top:0%;
+        margin-left: 0px;
+         
             
         }
+       
         #logoimg{
-        height:40px;
-        width:40px;
-        background-size:32px;
+        width:32px;
+        height:32px;
+        margin-top:0px;
+        padding-left:0px;
         display: inline-block;
+        margin-left:3%!important;
         }
         .page-break {
         page-break-after: always;
         text-align: center;
         margin-left: 50%;
          }
-        
-        
+        #project-image{
+        width:180px;
+        height:30px;
+        margin-top:-40px;
+        margin-left:75%!important;
+        }
+        #tec{
+            font-size: 20px;
+            width: 200px;
+            padding: 10px;
+            margin: 2px;
+            font-family: 'Lato', sans-serif;  
+            
+        }
 
     
     
@@ -562,46 +607,64 @@
 
 
     /* Last Pages */
-            .last-page{
-            width: 100%;
-            height: 96.5%;
-            background-repeat: no-repeat;
-            background-image: url("Images/m9.png"); 
-            background-size: cover;
-            color:#FFFFFF;
-            font-family: 'Bebas Neue', cursive;
+       
+         .greeting{
+      
+        width:100%;
+        height:97%;
+        padding:0;
+        margin:0;
+        top:5px;
+        bottom:0;
         
-            
-        }
-        #last-container{
-        padding: 0px;
-        margin: 0px;
-        width: 100%;
-        height: 90%;
-        }
-        #last-image{
-        width:400px;
+    }
+     #gre-row-1{
+        width:350px;
+        margin-left:400px;
+        padding: 3px;
+        margin-top:-20px;
+        position:absolute;
+        
+    }
+    #heading-gre{
+         margin-left:450px;
+         margin-top:300px;
+         color:#000;
+         font-size:45px;
+         font-style:bold;
+         font-family: 'Lora', serif;
+
+    }
+    #gre-p{
+        margin-left:50px;
+         margin-top:100px;
+         color:white;
+         font-size:22px;
+         text-align:left;
+         font-family: 'Lato', sans-serif;    
+        
+    }
+    .col{
+        width:800px;
         height:100px;
-        margin-top:100px;
-        margin-left:45%!important;
-        }
-        #th{
-            font-size:40px;
-            margin-left:55%;
-            margin-top:100px;
-            text-align:center;
-            font-family: 'Bebas Neue', cursive;
+        margin-top:20px;
+        background:#000;
+        color:white;
+    }
 
-            }
-            #em{
-                text-align:right;
-                margin-top:280px;
-                line-height: 1.8;
-                float:left;
-                margin-left:7%;
-                font-family: 'Bebas Neue', cursive;
-
-            }
+    #gre-image{
+        width:180px;
+        height:40px;
+        margin-top:200px;
+        margin-left:75%!important;
+    }
+     
+    #logo-mini{   
+        width:45px;
+        height:45px;
+        margin-top:40px;
+        margin-left:85%!important;
+    }
             
     </style>
 </head>
@@ -633,31 +696,34 @@
     </section>
 
     <!--  -->
-
-         <section class="Address-section bg-dark">
-            <img id="logo-mini" src="Images/logo.png">
-          <div class="container bg-dark text-light" id="add-container">
-            <h6 id="heading-1">Where We Stand</h6>
-            <br>
+<section class="address-section bg-light">
+         <img id="ser-logo-mini" src="Images/logo.png">
+    <!-- <div class="container bg-dark text-light" id="ser-col-md-12"> -->
+            <h6 class="text-dark" id="heading-1">Where We Stand</h6>
+        <div class="row" id="add-row-1">
             <h6 class="bg-dark text-light" id="heading-2">Regional office</h6>
-            
-            <div class="col-md-4 bg-light text-dark" id="address-column">
-                <p class="" id="add-p1">2918 Avenue I Unit #5055 Brooklyn NY 11210 United States</p>
-            </div>   
+            <div class="full-width">
+                <div class="col justify-content-center" id="add-col">
+                    <!-- <h5 id="ser-h5">Web Development</h5> -->
+                    <h6 id="add-h6">2918 Avenue I Unit #5055 Brooklyn NY 11210 United States</h6>
+                </div>
+                
+                <div class="col justify-content-center " id="add-col">
+                    <!-- <h5 id="ser-h5">Mobile Development</h3> -->
+                    <h6 id="add-h6">345, Block H-3 Johar Town, Lahore, 54000</h6>
+                </div>
 
-             <div class="col-md-4 bg-light text-dark" id="address_column">
-                <p class="" id="add-p2">345, Block H-3 Johar Town, Lahore, 54000</p>
-            </div>
-            </div>
 
-
-             <div class="flex text-dark" id="flex">
+                <div class="flex bg-dark text-danger" id="flex">
                    <h5 id="flex-h1"> 10+ | 15+ | 50+ </h5>
                    <h6 id="add-h3">Client | Teams | Projects</h6>
                 </div>
-                <img id="add-image" src="Images/whitelogo.png" >
+            </div>
+              
+        </div>
+                <img id="ser-image" src="Images/logo2.png" >
     </section>
-
+         
 
     <!-- Services -->
     <section class="services bg-light">
@@ -721,19 +787,19 @@
                 <div class="full-width">
 
                    
-                <div class="col justify-content-center bg-dark text-light " id="ind-col">
+                <div class="col justify-content-center text-dark " id="ind-col">
                     <img id="ind-minilogos" src="Images/dollar.png">    
                     <br>
                     <h5 id="ind-ico">Fintech</h3>
                 </div>
             
-                    <div class="col justify-content-center bg-dark text-light" id="ind-col">
+                    <div class="col justify-content-center  text-dark" id="ind-col">
                         <img id="ind-minilogos" src="Images/heart.png">
                         <br>
                         <h5 id="ind-ico">Health Care</h3>
                      </div>
                 
-                    <div class="col justify-content-center bg-dark text-light " id="ind-col">
+                    <div class="col justify-content-center  text-dark " id="ind-col">
                         <img id="ind-minilogos" src="Images/shopping-bag.png">
                         <br>
                         <h5 id="ind-ico">Ecommerce</h3>
@@ -743,19 +809,19 @@
                 
                 
                 <div class="full-width">
-                    <div class="col justify-content-center bg-dark text-light" id="ind-col">
+                    <div class="col justify-content-center  text-dark" id="ind-col">
                          <img id="ind-minilogos" src="Images/airplan.png">
                           <br>
                          <h5 id="ind-ico">Travel & Tourism</h3>
                         
                     </div>                   
-                    <div class="col justify-content-center bg-dark text-light" id="ind-col">
+                    <div class="col justify-content-center  text-dark" id="ind-col">
                         <img id="ind-minilogos" src="Images/mortarboard.png">
                           <br>
                          <h5 id="ind-ico">Education</h3>
                     </div>
                     
-                    <div class="col justify-content-center bg-dark text-light" id="ind-col">
+                    <div class="col justify-content-center  text-dark" id="ind-col">
                         <img id="ind-minilogos" src="Images/fast-food.png">
                          <br>
                         <h5 id="ind-ico">Food</h3>
@@ -769,13 +835,25 @@
            <img id="ind-image" src="Images/logo2.png" >
     </section>
 
+    <!-- TECHNOLOGIES -->
+    <section class="technology bg-light">
+            <img id="logo-mini" src="Images/logo.png">
+          <div class="container bg-light text-dark" id="tec-container">
+            <h6 class="text-dark" id="heading-1">Technologies & Tools</h6>
+            <div class="full-width">
+                <p class="bg-light" id="tec-p">We are Passionately working on cutting-edge technologies.Our Organization is the sum of numerous small special divisions whose members are masters of the subject area.these special divisions are made of the following technologies</p>
+        </div>    
+        </div>
+           <img id="tec-image" src="Images/logo2.png" >
+    </section>
+
 
        
         <!-- <div class="page-break"></div> -->
     @foreach($multi['multiple'] as $newitem)
         <div class="projects-list">
             <div class="mini-logo">
-                <img src="/Images/logo.png">
+                <img src="Images/logo.png">
             </div>
         </div>
     @php
@@ -786,28 +864,38 @@
     <div class="inner-page">
         <div class="holder">
             <h2 id="title" class="title">{{$newitem->Project_Title}}</h2>
+              <p id="description">{{$newitem->Usecase_Description}}</p>
                 <p id="name">{{$newitem->Client_Name}}</p>
-                    <p id="description">{{$newitem->Usecase_Description}}</p>
-                    <br><br>
-                    <div class="row-2" id="tec">
+
+                    <div class="row-2" id="tec-images">
                         @foreach ($techs as $tech)
-                            <img id="logoimg" src="/Images/logos/{{strtolower($tech)}}.png" >
+                            <img id="logoimg" src="Images/logos/{{strtolower($tech)}}.png" >
                                  @endforeach
                         </div>
-                 <br><br>
-                    <div class="" id="tec">{{$newitem->Project_Type}}</div>
-            </div>
-
+                        <div class="" id="tec">{{$newitem->Project_Type}}</div>
+                     
+                </div>
+           <img id="project-image" src="Images/logo2.png" >
         </div>
 
        @endforeach
-        <div class="last-page">
-            <div class="container" id="last-container">
-                <img id="last-image" src="/Images/whitelogo.png" >
-                    <h1 id="th">Thank You</h1>
-                    <h6 id="em">2918 Avenue I Unit #5055 Brooklyn || NY, US | info@cybernest.com</h6>
-            </div>
-        </div>
+       
+
+            <!-- Thanks Page -->
+        <section class="greeting bg-light">
+            <img id="logo-mini" src="Images/logo.png">
+              <h6 class="text-dark" id="heading-gre">THANK YOU</h6>
+           <div class="row" id="gre-row-1">
+            <p class="text-light" id="gre-p">Info@cybernest.com</p>
+          </div>
+           <img id="gre-image" src="Images/logo2.png" >
+    </section>
+
+
+
+
+
+
 </body>
 
 </html>
