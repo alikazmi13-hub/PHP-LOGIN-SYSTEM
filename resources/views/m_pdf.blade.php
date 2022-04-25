@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +22,7 @@
    <style>
       
     body {
-        font-family: 'Bebas Neue', cursive;
+       
         padding: 0;
         margin: 0;
 
@@ -31,15 +32,14 @@
     margin: 0px; 
         font-family: 'Lora', serif;
 }
-    .container {
-        padding: 0;
-        margin: 0;
+    #row-p1 {
+        width:100%;
+        height:100%;
+        font-family: 'Lato', sans-serif;   
     
     }
     .main-bg{
         max-width: 100%;
-        height: 100%;
-        /* background: #264483; */
         opacity:0.9;
         background-repeat: no-repeat;
         background-image: url("Images/logos/top2.jpg"); 
@@ -49,11 +49,10 @@
   .content{
    
     width:100%;
-    height:10%;
     position:absolute;
     left:0px;
-    bottom:25px;
-    color:black;
+    bottom:80px;
+    color:white;
     background: #3d5fb0;
     border-top-style: solid;
     
@@ -83,14 +82,24 @@
 
     #logo {
         
-        margin-bottom: 30px;
-        margin-left:15%; 
+        margin-top: 20%;
+        margin-left:25%; 
         
     }
     .h52{
+        text-align:left;
+        color:white;
+        margin-left:80%;
+        margin-right:0px;
+        position:absolute;
+       
+    }
+    .h53{
         text-align:right;
         color:white;
-        margin-right:100px;
+        margin-left:60%;
+        position:absolute;
+       
     }
     #mh {
         
@@ -98,9 +107,10 @@
         width: 100%;
         letter-spacing: 1px;
         font-weight:600;
+        margin-top: 10%;
         text-align: center;
         margin-left:0%;
-        
+        font-family: 'Lora', serif;
     }
 
 /* ABOUT */
@@ -146,8 +156,7 @@
         width:800px;
         height:100px;
         margin-top:20px;
-        background:#000;
-        color:white;
+    
     }
 
     #about-image{
@@ -170,7 +179,7 @@
         height:100%;
         padding:0;
         margin:0;
-        top:5px;
+        top:0px;
         bottom:0;
             
         }
@@ -193,7 +202,7 @@
         font-style:bold;
         }
        #heading-2{
-    margin-left:100px;
+    margin-left:50px;
     width:250px;
     margin-top:0px;
     font-size:25px;
@@ -211,6 +220,7 @@
         background:;
         margin-left: 100px;
         display: inline-block;
+        
     }
          #add-h6{
             color:black;
@@ -221,15 +231,21 @@
             letter-spacing:1px;
             border-top:1px solid;
              background: #ededed;
-            font-family: 'Lato', sans-serif;  
-  }
+            font-family: 'Lato', sans-serif;   
+         }
+         #add-h{
+            color:black;
+            text-align:left;
+            margin-left:1px;
+            margin-top:5px;
+            font-family: 'Lato', sans-serif; 
+         }
    
     .col{
     width:800px;
     height:100px;
     margin-top:20px;
-    background:#000;
-    color:white;
+    
     }
 
     #add-image{
@@ -245,16 +261,14 @@
         margin-top:40px;
         margin-left:85%!important;
             }
-            #flex{
-            position: absolute;
-            width:30%;
-            bottom: 150px;
-            right: 400px;
-            background:;
-            border:solid;
+            #flex-add{
+            width:40%;
+            margin-top: 180px;
+            margin-left: 75%;
             text-align:center;
+            color: #ededed;
             font-family: 'Lato', sans-serif;    
-            border-radius: 20px;
+            border-radius: 10px;
             letter-spacing: 1px;
                 }
 
@@ -309,7 +323,8 @@
             text-align:left;
             margin-left:1px;
             margin-top:5px;
-            font-family: 'Lato', sans-serif;  
+            font-family: 'Lato', sans-serif; 
+          
         }
 
         #ser-h6{
@@ -469,8 +484,7 @@
         width:800px;
         height:100px;
         margin-top:20px;
-        background:#000;
-        color:white;
+       
     }
 
     #tec-image{
@@ -488,10 +502,11 @@
 
     /* PROJECTS RECORD */
         #title {
-            font-size: 36px;
+            font-size: 30px;
             width:100%;
             margin-top:200px;
             text-align:left;
+            margin-left:10px;
             font-style:bold;
             font-family: 'Lora', serif;
         }
@@ -513,9 +528,11 @@
             font-family: 'Lato', sans-serif;  
             padding: 10px;
             margin-top: 0px;
-            background:#fff;
             width:50%;
             height:20%;
+             border-top: #000 solid;
+            text-align:justify;
+            text-transform: lowercase;
         }
 
         .col-md-4 {
@@ -537,7 +554,7 @@
 
 
         #name {
-            font-size: 22px;
+            font-size: 16px;
             letter-spacing: 1px;
             width: 300px;
             padding: 5px;
@@ -548,7 +565,6 @@
         }
         .projects-list {
             position: relative;
-            font-family: 'Bebas Neue', cursive;
             left:90%;
         }
         .mini-logo {
@@ -591,7 +607,7 @@
         margin-left:75%!important;
         }
         #tec{
-            font-size: 20px;
+            font-size: 16px;
             width: 200px;
             padding: 10px;
             margin: 2px;
@@ -627,16 +643,16 @@
         
     }
     #heading-gre{
-         margin-left:450px;
+         margin-left:430px;
          margin-top:300px;
          color:#000;
-         font-size:45px;
+         font-size:60px;
          font-style:bold;
          font-family: 'Lora', serif;
 
     }
     #gre-p{
-        margin-left:50px;
+         margin-left:50px;
          margin-top:100px;
          color:white;
          font-size:22px;
@@ -648,8 +664,7 @@
         width:800px;
         height:100px;
         margin-top:20px;
-        background:#000;
-        color:white;
+      
     }
 
     #gre-image{
@@ -673,15 +688,15 @@
 
     <!-- image logo -->
         <div class="main-bg">
-            <div class="container bg-primary text-light">
+            <div class="row bg-primary text-light" id="row-p1">
                 <img id="logo" src="Images/logo2.png"  style="width:420px; height:80px;">
                   <!-- <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;"> -->
-                    <h5 id="mh">We Design And Build Secure, Resilient Software For Companies That Need To Scale.</h5>
+                    <h5 id="mh">We Design And Build Secure, <br>Resilient Software For Companies That Need To Scale.</h5>
                 </div>
 
                     <div class="content">
                         <h5 class="h52">info@cybernest.com</h5>
-                                <h5  class="h52">www.cybernest.com</h3> 
+                        <h5  class="h53">www.cybernest.com</h3> 
                     </div>
         </div>
 
@@ -704,17 +719,17 @@
             <h6 class="bg-dark text-light" id="heading-2">Regional office</h6>
             <div class="full-width">
                 <div class="col justify-content-center" id="add-col">
-                    <!-- <h5 id="ser-h5">Web Development</h5> -->
-                    <h6 id="add-h6">2918 Avenue I Unit #5055 Brooklyn NY 11210 United States</h6>
+                    <h5 class="bg-light" id="add-h">United States</h5>
+                    <h6 id="add-h6">2918 Avenue I Unit #5055 Brooklyn NY 11210</h6>
                 </div>
                 
-                <div class="col justify-content-center " id="add-col">
-                    <!-- <h5 id="ser-h5">Mobile Development</h3> -->
+                <div class="col justify-content-center" id="add-col">
+                    <h5 class="bg-light" id="add-h">Pakistan Punjab</h5>
                     <h6 id="add-h6">345, Block H-3 Johar Town, Lahore, 54000</h6>
                 </div>
 
 
-                <div class="flex bg-dark text-danger" id="flex">
+                <div class="flex bg-dark" id="flex-add">
                    <h5 id="flex-h1"> 10+ | 15+ | 50+ </h5>
                    <h6 id="add-h3">Client | Teams | Projects</h6>
                 </div>
@@ -863,16 +878,16 @@
         <!-- Data Body -->
     <div class="inner-page">
         <div class="holder">
-            <h2 id="title" class="title">{{$newitem->Project_Title}}</h2>
+            <h2 id="title" class="title text-uppercase">{{$newitem->Project_Title}}</h2>
               <p id="description">{{$newitem->Usecase_Description}}</p>
-                <p id="name">{{$newitem->Client_Name}}</p>
+                <p class="text-uppercase" id="name">{{$newitem->Client_Name}}</p>
 
                     <div class="row-2" id="tec-images">
                         @foreach ($techs as $tech)
                             <img id="logoimg" src="Images/logos/{{strtolower($tech)}}.png" >
                                  @endforeach
                         </div>
-                        <div class="" id="tec">{{$newitem->Project_Type}}</div>
+                        <div class="text-uppercase" id="tec">{{$newitem->Project_Type}}</div>
                      
                 </div>
            <img id="project-image" src="Images/logo2.png" >
