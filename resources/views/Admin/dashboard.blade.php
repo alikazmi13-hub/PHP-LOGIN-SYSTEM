@@ -1,6 +1,10 @@
 @extends('layouts.admin-app')
 
 @section('content')
+
+
+
+
 <div class="container">
     <ul class="nav justify-content-center">
   <li class="nav-item">
@@ -33,6 +37,7 @@
             </div>
         </div>
     </div>
-   
+    
+      
 </div>
 @endsection

@@ -15,13 +15,17 @@
     <!-- Font Family -->
     <link rel=“preconnect” href=“https://fonts.googleapis.com”>
     <link rel=“preconnect” href=“https://fonts.gstatic.com” crossorigin>
-    <link href=“https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap” rel=“stylesheet”>
-
+    
     <title>PDF</title>
    
    <style>
+       @font-face {
+    font-family: 'Journal';
+    src: url('yourwebsite.com/journal.ttf")}}') format('truetype');
+    }
       
     body {
+        font-family: 'Journal';
        
         padding: 0;
         margin: 0;
@@ -30,7 +34,7 @@
 
      @page { 
     margin: 0px; 
-        font-family: 'Lora', serif;
+        /* font-family: 'Lora', serif; */
 }
     #row-p1 {
         width:100%;
@@ -40,7 +44,7 @@
     }
     .main-bg{
         max-width: 100%;
-        opacity:0.9;
+        opacity:0.8;
         background-repeat: no-repeat;
         background-image: url("Images/logos/top2.jpg"); 
         background-size: cover;
@@ -59,11 +63,6 @@
     
   }
    
-        
-
-    
-
-
     .inner-page {
         width: 100%;
         height: 100%;
@@ -73,10 +72,10 @@
     }
     .inner-page .holder {
         width: 900px;
-        margin: 10% auto;
+        margin: 5% auto;
     }
     .main-bg .container {
-        padding: 20%;
+        padding: 10%;
     }
     
 
@@ -110,7 +109,7 @@
         margin-top: 10%;
         text-align: center;
         margin-left:0%;
-        font-family: 'Lora', serif;
+        /* font-family: 'Lora', serif; */
     }
 
 /* ABOUT */
@@ -137,9 +136,9 @@
          margin-left:50px;
          margin-top:50px;
          color:#000;
-         font-size:40px;
+         font-size:30px;
          font-style:bold;
-         font-family: 'Lora', serif;
+         /* font-family: 'Lora', serif; */
 
     }
     #ab-p{
@@ -149,7 +148,7 @@
          height:200px;
          width:900px;
          text-align:justify;
-         font-family: 'Lato', sans-serif;    
+         /* font-family: 'Lato', sans-serif;     */
         
     }
     .col{
@@ -174,103 +173,104 @@
     }
 
     /* Address */
-   .address-section{
-        width:100%;
-        height:100%;
-        padding:0;
-        margin:0;
-        top:0px;
-        bottom:0;
+    .address-section{
+            width:100%;
+            height:100%;
+            padding:0;
+            margin:0;
+            top:0px;
+            bottom:0;
+                
+            }
             
-        }
-        
-        #add-row-1{
-        width:900px;
-        margin-left:100px;
-        padding: 1px;
-        margin-top:-10px;
-        position:absolute;
-        }
+            #add-row-1{
+            width:900px;
+            margin-left:100px;
+            padding: 1px;
+            margin-top:-10px;
+            position:absolute;
+            }
 
         
         #heading-1{
         margin-left:50px;
         margin-top:50px;
         color:#000;
-        font-size:40px;
-        font-family: 'Lora', serif;
+        font-size:30px;
+        /* font-family: 'Lora', serif; */
         font-style:bold;
         }
-       #heading-2{
-    margin-left:50px;
-    width:250px;
-    margin-top:0px;
-    font-size:25px;
-    color:white;
-    font-weight:900px;
-    text-align:center;
-    font-style:bold;
-    font-family: 'Lora', serif;
-
-    }
-    #add-col{
-        width: 30%;
-        border: 1px solid;
-        padding: 2px;
-        background:;
-        margin-left: 100px;
-        display: inline-block;
-        
-    }
-         #add-h6{
-            color:black;
-            text-align:left;
-            margin-left:1px;
-            margin-top:5px;
-            padding-top:5px;
-            letter-spacing:1px;
-            border-top:1px solid;
-             background: #ededed;
-            font-family: 'Lato', sans-serif;   
-         }
-         #add-h{
-            color:black;
-            text-align:left;
-            margin-left:1px;
-            margin-top:5px;
-            font-family: 'Lato', sans-serif; 
-         }
-   
-    .col{
-    width:800px;
-    height:100px;
-    margin-top:20px;
-    
-    }
-
-    #add-image{
+        #heading-2{
+        margin-left:10px;
         width:200px;
-        height:40px;
-        margin-top:10px;
-        margin-left:75%!important;
-    }
-     
+        margin-top:0px;
+        font-size:30px;
+        color:white;
+        font-weight:600px;
+        text-align:left;
+        font-style:bold;
+        /* font-family: 'Lora', serif; */
+
+        }
+        #add-col{
+            width: 30%;
+            border-top: 1px solid;
+            padding: 2px;
+            background:;
+            margin-top:80px;
+            margin-left: 100px;
+            display: inline-block;
+            
+            }
+        #add-h6{
+        color:black;
+        text-align:left;
+        margin-left:1px;
+        margin-top:5px;
+        padding-top:5px;
+        letter-spacing:1px;
+        border-top:1px solid;
+        background: #ededed;
+        /* font-family: 'Lato', sans-serif;    */
+     }
+        #add-h{
+        color:black;
+        text-align:left;
+        margin-left:1px;
+        margin-top:5px;
+        font-family: 'Lato', sans-serif; 
+        }
+   
+        .col{
+        width:800px;
+        height:100px;
+        margin-top:20px;
+        
+        }
+
+        #add-image{
+            width:200px;
+            height:40px;
+            margin-top:10px;
+            margin-left:75%!important;
+        }
+        
         #logo-mini{   
         width:45px;
         height:45px;
         margin-top:40px;
         margin-left:85%!important;
             }
-            #flex-add{
-            width:40%;
-            margin-top: 180px;
-            margin-left: 75%;
-            text-align:center;
-            color: #ededed;
-            font-family: 'Lato', sans-serif;    
-            border-radius: 10px;
-            letter-spacing: 1px;
-                }
+        #flex-add{
+        width:40%;
+        margin-top: 120px;
+        margin-left: 75%;
+        text-align:center;
+        color: #ededed;
+        /* font-family: 'Lato', sans-serif;     */
+        border-radius: 10px;
+        letter-spacing: 1px;
+            }
 
     /* SERVICES */
         .services{
@@ -296,14 +296,13 @@
         margin-left:50px;
         margin-top:50px;
         color:#000;
-        font-size:40px;
-        font-family: 'Lora', serif;
+        font-size:30px;
+        /* font-family: 'Lora', serif; */
         font-style:bold;
         }
     
         #ser-col{
         width: 30%;
-        border: 1px solid;
         padding: 2px;
         background:;
         margin-left: 100px;
@@ -331,12 +330,12 @@
             color:black;
             text-align:left;
             margin-left:1px;
-            margin-top:5px;
+            margin-top:0px;
             padding-top:5px;
             letter-spacing:1px;
             border-top:1px solid;
-             background: #ededed;
-            font-family: 'Lato', sans-serif;  
+            background: #ededed;
+            /* font-family: 'Lato', sans-serif;   */
 
         }
         #ser-image{
@@ -345,63 +344,61 @@
             margin-top:360px !important;
             margin-left:75%!important;
         }
-    #ser-logo-mini{   
-            width:45px;
-            height:45px;
-            margin-top:70px;
-            margin-left:85%!important;
-        }
+        #ser-logo-mini{   
+                width:45px;
+                height:45px;
+                margin-top:70px;
+                margin-left:85%!important;
+            }
+
+     /* INDUSTRIES */
 
 
-
-            /* INDUSTRIES */
-
-
- .industries{
+        .industries{
         width:100%;
         height:100%;
         padding:0;
         margin:0;
         top:5px;
         bottom:0;
+                    
+            }
             
-        }
-        
-        #ind-row-1{
-        width:800px;
-        margin-left:150px;
-        padding: 3px;
-        background: ;
-        margin-top:-20px;
-        position:absolute;
-        }
+            #ind-row-1{
+            width:800px;
+            margin-left:150px;
+            padding: 3px;
+            background: ;
+            margin-top:-20px;
+            position:absolute;
+            }
 
-        
-        #heading-1{
-        margin-left:50px;
-        margin-top:50px;
-        color:#000;
-        font-size:40px;
-        font-style:bold;
-        font-family: 'Lora', serif;
+            
+            #heading-1{
+            margin-left:50px;
+            margin-top:50px;
+            color:#000;
+            font-size:30px;
+            font-style:bold;
+            /* font-family: 'Lora', serif; */
 
-        }
-    
-        #ind-col{
-        width: 30%;
-        height:20%;
-        border:;
-        padding: 1px;
-        background:;
-        margin-left: 1%;
-        display: inline-block;
-        background: #ededed;
+            }
         
-        }
-      
-        .full-width {
-            width: 100%;
-        }
+            #ind-col{
+            width: 30%;
+            height:20%;
+            border:;
+            padding: 1px;
+            background:;
+            margin-left: 1%;
+            display: inline-block;
+            background: #ededed;
+            
+            }
+        
+            .full-width {
+                width: 100%;
+            }
 
 
 
@@ -460,15 +457,7 @@
         bottom:0;
         
     }
-    #heading-1{
-         margin-left:50px;
-         margin-top:50px;
-         color:#000;
-         font-size:40px;
-         font-style:bold;
-         font-family: 'Lora', serif;
-
-    }
+    
     #tec-p{
          margin-left:100px;
          margin-top:50px;
@@ -501,14 +490,25 @@
     }
 
     /* PROJECTS RECORD */
+
+
+    #heading-p11{
+         margin-left:-25px;
+         margin-top:50px;
+         color:#000;
+         font-size:30px;
+         font-style:bold;
+         /* font-family: 'Lora', serif; */
+
+    }
         #title {
-            font-size: 30px;
+            font-size: 25px;
             width:100%;
             margin-top:200px;
             text-align:left;
-            margin-left:10px;
+            margin-left:8px;
             font-style:bold;
-            font-family: 'Lora', serif;
+            /* font-family: 'Lora', serif; */
         }
 
         .row {
@@ -521,16 +521,16 @@
         .col-md-8 {
             width: 50%;
             margin-top:60%;
-            /* background: #000; */
+            
         }
 
         #description {
-            font-family: 'Lato', sans-serif;  
+            /* font-family: 'Lato', sans-serif;   */
             padding: 10px;
             margin-top: 0px;
             width:50%;
             height:20%;
-             border-top: #000 solid;
+            border-top: #000 solid;
             text-align:justify;
             text-transform: lowercase;
         }
@@ -559,7 +559,7 @@
             width: 300px;
             padding: 5px;
             margin: 5px;
-            font-family: 'Lato', sans-serif;  
+            /* font-family: 'Lato', sans-serif;   */
             
 
         }
@@ -603,7 +603,7 @@
         #project-image{
         width:180px;
         height:30px;
-        margin-top:-40px;
+        margin-top:-20px;
         margin-left:75%!important;
         }
         #tec{
@@ -611,67 +611,57 @@
             width: 200px;
             padding: 10px;
             margin: 2px;
-            font-family: 'Lato', sans-serif;  
+            /* font-family: 'Lato', sans-serif;   */
             
         }
-
-    
-    
-
-
-
-
 
     /* Last Pages */
        
          .greeting{
-      
         width:100%;
-        height:97%;
+        width:100%;
         padding:0;
         margin:0;
-        top:5px;
+        top:0px;
         bottom:0;
         
     }
      #gre-row-1{
-        width:350px;
+        width:100%;
+        height:80%;
         margin-left:400px;
         padding: 3px;
-        margin-top:-20px;
+        margin-top:0px;
         position:absolute;
         
     }
     #heading-gre{
          margin-left:430px;
-         margin-top:300px;
-         color:#000;
-         font-size:60px;
-         font-style:bold;
-         font-family: 'Lora', serif;
+         margin-top:250px;
+         color:black;
+         text-decoration: underline #000;
+         font-size:45px;
+         text-align:left;
+         letter-spacing:2px;
+         /* font-family: 'Lato', sans-serif;    */
 
     }
     #gre-p{
          margin-left:50px;
-         margin-top:100px;
+         margin-top:60px;
          color:white;
          font-size:22px;
          text-align:left;
-         font-family: 'Lato', sans-serif;    
+         /* font-family: 'Lato', sans-serif;     */
         
     }
-    .col{
-        width:800px;
-        height:100px;
-        margin-top:20px;
-      
-    }
+   
 
     #gre-image{
-        width:180px;
-        height:40px;
-        margin-top:200px;
-        margin-left:75%!important;
+            width:180px;
+            height:30px;
+            margin-top:250px !important;
+            margin-left:75%!important;
     }
      
     #logo-mini{   
@@ -680,41 +670,49 @@
         margin-top:40px;
         margin-left:85%!important;
     }
-            
+        
+    #heading-p1{
+         margin-left:50px;
+         margin-top:50px;
+         color:#000;
+        font-size:30px;
+        /* font-family: 'Lora', serif; */
+        font-style:bold;
+    }
     </style>
 </head>
 
 <body class="body">
 
     <!-- image logo -->
-        <div class="main-bg">
-            <div class="row bg-primary text-light" id="row-p1">
-                <img id="logo" src="Images/logo2.png"  style="width:420px; height:80px;">
-                  <!-- <img id="logo" src="/Images/logo2.png"  style="width:420px; height:80px;"> -->
-                    <h5 id="mh">We Design And Build Secure, <br>Resilient Software For Companies That Need To Scale.</h5>
-                </div>
-
-                    <div class="content">
-                        <h5 class="h52">info@cybernest.com</h5>
-                        <h5  class="h53">www.cybernest.com</h3> 
-                    </div>
+    <div class="main-bg">
+        <div class="row bg-primary text-light" id="row-p1">
+        <img id="logo" src="Images/logo2.png"  style="width:420px; height:80px;">
+            <h5 id="mh text-uppercase">We Design And Build Secure, <br> Resilient Software For Companies That Need To Scale.</h5>
         </div>
 
-            <!-- About Page -->
-        <section class="About bg-primary">
-            <img id="logo-mini" src="Images/logo.png">
-          <div class="container bg-primary text-light" id="ab-container">
-            <h6 class="text-light" id="heading-1">About Us</h6>
-                <p class="bg-primary" id="ab-p">Cyber Nest is one of the fastest growing software company. We have highly experienced team who have successfully launched various projects and proved ours skills. We take responsibility of the work, and maintain the best relationship with our customers.</p>
-             </div>
-           <img id="about-image" src="Images/whitelogo.png" >
-    </section>
+            <div class="content">
+                <h5 class="h52">info@cybernest.com</h5>
+                <h5  class="h53">www.cybernest.com</h3> 
+            </div>
+    </div>
 
-    <!--  -->
-<section class="address-section bg-light">
+            <!-- About Page -->
+    <section class="About bg-primary">
+        <img id="logo-mini" src="Images/logo.png">
+        
+        <div class="container bg-primary text-light" id="ab-container">
+            <h6 class="text-light text-uppercase" id="heading-p1">About Us</h6>
+                <p class="bg-primary" id="ab-p">Cyber Nest is one of the fastest growing software company. We have highly experienced team who have successfully launched various projects and proved ours skills. We take responsibility of the work, and maintain the best relationship with our customers.</p>
+                </div>
+        <img id="about-image" src="Images/whitelogo.png" >
+</section>
+
+    <!-- Address Section -->
+    <section class="address-section">
          <img id="ser-logo-mini" src="Images/logo.png">
-    <!-- <div class="container bg-dark text-light" id="ser-col-md-12"> -->
-            <h6 class="text-dark" id="heading-1">Where We Stand</h6>
+   
+            <h6 class="text-dark text-uppercase" id="heading-1">Where We Stand</h6>
         <div class="row" id="add-row-1">
             <h6 class="bg-dark text-light" id="heading-2">Regional office</h6>
             <div class="full-width">
@@ -741,10 +739,10 @@
          
 
     <!-- Services -->
-    <section class="services bg-light">
+    <section class="services">
          <img id="ser-logo-mini" src="Images/logo.png">
-    <!-- <div class="container bg-dark text-light" id="ser-col-md-12"> -->
-            <h6 class="text-dark" id="heading-1">Services We Provide</h6>
+   
+            <h6 class="text-dark text-uppercase" id="heading-1">Services We Provide</h6>
         <div class="row" id="ser-row-1">
             <div class="full-width">
                 <div class="col justify-content-center" id="ser-col">
@@ -791,17 +789,12 @@
 
     <!-- INDUSTRIES  -->
 
-     <section class="industries bg-light">
+     <section class="industries">
          <img id="ind-logo-mini" src="Images/logo.png">
-    <!-- <div class="container bg-dark text-light" id="ser-col-md-12"> -->
-            <h6 class="dark-light" id="heading-1">Industries<br> We Focus on</h6>
-        <div class="row bg-light" id="ind-row-1">
-            
-             
-            
+   
+            <h6 class="text-uppercase" id="heading-1">Industries<br> We Focus on</h6>
+        <div class="row" id="ind-row-1">
                 <div class="full-width">
-
-                   
                 <div class="col justify-content-center text-dark " id="ind-col">
                     <img id="ind-minilogos" src="Images/dollar.png">    
                     <br>
@@ -851,20 +844,18 @@
     </section>
 
     <!-- TECHNOLOGIES -->
-    <section class="technology bg-light">
+    <section class="technology">
             <img id="logo-mini" src="Images/logo.png">
-          <div class="container bg-light text-dark" id="tec-container">
-            <h6 class="text-dark" id="heading-1">Technologies & Tools</h6>
+          <div class="container  text-dark" id="tec-container">
+            <h6 class="text-dark text-uppercase" id="heading-1">Technologies & Tools</h6>
             <div class="full-width">
-                <p class="bg-light" id="tec-p">We are Passionately working on cutting-edge technologies.Our Organization is the sum of numerous small special divisions whose members are masters of the subject area.these special divisions are made of the following technologies</p>
+                <p class="" id="tec-p">We are Passionately working on cutting-edge technologies.Our Organization is the sum of numerous small special divisions whose members are masters of the subject area.these special divisions are made of the following technologies</p>
         </div>    
         </div>
            <img id="tec-image" src="Images/logo2.png" >
     </section>
 
-
-       
-        <!-- <div class="page-break"></div> -->
+   
     @foreach($multi['multiple'] as $newitem)
         <div class="projects-list">
             <div class="mini-logo">
@@ -878,9 +869,10 @@
         <!-- Data Body -->
     <div class="inner-page">
         <div class="holder">
-            <h2 id="title" class="title text-uppercase">{{$newitem->Project_Title}}</h2>
-              <p id="description">{{$newitem->Usecase_Description}}</p>
-                <p class="text-uppercase" id="name">{{$newitem->Client_Name}}</p>
+            <h6 class="text-dark text-uppercase" id="heading-p11">Our Projects</h6>
+                <h2 id="title" class="title text-uppercase">{{$newitem->Project_Title}}</h2>
+                    <p id="description">{{$newitem->Usecase_Description}}</p>
+                        <p class="text-uppercase" id="name">{{$newitem->Client_Name}}</p>
 
                     <div class="row-2" id="tec-images">
                         @foreach ($techs as $tech)
@@ -897,11 +889,11 @@
        
 
             <!-- Thanks Page -->
-        <section class="greeting bg-light">
+        <section class="greeting">
             <img id="logo-mini" src="Images/logo.png">
               <h6 class="text-dark" id="heading-gre">THANK YOU</h6>
            <div class="row" id="gre-row-1">
-            <p class="text-light" id="gre-p">Info@cybernest.com</p>
+            <p class="text-dark" id="gre-p">Info@cybernest.com</p>
           </div>
            <img id="gre-image" src="Images/logo2.png" >
     </section>
